@@ -1,0 +1,1 @@
+{"entryPoints":[".blink-cf-build/__blink_worker__.ts"],"bundle":true,"format":"esm","target":"esnext","platform":"browser","conditions":["workerd","worker","browser","import","default"],"define":{"process.env.NODE_ENV":"\"production\"","global":"globalThis"},"external":[],"outfile":".blink-cf-build/bundle.mjs","logLevel":"silent"}
