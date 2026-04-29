@@ -7,6 +7,7 @@ import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 
 const { width } = Dimensions.get('window');
+const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
 
 const VIDEO_ID = '5VXBjs2hrSg';

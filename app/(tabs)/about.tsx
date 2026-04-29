@@ -5,6 +5,7 @@ import { ArrowRight, Award, Users, Heart, Star, Quote, CheckCircle } from '@blin
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 
+const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
 
 const credentials = [

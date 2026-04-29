@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 
+const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 640;
 
 interface FormData {
