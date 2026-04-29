@@ -75,7 +75,7 @@ export default function AboutScreen() {
           {/* Profile Image Placeholder */}
           <View style={styles.profileImageWrapper}>
             <Image
-              source={{ uri: 'https://mindful-horizons.com/wp-content/uploads/2024/11/Bio_Pic.png' }}
+              source={{ uri: 'https://storage.googleapis.com/blink-core-storage/projects/mindful-horizons-app-er6kbt7g/profile/henry-bio-pic-1777433838206_png/9874e260-0c37-4593-83f0-0cd9a5799f4f.png' }}
               style={styles.profileImage}
               resizeMode="cover"
             />
