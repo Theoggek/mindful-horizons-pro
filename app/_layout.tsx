@@ -21,7 +21,14 @@ function WebStyleReset() {
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: 'input:focus,textarea:focus{outline:none!important}',
+        __html: `
+          input:focus,textarea:focus{outline:none!important}
+          *::-webkit-scrollbar{width:6px;height:6px}
+          *::-webkit-scrollbar-track{background:transparent}
+          *::-webkit-scrollbar-thumb{background:#1B4332;border-radius:99px;opacity:0.7}
+          *::-webkit-scrollbar-thumb:hover{background:#2D6A4F}
+          *{scrollbar-width:thin;scrollbar-color:#1B4332 transparent}
+        `,
       }}
     />
   );
