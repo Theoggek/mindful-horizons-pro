@@ -2,8 +2,9 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Award, Users, Heart, Star, Quote, CheckCircle } from '@blinkdotnew/mobile-ui';
+import { useResponsive } from '@/hooks/useResponsive';
+import { WebNavBar } from '@/components/WebNavBar';
 
-const isWeb = Platform.OS === 'web';
 const maxW = 800;
 
 const credentials = [
@@ -38,6 +39,8 @@ const values = [
 ];
 
 export default function AboutScreen() {
+  const { isDesktop, isTablet, isWeb } = useResponsive();
+
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
@@ -49,10 +52,13 @@ export default function AboutScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header Bar */}
-        <View style={styles.navbar}>
-          <Text style={styles.navLogo}>Mindful Horizons</Text>
-        </View>
+        {isDesktop || isTablet ? (
+          <WebNavBar />
+        ) : (
+          <View style={styles.navbar}>
+            <Text style={styles.navLogo}>Mindful Horizons</Text>
+          </View>
+        )}
 
         {/* Page Header */}
         <LinearGradient

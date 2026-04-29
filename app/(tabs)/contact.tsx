@@ -6,8 +6,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Mail, Phone } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
+import { useResponsive } from '@/hooks/useResponsive';
+import { WebNavBar } from '@/components/WebNavBar';
 
-const isWeb = Platform.OS === 'web';
 const maxW = 640;
 
 interface FormData {
@@ -19,6 +20,8 @@ interface FormData {
 }
 
 export default function ContactScreen() {
+  const { isDesktop, isTablet, isWeb } = useResponsive();
+
   const [form, setForm] = useState<FormData>({
     fullName: '',
     email: '',
@@ -87,10 +90,13 @@ export default function ContactScreen() {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Navbar */}
-          <View style={styles.navbar}>
-            <Text style={styles.navLogo}>Mindful Horizons</Text>
-          </View>
+          {isDesktop || isTablet ? (
+            <WebNavBar />
+          ) : (
+            <View style={styles.navbar}>
+              <Text style={styles.navLogo}>Mindful Horizons</Text>
+            </View>
+          )}
 
           {/* Page Header */}
           <LinearGradient

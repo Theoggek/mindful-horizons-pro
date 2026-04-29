@@ -1,15 +1,19 @@
 import { Tabs } from 'expo-router';
 import { Platform } from 'react-native';
 import { Home, User, BookOpen, Mail } from '@blinkdotnew/mobile-ui';
+import { useResponsive } from '@/hooks/useResponsive';
 
 export default function TabLayout() {
+  const { isDesktop, isTablet } = useResponsive();
+  const hideTabBar = isDesktop || isTablet;
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#1B4332',
         tabBarInactiveTintColor: '#9CA3AF',
-        tabBarStyle: {
+        tabBarStyle: hideTabBar ? { display: 'none' } : {
           backgroundColor: '#FDFCF9',
           borderTopColor: '#E5E7EB',
           borderTopWidth: 1,
@@ -21,7 +25,7 @@ export default function TabLayout() {
           shadowOffset: { width: 0, height: -2 },
           shadowOpacity: 0.06,
           shadowRadius: 8,
-        },
+        } as any,
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '600',

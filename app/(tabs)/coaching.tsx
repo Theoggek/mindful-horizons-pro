@@ -3,8 +3,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, ChevronDown, ChevronUp, Lock } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
+import { useResponsive } from '@/hooks/useResponsive';
+import { WebNavBar } from '@/components/WebNavBar';
 
-const isWeb = Platform.OS === 'web';
 const maxW = 800;
 
 const rules = [
@@ -89,6 +90,8 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
 }
 
 export default function CoachingScreen() {
+  const { isDesktop, isTablet, isWeb } = useResponsive();
+
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
@@ -100,10 +103,13 @@ export default function CoachingScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Navbar */}
-        <View style={styles.navbar}>
-          <Text style={styles.navLogo}>Mindful Horizons</Text>
-        </View>
+        {isDesktop || isTablet ? (
+          <WebNavBar />
+        ) : (
+          <View style={styles.navbar}>
+            <Text style={styles.navLogo}>Mindful Horizons</Text>
+          </View>
+        )}
 
         {/* Page Header */}
         <LinearGradient

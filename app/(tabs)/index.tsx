@@ -3,9 +3,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
 import { useRouter } from 'expo-router';
+import { useResponsive } from '@/hooks/useResponsive';
+import { WebNavBar } from '@/components/WebNavBar';
 
 const { width } = Dimensions.get('window');
-const isWeb = Platform.OS === 'web';
 const maxW = 800;
 
 const VIDEO_ID = '5VXBjs2hrSg';
@@ -44,6 +45,7 @@ const testimonials = [
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { isDesktop, isTablet, isWeb } = useResponsive();
 
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
@@ -56,10 +58,14 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header / Nav Bar */}
-        <View style={styles.navbar}>
-          <Text style={styles.navLogo}>Mindful Horizons</Text>
-        </View>
+        {/* Web NavBar (desktop/tablet) or simple mobile logo bar */}
+        {isDesktop || isTablet ? (
+          <WebNavBar />
+        ) : (
+          <View style={styles.navbar}>
+            <Text style={styles.navLogo}>Mindful Horizons</Text>
+          </View>
+        )}
 
         {/* Hero Section */}
         <LinearGradient
