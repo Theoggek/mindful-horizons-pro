@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, Mail, Phone, Instagram, Twitter, Linkedin } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, Mail, Phone } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 
 const isWeb = Platform.OS === 'web';
@@ -42,16 +42,31 @@ export default function ContactScreen() {
     Linking.openURL('tel:2624451273');
   };
 
+  const BACKEND_URL = 'https://er6kbt7g.backend.blink.new';
+
   const handleSubmit = async () => {
     if (!form.fullName || !form.email || !form.message) {
       Alert.alert('Required Fields', 'Please fill in your name, email, and message.');
       return;
     }
     setLoading(true);
-    // Simulate form submission
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        Alert.alert('Error', data.error || 'Failed to send message. Please try again.');
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      Alert.alert('Error', 'Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputStyle = (field: string) => [
@@ -127,25 +142,6 @@ export default function ContactScreen() {
               </View>
               <ArrowRight size={16} color="#D4A96A" />
             </TouchableOpacity>
-          </View>
-
-          {/* Social Links */}
-          <View style={styles.socialSection}>
-            <Text style={styles.socialLabel}>Connect on social</Text>
-            <View style={styles.socialRow}>
-              <TouchableOpacity style={styles.socialBtn} activeOpacity={0.8}>
-                <Twitter size={18} color="#1C1917" />
-                <Text style={styles.socialBtnText}>Twitter</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialBtn} activeOpacity={0.8}>
-                <Linkedin size={18} color="#1C1917" />
-                <Text style={styles.socialBtnText}>LinkedIn</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialBtn} activeOpacity={0.8}>
-                <Instagram size={18} color="#1C1917" />
-                <Text style={styles.socialBtnText}>Instagram</Text>
-              </TouchableOpacity>
-            </View>
           </View>
 
           {/* Contact Form */}
