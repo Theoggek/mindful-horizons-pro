@@ -102,7 +102,7 @@ export default function CoachingScreen() {
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
         {isDesktop || isTablet ? (
           <WebNavBar />

@@ -57,7 +57,7 @@ export default function HomeScreen() {
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
         {/* Web NavBar (desktop/tablet) or simple mobile logo bar */}
         {isDesktop || isTablet ? (
@@ -164,11 +164,13 @@ export default function HomeScreen() {
 
         {/* What I Offer */}
         <View style={styles.offerSection}>
-          <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
-          <Text style={styles.sectionTitleLight}>Real change. Real results.</Text>
-          <Text style={styles.sectionBodyLight}>
-            Lasting change doesn't come from following someone else's rules. It comes from finding your own. After 24 years, I've developed proven techniques that create genuine transformation.
-          </Text>
+          <View style={styles.offerSectionHeader}>
+            <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
+            <Text style={styles.sectionTitleLight}>Real change. Real results.</Text>
+            <Text style={styles.sectionBodyLight}>
+              Lasting change doesn't come from following someone else's rules. It comes from finding your own. After 24 years, I've developed proven techniques that create genuine transformation.
+            </Text>
+          </View>
           <View style={styles.offerGrid}>
             <View style={styles.offerCard}>
               <Text style={styles.offerEmoji}>🎯</Text>
@@ -476,6 +478,11 @@ const styles = StyleSheet.create({
     borderTopColor: '#D1FAE5',
     borderBottomWidth: 1,
     borderBottomColor: '#D1FAE5',
+  },
+  offerSectionHeader: {
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
   },
   sectionTitleLight: {
     fontSize: isWeb ? 36 : 28,

@@ -88,7 +88,7 @@ export default function ContactScreen() {
         <ScrollView
           style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={Platform.OS === 'web'}
           keyboardShouldPersistTaps="handled"
         >
           {isDesktop || isTablet ? (
