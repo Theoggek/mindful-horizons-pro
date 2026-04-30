@@ -155,11 +155,13 @@ export default function CoachingScreen() {
 
         {/* 12 Rules */}
         <View style={styles.rulesSection}>
-          <Text style={styles.sectionEyebrow}>FRAMEWORK</Text>
-          <Text style={styles.sectionTitle2}>My Twelve Rules for Life</Text>
-          <Text style={styles.sectionBody}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>FRAMEWORK</Text>
+            <Text style={styles.sectionTitle2}>My Twelve Rules for Life</Text>
+            <Text style={styles.sectionBody}>
             These are my rules. I share them as an example of the kind of growth you can have in life when you write your own rules.
           </Text>
+          </View>
           {rules.map((r, i) => (
             <View key={i} style={[styles.ruleCard, r.locked && styles.ruleCardLocked]}>
               <Text style={[styles.ruleNum, r.locked && styles.ruleNumLocked]}>{r.num}</Text>
@@ -175,8 +177,10 @@ export default function CoachingScreen() {
 
         {/* Services */}
         <View style={styles.servicesSection}>
-          <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
-          <Text style={styles.sectionTitle3}>Services designed for real change.</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
+            <Text style={styles.sectionTitle3}>Services designed for real change.</Text>
+          </View>
           <View style={styles.serviceGrid}>
             {services.map((svc, i) => (
               <View key={i} style={[styles.serviceCard, { backgroundColor: svc.color, borderColor: svc.border }]}>
@@ -195,8 +199,10 @@ export default function CoachingScreen() {
 
         {/* Pricing */}
         <View style={styles.pricingSection}>
-          <Text style={styles.sectionEyebrow}>INVESTMENT</Text>
-          <Text style={styles.sectionTitle4}>Flexible pricing for every journey.</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>INVESTMENT</Text>
+            <Text style={styles.sectionTitle4}>Flexible pricing for every journey.</Text>
+          </View>
           <View style={styles.pricingCards}>
             <View style={styles.pricingCard}>
               <Text style={styles.pricingEmoji}>💬</Text>
@@ -280,6 +286,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24, paddingVertical: 40,
     maxWidth: maxW, alignSelf: 'center', width: '100%',
   },
+  sectionHeader: {
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+  },
   sectionEyebrow: {
     fontSize: 11, fontWeight: '700', color: '#D4A96A',
     letterSpacing: 2, marginBottom: 10,
@@ -319,11 +330,9 @@ const styles = StyleSheet.create({
   sectionTitle2: {
     fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
     letterSpacing: -0.5, marginBottom: 12,
-    maxWidth: maxW, alignSelf: 'center',
   },
   sectionBody: {
     fontSize: 15, color: '#4B5563', lineHeight: 26, marginBottom: 24,
-    maxWidth: maxW, alignSelf: 'center',
   },
   ruleCard: {
     flexDirection: 'row',
