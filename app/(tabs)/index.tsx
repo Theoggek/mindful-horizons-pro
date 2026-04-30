@@ -89,8 +89,8 @@ export default function HomeScreen() {
               I help mid-career professionals and small business owners break through what's holding them back.
             </Text>
 
-            {/* Video Player */}
-            <View style={styles.videoWrapper}>
+            {/* Video Player — temporarily hidden until personal video is recorded */}
+            {/* <View style={styles.videoWrapper}>
               {Platform.OS === 'web' ? (
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=0&rel=0&modestbranding=1`}
@@ -108,6 +108,23 @@ export default function HomeScreen() {
                   <Text style={styles.videoFallbackText}>Watch Introduction Video</Text>
                 </TouchableOpacity>
               )}
+            </View> */}
+
+            {/* Featured Testimonial — placeholder until personal video is ready */}
+            <View style={styles.heroTestimonial}>
+              <View style={styles.heroTestimonialQuoteRow}>
+                <Quote size={18} color="#D4A96A" />
+              </View>
+              <Text style={styles.heroTestimonialText}>
+                {testimonials[0].quote}
+              </Text>
+              <View style={styles.heroTestimonialStars}>
+                {[1, 2, 3, 4, 5].map(s => (
+                  <Star key={s} size={13} color="#D4A96A" fill="#D4A96A" />
+                ))}
+              </View>
+              <Text style={styles.heroTestimonialAuthor}>{testimonials[0].author}</Text>
+              <Text style={styles.heroTestimonialRole}>{testimonials[0].role}</Text>
             </View>
           </View>
         </LinearGradient>
@@ -286,7 +303,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
 
-  // Video
+  // Video (kept for when personal video is recorded)
   videoWrapper: {
     width: '100%',
     aspectRatio: 16 / 9,
@@ -309,6 +326,41 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#FFFFFF',
     fontWeight: '600',
+  },
+
+  // Hero Testimonial
+  heroTestimonial: {
+    width: '100%',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    borderRadius: 16,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
+  },
+  heroTestimonialQuoteRow: {
+    marginBottom: 12,
+  },
+  heroTestimonialText: {
+    fontSize: 16,
+    color: 'rgba(255,255,255,0.92)',
+    lineHeight: 26,
+    fontStyle: 'italic',
+    marginBottom: 16,
+  },
+  heroTestimonialStars: {
+    flexDirection: 'row',
+    gap: 3,
+    marginBottom: 10,
+  },
+  heroTestimonialAuthor: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  heroTestimonialRole: {
+    fontSize: 12,
+    color: 'rgba(255,255,255,0.65)',
+    marginTop: 2,
   },
 
   // Stats
