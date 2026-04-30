@@ -100,8 +100,10 @@ export default function AboutScreen() {
 
         {/* Credentials */}
         <View style={styles.credSection}>
-          <Text style={styles.sectionEyebrow}>CREDENTIALS & EXPERIENCE</Text>
-          <Text style={styles.sectionTitle2}>Built on real-world expertise.</Text>
+          <View style={styles.credSectionHeader}>
+            <Text style={styles.sectionEyebrow}>CREDENTIALS & EXPERIENCE</Text>
+            <Text style={styles.sectionTitle2}>Built on real-world expertise.</Text>
+          </View>
           <View style={styles.credGrid}>
             {credentials.map((c, i) => (
               <View key={i} style={styles.credCard}>
@@ -299,14 +301,17 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5,
     marginBottom: 16,
   },
+  credSectionHeader: {
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+  },
   sectionTitle2: {
     fontSize: isWeb ? 34 : 26,
     fontWeight: '800',
     color: '#1C1917',
     letterSpacing: -0.5,
     marginBottom: 20,
-    maxWidth: maxW,
-    alignSelf: 'center',
   },
   bioText: {
     fontSize: 16,
