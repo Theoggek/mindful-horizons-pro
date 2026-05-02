@@ -153,11 +153,13 @@ export default function ContactScreen() {
 
           {/* Contact Form */}
           <View style={styles.formSection}>
-            <Text style={styles.sectionEyebrow}>SEND A MESSAGE</Text>
-            <Text style={styles.sectionTitle}>We'd love to hear from you.</Text>
-            <Text style={styles.sectionBody}>
-              Fill out the form below and Henry will personally respond within 24 hours.
-            </Text>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionEyebrow}>SEND A MESSAGE</Text>
+              <Text style={styles.sectionTitle}>We'd love to hear from you.</Text>
+              <Text style={styles.sectionBody}>
+                Fill out the form below and Henry will personally respond within 24 hours.
+              </Text>
+            </View>
 
             {submitted ? (
               <View style={styles.successBox}>
@@ -368,15 +370,18 @@ const styles = StyleSheet.create({
     borderTopWidth: 1, borderTopColor: '#E5E7EB',
     borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
   },
+  sectionHeader: {
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+  },
   sectionEyebrow: { fontSize: 11, fontWeight: '700', color: '#D4A96A', letterSpacing: 2, marginBottom: 10 },
   sectionTitle: {
     fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
     letterSpacing: -0.5, marginBottom: 12,
-    maxWidth: maxW, alignSelf: 'center',
   },
   sectionBody: {
     fontSize: 15, color: '#6B7280', lineHeight: 26, marginBottom: 24,
-    maxWidth: maxW, alignSelf: 'center',
   },
   form: { maxWidth: maxW, alignSelf: 'center', width: '100%', gap: 4 },
   row: { flexDirection: isWeb ? 'row' : 'column', gap: 12 },
