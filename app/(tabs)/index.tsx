@@ -10,7 +10,7 @@ const { width } = Dimensions.get('window');
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
 
-const VIDEO_ID = '5VXBjs2hrSg';
+//const VIDEO_ID = '5VXBjs2hrSg';
 
 const painPoints = [
   'Feeling stuck or lost despite outward success?',
@@ -80,14 +80,52 @@ export default function HomeScreen() {
               <Text style={styles.heroBadgeText}>Professional Coaching · 24+ Years</Text>
             </View>
             <Text style={styles.heroTitle}>
-              Are you stuck despite everything you've achieved?
+              You've built something real. Now let's make AI work for it.
             </Text>
             <Text style={styles.heroSubtitle}>
-              You've worked hard. Built something real. But something feels off — in your business, your health, your life.
+              Most experienced business owners who've tried AI and walked away didn't fail because they weren't smart enough. They failed because nobody showed them the right relationship to have with it. That's what I do.
             </Text>
             <Text style={styles.heroTagline}>
               I help mid-career professionals and small business owners break through what's holding them back.
             </Text>
+
+            {/* AI Partnership Session Block */}
+            <View style={styles.aiSessionCard}>
+              <Text style={styles.aiSessionHeadline}>
+                Your first real conversation with AI. Guided by 30 years of business experience.
+              </Text>
+              <Text style={styles.aiSessionBody}>
+                This is a two-hour, one-on-one session designed for experienced business owners who are ready to stop avoiding AI and start using it as the senior partner they already are.
+              </Text>
+              <Text style={styles.aiSessionBody}>
+                We don't start with prompts. We don't start with technology. We start with you — your business, your goals, your biggest pain point right now. By the time AI enters the conversation, you're already feeling capable again.
+              </Text>
+              <Text style={styles.aiSessionBody}>
+                You'll walk away with a working relationship with AI that fits how you think and how you work. Not a tutorial. Not a checklist. A partnership.
+              </Text>
+
+              <View style={styles.aiSessionMeta}>
+                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $230</Text>
+              </View>
+
+              <View style={styles.aiSessionBullets}>
+                {[
+                  "You've tried AI and it didn't work the way you expected",
+                  "You're curious but don't know where to start",
+                  "You built something with AI and it broke — and you want to understand why",
+                  "You're a solopreneur who wants a confidential thinking partner available around the clock",
+                ].map((item, i) => (
+                  <View key={i} style={styles.aiSessionBulletRow}>
+                    <Text style={styles.aiSessionBulletDot}>→</Text>
+                    <Text style={styles.aiSessionBulletText}>{item}</Text>
+                  </View>
+                ))}
+              </View>
+
+              <TouchableOpacity style={styles.aiSessionBtn} onPress={handleBook} activeOpacity={0.85}>
+                <Text style={styles.aiSessionBtnText}>Book Your Mindful AI Partnership Session →</Text>
+              </TouchableOpacity>
+            </View>
 
             {/* Video Player — temporarily hidden until personal video is recorded */}
             {/* <View style={styles.videoWrapper}>
@@ -157,8 +195,7 @@ export default function HomeScreen() {
             ))}
           </View>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Get Your Free Consultation</Text>
-            <ChevronRight size={18} color="#FFFFFF" />
+            <Text style={styles.ctaBtnText}>Book your Mindful AI Partnership Session →</Text>
           </TouchableOpacity>
         </View>
 
