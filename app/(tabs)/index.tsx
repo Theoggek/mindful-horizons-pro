@@ -653,6 +653,80 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
+  // AI Partnership Session Block
+  aiSessionCard: {
+    width: '100%',
+    marginTop: 8,
+    marginBottom: 8,
+    gap: 0,
+  },
+  aiSessionHeadline: {
+    fontSize: isWeb ? 22 : 19,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    lineHeight: isWeb ? 30 : 26,
+    marginBottom: 16,
+    letterSpacing: -0.3,
+  },
+  aiSessionBody: {
+    fontSize: 17,
+    color: 'rgba(255,255,255,0.85)',
+    lineHeight: 26,
+    marginBottom: 14,
+  },
+  aiSessionMeta: {
+    marginTop: 4,
+    marginBottom: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
+    alignSelf: 'flex-start',
+  },
+  aiSessionMetaText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#D4A96A',
+    letterSpacing: 0.2,
+  },
+  aiSessionBullets: {
+    gap: 10,
+    marginBottom: 24,
+  },
+  aiSessionBulletRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  aiSessionBulletDot: {
+    fontSize: 16,
+    color: '#D4A96A',
+    fontWeight: '700',
+    lineHeight: 26,
+    flexShrink: 0,
+  },
+  aiSessionBulletText: {
+    fontSize: 16,
+    color: 'rgba(255,255,255,0.85)',
+    lineHeight: 26,
+    flex: 1,
+  },
+  aiSessionBtn: {
+    backgroundColor: '#D4A96A',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  aiSessionBtnText: {
+    color: '#1B4332',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+
   // Footer
   footer: {
     paddingVertical: 32,
