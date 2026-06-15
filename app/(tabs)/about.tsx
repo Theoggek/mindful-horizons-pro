@@ -72,7 +72,7 @@ export default function AboutScreen() {
             <Text style={styles.pageEyebrow}>ABOUT YOUR COACH</Text>
             <Text style={styles.pageTitle}>Henry Mengoli</Text>
             <Text style={styles.pageSubtitle}>
-              Professional coach with over 24 years of experience supporting individuals seeking lasting change through personal growth.
+              I've spent 30 years helping people see who they're meant to be. Now I help them bring AI into that picture.
             </Text>
           </View>
         </LinearGradient>
