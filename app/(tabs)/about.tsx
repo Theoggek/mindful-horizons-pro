@@ -91,11 +91,33 @@ export default function AboutScreen() {
           <Text style={styles.sectionEyebrow}>MY STORY</Text>
           <Text style={styles.sectionTitle}>Hello, I'm Henry.</Text>
           <Text style={styles.bioText}>
-            I am a professional coach with over 20 years of experience, supporting individuals seeking change in their lives through personal growth techniques. My coaching focuses on career transitions, developing self-advocacy skills, and realizing business potential.
+            I've spent 30 years helping people see who they're meant to be. Now I help them bring AI into that picture.
           </Text>
           <Text style={styles.bioText}>
-            Living with a disability has taught me valuable lessons in navigating change and advocating for my needs. I bring this wealth of lived experience to my practice, empowering clients to overcome obstacles, discover their strengths, and achieve their career goals.
+            I'm Henry Mengoli — coach, consultant, SCORE-certified mentor, and entrepreneur. For over 30 years I've sat across from business owners at every stage — from the solopreneur just starting out to the established operator running a thriving team — and helped them find their way forward.
           </Text>
+          <Text style={styles.bioText}>
+            Living with a disability has taught me what it means to navigate change, to advocate for what you need, and to find your way forward when the path isn't obvious. That experience shaped how I coach. I don't come in with the right answer already loaded. I come in to understand where you are, and to help you see what you can't yet see in yourself.
+          </Text>
+          <Text style={styles.bioText}>
+            When AI came along, I brought that same approach to it. I didn't hand it off to a technical expert and wait for results. I built a working partnership with it myself — including developing Luxalma, a productivity app for ADHD, entirely through AI partnership. No development team. No coding background. Just thirty years of business judgment and lived experience, applied to a new kind of relationship.
+          </Text>
+          <Text style={styles.bioText}>
+            That's what I teach now.
+          </Text>
+          <Text style={styles.bioText}>
+            Most of what's being sold about AI is the tool — the prompts, the agents, the automations. I teach something different. I teach experienced business owners how to be the senior partner in the relationship — how to bring their judgment, their experience, and everything that makes them who they are to the table, and use AI as a confidential thinking partner, a sounding board, and a force multiplier for everything they already know how to do.
+          </Text>
+          <Text style={styles.bioText}>
+            Without the human factor, it all means nothing.
+          </Text>
+          <Text style={styles.bioText}>
+            If you're ready to stop watching from the sidelines and come join the revolution — I'm here.
+          </Text>
+
+          <TouchableOpacity style={styles.bioBtn} onPress={handleBook} activeOpacity={0.85}>
+            <Text style={styles.bioBtnText}>Book Your Mindful AI Partnership Session →</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Credentials */}
@@ -318,6 +340,20 @@ const styles = StyleSheet.create({
     color: '#4B5563',
     lineHeight: 28,
     marginBottom: 14,
+  },
+  bioBtn: {
+    backgroundColor: '#1B4332',
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  bioBtnText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+    fontSize: 16,
   },
   sectionBody: {
     fontSize: 16,
