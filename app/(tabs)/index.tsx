@@ -1,4 +1,7 @@
+//import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
+
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
+import { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
@@ -18,6 +21,15 @@ const painPoints = [
   'Tried therapy but felt it wasn\'t enough?',
   'Running a business but losing the personal side of life?',
   'Ready for real change but unsure where to start?',
+];
+
+const aiUserTypes = [
+  { type: 'Type 1', title: 'The Shy One', desc: "Curious about AI but hasn't tried it yet. You've heard the hype but don't know where to start.", emoji: '🌱', color: '#F0FDF4', border: '#BBF7D0' },
+  { type: 'Type 2', title: 'The Frustrated One', desc: "You tried AI and got burned. The results were generic, disappointing, or didn't match what you needed.", emoji: '😤', color: '#FEF2F2', border: '#FECACA' },
+  { type: 'Type 3', title: 'The Gone One', desc: "You walked away — but you're still curious. Something tells you there's more to this than what you experienced.", emoji: '🚶', color: '#F5F3FF', border: '#DDD6FE' },
+  { type: 'Type 4', title: 'The Plateau One', desc: "You're using AI but you know there's more. You've hit a ceiling and can't break through to the next level.", emoji: '📊', color: '#FFFBEB', border: '#FDE68A' },
+  { type: 'Type 5', title: 'The Content Master', desc: "You're comfortable with AI and getting results. But you know you're only scratching the surface of what's possible.", emoji: '🏆', color: '#ECFDF5', border: '#A7F3D0' },
+  { type: 'Type 6', title: 'The True Partner', desc: "This is the destination — equal, mutual, trust-based. You and AI work together like long-time collaborators.", emoji: '🤝', color: '#FDF2F8', border: '#FBCFE8' },
 ];
 
 const stats = [
@@ -48,14 +60,38 @@ export default function HomeScreen() {
   const router = useRouter();
   const { isDesktop, isTablet, isWeb } = useResponsive();
 
-  const handleBook = () => {
-    Linking.openURL('https://calendly.com/h-mengoli/30min');
-  };
+  useEffect(() => {
+    if (Platform.OS === 'web') {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-M3XR8YYGWN';
+      document.head.appendChild(script1);
+      const script2 = document.createElement('script');
+      script2.innerHTML = `window.dataLayer = window.dataLayer || [];function gtag(){window.dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-M3XR8YYGWN');`;
+      document.head.appendChild(script2);
+       
+    }
+  }, []);
 
-  return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
-      <ScrollView
-        style={styles.scroll}
+  const handleBook = () => {
+
+    Linking.openURL('https://calendly.com/h-mengoli/30min');
+  };return (
+    <>
+      {Platform.OS === 'web' && (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-M3XR8YYGWN');
+            `
+          }}
+        />
+      )}
+      <SafeAreaView style={styles.safeArea} edges={['top']}>      
+      <ScrollView style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
@@ -199,6 +235,35 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Which Type of AI User Are You? */}
+        <View style={styles.typesSection}>
+          <View style={styles.typesHeader}>
+            <Text style={styles.sectionEyebrow}>WHERE DO YOU STAND?</Text>
+            <Text style={styles.typesTitle}>Which Type of AI User Are You?</Text>
+            <Text style={styles.typesBody}>
+              Most experienced business owners land in one of these six stages. Recognizing where you are is the first step to getting where you want to be.
+            </Text>
+          </View>
+          <View style={styles.typesGrid}>
+            {aiUserTypes.map((t, i) => (
+              <View key={i} style={[styles.typeCard, { backgroundColor: t.color, borderColor: t.border }]}>
+                <View style={styles.typeCardTop}>
+                  <Text style={styles.typeEmoji}>{t.emoji}</Text>
+                  <View style={styles.typeLabel}>
+                    <Text style={styles.typeNumber}>{t.type}</Text>
+                    <Text style={styles.typeTitle}>{t.title}</Text>
+                  </View>
+                </View>
+                <Text style={styles.typeDesc}>{t.desc}</Text>
+              </View>
+            ))}
+          </View>
+          <TouchableOpacity style={styles.typeCtaBtn} onPress={() => router.push('/quiz')} activeOpacity={0.85}>
+            <Text style={styles.typeCtaBtnText}>Take the Quiz — Find Your Type</Text>
+            <ArrowRight size={18} color="#FFFFFF" />
+          </TouchableOpacity>
+        </View>
+
         {/* What I Offer */}
         <View style={styles.offerSection}>
           <View style={styles.offerSectionHeader}>
@@ -275,6 +340,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </>
   );
 }
 
@@ -727,6 +793,88 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
+  // AI User Types Section
+  typesSection: {
+    paddingHorizontal: 24,
+    paddingVertical: 48,
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  typesHeader: {
+    marginBottom: 28,
+  },
+  typesTitle: {
+    fontSize: isWeb ? 36 : 28,
+    fontWeight: '800',
+    color: '#1C1917',
+    lineHeight: isWeb ? 44 : 36,
+    marginBottom: 14,
+    letterSpacing: -0.5,
+  },
+  typesBody: {
+    fontSize: 16,
+    color: '#4B5563',
+    lineHeight: 26,
+  },
+  typesGrid: {
+    flexDirection: isWeb ? 'row' : 'column',
+    flexWrap: isWeb ? 'wrap' : undefined,
+    gap: 14,
+    marginBottom: 32,
+  },
+  typeCard: {
+    width: isWeb ? '48%' : '100%',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+  },
+  typeCardTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 12,
+  },
+  typeEmoji: {
+    fontSize: 28,
+  },
+  typeLabel: {
+    flex: 1,
+  },
+  typeNumber: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#9CA3AF',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    marginBottom: 2,
+  },
+  typeTitle: {
+    fontSize: 17,
+    fontWeight: '700',
+    color: '#1C1917',
+  },
+  typeDesc: {
+    fontSize: 14,
+    color: '#6B7280',
+    lineHeight: 22,
+  },
+  typeCtaBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    backgroundColor: '#1B4332',
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    borderRadius: 12,
+  },
+  typeCtaBtnText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+
   // Footer
   footer: {
     paddingVertical: 32,
@@ -748,3 +896,30 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
