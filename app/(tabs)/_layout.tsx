@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Platform } from 'react-native';
-import { Home, User, BookOpen, Mail, Hash } from '@blinkdotnew/mobile-ui';
+import { Home, User, BookOpen, Mail, Hash, HelpCircle } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 
 export default function TabLayout() {
@@ -66,6 +66,13 @@ export default function TabLayout() {
         options={{
           title: '12 Rules',
           tabBarIcon: ({ color, size }) => <Hash size={size - 2} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="quiz"
+        options={{
+          title: 'Find Your Type',
+          href: null, // Hidden from tab bar — accessible via navigation links only
         }}
       />
     </Tabs>

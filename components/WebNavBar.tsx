@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'About', href: '/(tabs)/about' },
   { label: 'Coaching', href: '/(tabs)/coaching' },
   { label: '12 Rules', href: '/(tabs)/twelve-rules' },
+  { label: 'Find Your Type', href: '/(tabs)/quiz' },
   { label: 'Contact', href: '/(tabs)/contact' },
 ];
 

@@ -258,7 +258,7 @@ export default function HomeScreen() {
               </View>
             ))}
           </View>
-          <TouchableOpacity style={styles.typeCtaBtn} onPress={() => router.push('/quiz' as any)} activeOpacity={0.85}>
+          <TouchableOpacity style={styles.typeCtaBtn} onPress={() => router.push('/(tabs)/quiz' as any)} activeOpacity={0.85}>
             <Text style={styles.typeCtaBtnText}>Take the Quiz — Find Your Type</Text>
             <ArrowRight size={18} color="#FFFFFF" />
           </TouchableOpacity>
