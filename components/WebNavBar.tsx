@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '/(tabs)/' },
   { label: 'About', href: '/(tabs)/about' },
   { label: 'Coaching', href: '/(tabs)/coaching' },
+  { label: '12 Rules', href: '/(tabs)/twelve-rules' },
   { label: 'Contact', href: '/(tabs)/contact' },
 ];
 
