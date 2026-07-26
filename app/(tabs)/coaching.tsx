@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, ChevronDown, ChevronUp, Lock } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
@@ -10,15 +10,16 @@ import { MobileNavBar } from '@/components/MobileNavBar';
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
 
-const rules = [
-  { num: '01', rule: 'You always have a choice' },
-  { num: '02', rule: 'Your life is a gift. Treat it as an adventure' },
-  { num: '03', rule: 'Experience something new every day' },
-  { num: '04', rule: 'Learn something new every day' },
-  { num: '05', rule: 'Fear is something you create' },
-  { num: '06', rule: 'The line between where you are and where you want to be is a thought away' },
-  { num: '07–12', rule: 'Unlock the remaining 6 rules in your free consultation', locked: true },
-];
+// REMOVED — The Twelve Rules now live on their own dedicated page at /twelve-rules
+// const rules = [
+//   { num: '01', rule: 'You always have a choice' },
+//   { num: '02', rule: 'Your life is a gift. Treat it as an adventure' },
+//   { num: '03', rule: 'Experience something new every day' },
+//   { num: '04', rule: 'Learn something new every day' },
+//   { num: '05', rule: 'Fear is something you create' },
+//   { num: '06', rule: 'The line between where you are and where you want to be is a thought away' },
+//   { num: '07–12', rule: 'Unlock the remaining 6 rules in your free consultation', locked: true },
+// ];
 
 const services = [
   {
@@ -127,53 +128,6 @@ export default function CoachingScreen() {
           </View>
         </LinearGradient>
 
-        {/* Origin Story */}
-        <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>ORIGIN OF THE 12 RULES</Text>
-          <Text style={styles.sectionTitle}>How it all began</Text>
-          <View style={styles.storyBlock}>
-            <Text style={styles.storyText}>
-              I remember the day like it was yesterday. I was sitting in my therapist's office, frustrated with my life... I kept saying I didn't understand the game, never mind the rules by which the game of life was played.
-            </Text>
-            <Text style={styles.storyText}>
-              I blurted out, "Why did I have to even play the game, since I didn't get to make the rules or at least participate in making them?" My therapist looked at me with a deadpan face and asked, "What are these rules you keep talking about?"
-            </Text>
-            <Text style={styles.storyText}>
-              I left with a homework assignment: identify the rules by which I believed I was living my life. Eventually, I came up with a set of rules that made sense — but as I looked over them, I realized these were not my rules, but someone else's.
-            </Text>
-            <Text style={styles.storyText}>
-              So I sat in my backyard, paper and pen in hand, and my inner voice said "Enough!" — and I wrote these rules in one sitting. I have used them to coach businesses and individuals alike with great success.
-            </Text>
-          </View>
-          <View style={styles.storyNote}>
-            <Text style={styles.storyNoteText}>
-              💡 Created 24 years ago — long before the age of AI. By Henry Mengoli, 2002.
-            </Text>
-          </View>
-        </View>
-
-        {/* 12 Rules */}
-        <View style={styles.rulesSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionEyebrow}>FRAMEWORK</Text>
-            <Text style={styles.sectionTitle2}>My Twelve Rules for Life</Text>
-            <Text style={styles.sectionBody}>
-            These are my rules. I share them as an example of the kind of growth you can have in life when you write your own rules.
-          </Text>
-          </View>
-          {rules.map((r, i) => (
-            <View key={i} style={[styles.ruleCard, r.locked && styles.ruleCardLocked]}>
-              <Text style={[styles.ruleNum, r.locked && styles.ruleNumLocked]}>{r.num}</Text>
-              <Text style={[styles.ruleText, r.locked && styles.ruleTextLocked]}>{r.rule}</Text>
-              {r.locked && <Lock size={16} color="#9CA3AF" />}
-            </View>
-          ))}
-          <TouchableOpacity style={styles.unlockBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.unlockBtnText}>Unlock Rules 7–12 in Your Free Session</Text>
-            <ArrowRight size={16} color="#1B4332" />
-          </TouchableOpacity>
-        </View>
-
         {/* Services */}
         <View style={styles.servicesSection}>
           <View style={styles.sectionHeader}>
@@ -261,16 +215,6 @@ const styles = StyleSheet.create({
   scroll: { flex: 1 },
   scrollContent: { paddingBottom: 20 },
 
-  navbar: {
-    backgroundColor: '#FDFCF9',
-    paddingHorizontal: 24,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
-    alignItems: 'center',
-  },
-  navLogo: { fontSize: 20, fontWeight: '800', color: '#1B4332', letterSpacing: -0.5 },
-
   pageHeader: { paddingVertical: 48, paddingHorizontal: 24 },
   headerInner: { maxWidth: maxW, alignSelf: 'center', width: '100%' },
   pageEyebrow: { fontSize: 11, fontWeight: '700', color: '#D4A96A', letterSpacing: 2, marginBottom: 10 },
@@ -280,11 +224,6 @@ const styles = StyleSheet.create({
   },
   pageSubtitle: { fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 26, fontStyle: 'italic' },
 
-  // Story section
-  section: {
-    paddingHorizontal: 24, paddingVertical: 40,
-    maxWidth: maxW, alignSelf: 'center', width: '100%',
-  },
   sectionHeader: {
     maxWidth: maxW,
     alignSelf: 'center',
@@ -294,98 +233,6 @@ const styles = StyleSheet.create({
     fontSize: 11, fontWeight: '700', color: '#D4A96A',
     letterSpacing: 2, marginBottom: 10,
   },
-  sectionTitle: {
-    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
-    letterSpacing: -0.5, marginBottom: 20,
-  },
-  storyBlock: {
-    backgroundColor: '#F9FAFB',
-    borderRadius: 16,
-    padding: 24,
-    borderLeftWidth: 4,
-    borderLeftColor: '#1B4332',
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    gap: 14,
-    marginBottom: 16,
-  },
-  storyText: { fontSize: 15, color: '#374151', lineHeight: 26, fontStyle: 'italic' },
-  storyNote: {
-    backgroundColor: '#FEF3C7',
-    borderRadius: 10,
-    padding: 14,
-    borderWidth: 1,
-    borderColor: '#FDE68A',
-  },
-  storyNoteText: { fontSize: 14, color: '#92400E', lineHeight: 22 },
-
-  // Rules
-  rulesSection: {
-    paddingHorizontal: 24, paddingVertical: 40,
-    backgroundColor: '#F0FDF4',
-    borderTopWidth: 1, borderTopColor: '#D1FAE5',
-    borderBottomWidth: 1, borderBottomColor: '#D1FAE5',
-  },
-  sectionTitle2: {
-    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
-    letterSpacing: -0.5, marginBottom: 12,
-  },
-  sectionBody: {
-    fontSize: 15, color: '#4B5563', lineHeight: 26, marginBottom: 24,
-  },
-  ruleCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 16,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#D1FAE5',
-    maxWidth: maxW,
-    alignSelf: 'center',
-    width: '100%',
-    shadowColor: '#1B4332',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 1,
-  },
-  ruleCardLocked: {
-    backgroundColor: '#F9FAFB',
-    borderColor: '#E5E7EB',
-  },
-  ruleNum: {
-    fontSize: 13,
-    fontWeight: '800',
-    color: '#1B4332',
-    width: 36,
-    flexShrink: 0,
-    letterSpacing: 0.5,
-  },
-  ruleNumLocked: { color: '#D1D5DB' },
-  ruleText: {
-    flex: 1,
-    fontSize: 15,
-    color: '#1C1917',
-    fontWeight: '600',
-    lineHeight: 22,
-  },
-  ruleTextLocked: { color: '#9CA3AF', fontStyle: 'italic' },
-  unlockBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: '#D4A96A',
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    borderRadius: 12,
-    alignSelf: 'center',
-    marginTop: 8,
-  },
-  unlockBtnText: { color: '#1B4332', fontWeight: '700', fontSize: 14 },
 
   // Services
   servicesSection: {
