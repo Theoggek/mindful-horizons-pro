@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Award, Users, Heart, Star, Quote, CheckCircle } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
+import { MobileNavBar } from '@/components/MobileNavBar';
 
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
@@ -56,9 +57,7 @@ export default function AboutScreen() {
         {isDesktop || isTablet ? (
           <WebNavBar />
         ) : (
-          <View style={styles.navbar}>
-            <Text style={styles.navLogo}>Mindful Horizons</Text>
-          </View>
+          <MobileNavBar />
         )}
 
         {/* Page Header */}

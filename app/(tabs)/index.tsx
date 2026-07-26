@@ -8,6 +8,7 @@ import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobil
 import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
+import { MobileNavBar } from '@/components/MobileNavBar';
 
 const { width } = Dimensions.get('window');
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
@@ -95,13 +96,11 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
-        {/* Web NavBar (desktop/tablet) or simple mobile logo bar */}
+        {/* Web NavBar (desktop/tablet) or sticky mobile nav */}
         {isDesktop || isTablet ? (
           <WebNavBar />
         ) : (
-          <View style={styles.navbar}>
-            <Text style={styles.navLogo}>Mindful Horizons</Text>
-          </View>
+          <MobileNavBar />
         )}
 
         {/* Hero Section */}

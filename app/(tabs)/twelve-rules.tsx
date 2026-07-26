@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Quote } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
+import { MobileNavBar } from '@/components/MobileNavBar';
 
 const rules = [
   'You always have a choice.',
@@ -37,9 +38,7 @@ export default function TwelveRulesScreen() {
         {isDesktop || isTablet ? (
           <WebNavBar />
         ) : (
-          <View style={styles.navbar}>
-            <Text style={styles.navLogo}>Mindful Horizons</Text>
-          </View>
+          <MobileNavBar />
         )}
 
         {/* Page Header */}

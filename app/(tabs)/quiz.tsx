@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, RotateCcw, Check } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
+import { MobileNavBar } from '@/components/MobileNavBar';
 
 const isWeb = Platform.OS === 'web';
 const maxW = 720;
@@ -231,9 +232,7 @@ export default function QuizScreen() {
         {isDesktop || isTablet ? (
           <WebNavBar />
         ) : (
-          <View style={s.navbar}>
-            <Text style={s.navLogo}>Mindful Horizons</Text>
-          </View>
+          <MobileNavBar />
         )}
 
         {/* Header */}

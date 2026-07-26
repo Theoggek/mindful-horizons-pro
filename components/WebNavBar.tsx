@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 
@@ -25,44 +25,51 @@ export function WebNavBar() {
   };
 
   return (
-    <View style={styles.navbar}>
-      <View style={styles.inner}>
-        {/* Logo */}
-        <TouchableOpacity onPress={() => router.push('/(tabs)/' as any)} activeOpacity={0.8}>
-          <Text style={styles.logo}>Mindful Horizons</Text>
-        </TouchableOpacity>
-
-        {/* Nav Links */}
-        <View style={styles.links}>
-          {NAV_LINKS.map((link) => (
-            <TouchableOpacity
-              key={link.href}
-              onPress={() => router.push(link.href as any)}
-              activeOpacity={0.75}
-              style={styles.linkWrapper}
-            >
-              <Text style={[styles.link, isActive(link.href) && styles.linkActive]}>
-                {link.label}
-              </Text>
-              {isActive(link.href) && <View style={styles.activeIndicator} />}
-            </TouchableOpacity>
-          ))}
-
-          {/* CTA */}
-          <TouchableOpacity
-            style={styles.ctaBtn}
-            onPress={() => router.push('/(tabs)/contact' as any)}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.ctaBtnText}>Book Free Session</Text>
+    <>
+      {/* Spacer to prevent content from going under the fixed nav */}
+      {Platform.OS === 'web' && <View style={styles.navSpacer} />}
+      <View style={styles.navbar}>
+        <View style={styles.inner}>
+          {/* Logo */}
+          <TouchableOpacity onPress={() => router.push('/(tabs)/' as any)} activeOpacity={0.8}>
+            <Text style={styles.logo}>Mindful Horizons</Text>
           </TouchableOpacity>
+
+          {/* Nav Links */}
+          <View style={styles.links}>
+            {NAV_LINKS.map((link) => (
+              <TouchableOpacity
+                key={link.href}
+                onPress={() => router.push(link.href as any)}
+                activeOpacity={0.75}
+                style={styles.linkWrapper}
+              >
+                <Text style={[styles.link, isActive(link.href) && styles.linkActive]}>
+                  {link.label}
+                </Text>
+                {isActive(link.href) && <View style={styles.activeIndicator} />}
+              </TouchableOpacity>
+            ))}
+
+            {/* CTA */}
+            <TouchableOpacity
+              style={styles.ctaBtn}
+              onPress={() => router.push('/(tabs)/contact' as any)}
+              activeOpacity={0.85}
+            >
+              <Text style={styles.ctaBtnText}>Book Free Session</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  navSpacer: {
+    height: 64,
+  },
   navbar: {
     backgroundColor: '#FDFCF9',
     borderBottomWidth: 1,
@@ -72,6 +79,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     zIndex: 100,
+    // Sticky positioning for web
+    ...(Platform.OS === 'web'
+      ? {
+          position: 'fixed' as const,
+          top: 0,
+          left: 0,
+          right: 0,
+        }
+      : {}),
   },
   inner: {
     flexDirection: 'row',
@@ -86,7 +102,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 20,
-    fontWeight: '800',
+    fontWeight: '800' as const,
     color: '#1B4332',
     letterSpacing: -0.5,
   },
@@ -103,12 +119,12 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: '500' as const,
     color: '#4B5563',
   },
   linkActive: {
     color: '#1B4332',
-    fontWeight: '700',
+    fontWeight: '700' as const,
   },
   activeIndicator: {
     position: 'absolute',
@@ -128,7 +144,7 @@ const styles = StyleSheet.create({
   },
   ctaBtnText: {
     color: '#FFFFFF',
-    fontWeight: '700',
+    fontWeight: '700' as const,
     fontSize: 14,
   },
 });
