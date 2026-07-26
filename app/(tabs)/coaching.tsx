@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
@@ -94,6 +95,7 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
 
 export default function CoachingScreen() {
   const { isDesktop, isTablet, isWeb } = useResponsive();
+  const router = useRouter();
 
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
@@ -127,6 +129,16 @@ export default function CoachingScreen() {
             </Text>
           </View>
         </LinearGradient>
+
+        {/* Twelve Rules redirect notice */}
+        <View style={styles.rulesNotice}>
+          <Text style={styles.rulesNoticeText}>
+            Looking for Henry's Twelve Rules for Life?{' '}
+          </Text>
+          <TouchableOpacity onPress={() => router.push('/(tabs)/twelve-rules' as any)} activeOpacity={0.7}>
+            <Text style={styles.rulesNoticeLink}>Find them here.</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Services */}
         <View style={styles.servicesSection}>
@@ -223,6 +235,26 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5, marginBottom: 12,
   },
   pageSubtitle: { fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 26, fontStyle: 'italic' },
+
+  // Rules redirect notice
+  rulesNotice: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    backgroundColor: '#F0FDF4',
+    borderBottomWidth: 1,
+    borderBottomColor: '#D1FAE5',
+    flexWrap: 'wrap',
+  },
+  rulesNoticeText: { fontSize: 14, color: '#374151', textAlign: 'center' },
+  rulesNoticeLink: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#1B4332',
+    textDecorationLine: 'underline' as const,
+  },
 
   sectionHeader: {
     maxWidth: maxW,
