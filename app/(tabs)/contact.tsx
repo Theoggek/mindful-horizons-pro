@@ -82,6 +82,11 @@ export default function ContactScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
+      {isDesktop || isTablet ? (
+        <WebNavBar />
+      ) : (
+        <MobileNavBar />
+      )}
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -92,11 +97,6 @@ export default function ContactScreen() {
           showsVerticalScrollIndicator={Platform.OS === 'web'}
           keyboardShouldPersistTaps="handled"
         >
-          {isDesktop || isTablet ? (
-            <WebNavBar />
-          ) : (
-            <MobileNavBar />
-          )}
 
           {/* Page Header */}
           <LinearGradient
