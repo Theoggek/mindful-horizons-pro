@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, ChevronDown, ChevronUp, Quote, Star } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
@@ -12,15 +12,42 @@ const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level,
 const maxW = 800;
 
 // REMOVED — The Twelve Rules now live on their own dedicated page at /twelve-rules
-// const rules = [
-//   { num: '01', rule: 'You always have a choice' },
-//   { num: '02', rule: 'Your life is a gift. Treat it as an adventure' },
-//   { num: '03', rule: 'Experience something new every day' },
-//   { num: '04', rule: 'Learn something new every day' },
-//   { num: '05', rule: 'Fear is something you create' },
-//   { num: '06', rule: 'The line between where you are and where you want to be is a thought away' },
-//   { num: '07–12', rule: 'Unlock the remaining 6 rules in your free consultation', locked: true },
-// ];
+
+const approachPillars = [
+  {
+    title: 'I Listen',
+    emoji: '👂',
+    body: 'Every session starts with listening — not to respond, but to understand. Your story, your context, your goals. No two people are the same, so no two coaching plans should be either.',
+  },
+  {
+    title: 'I Challenge',
+    emoji: '💪',
+    body: 'Growth happens at the edge of comfort. I\'ll ask the questions no one else will. I\'ll hold up the mirror when it\'s easier to look away. But I\'ll never push you somewhere you\'re not ready to go.',
+  },
+  {
+    title: 'I Champion',
+    emoji: '🏆',
+    body: 'No one will believe in you more than I do. I\'ve spent 24 years being the person in the corner who refuses to give up on someone — even when they\'ve given up on themselves.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
+    author: 'Sarah M.',
+    role: 'Marketing Executive',
+  },
+  {
+    quote: 'I found the confidence to pursue my dream of owning my own business. Henry\'s guidance was transformational.',
+    author: 'James T.',
+    role: 'Entrepreneur',
+  },
+  {
+    quote: 'Henry believed in me from day one. His coaching style is honest, supportive, and results-driven.',
+    author: 'Lisa R.',
+    role: 'Career Transition Client',
+  },
+];
 
 const services = [
   {
@@ -138,6 +165,52 @@ export default function CoachingScreen() {
           <TouchableOpacity onPress={() => router.push('/(tabs)/twelve-rules' as any)} activeOpacity={0.7}>
             <Text style={styles.rulesNoticeLink}>Find them here.</Text>
           </TouchableOpacity>
+        </View>
+
+        {/* My Approach */}
+        <View style={styles.approachSection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
+            <Text style={styles.approachTitle}>I don't follow a script. I follow you.</Text>
+            <Text style={styles.approachBody}>
+              After 24 years of coaching, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are — right now, in this moment.
+            </Text>
+            <Text style={styles.approachBody}>
+              Every client I work with gets a unique partnership built on three principles that have never let me down.
+            </Text>
+          </View>
+          <View style={styles.approachGrid}>
+            {approachPillars.map((p, i) => (
+              <View key={i} style={styles.approachCard}>
+                <Text style={styles.approachEmoji}>{p.emoji}</Text>
+                <Text style={styles.approachCardTitle}>{p.title}</Text>
+                <Text style={styles.approachCardBody}>{p.body}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Testimonials */}
+        <View style={styles.testimonialsSection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
+            <Text style={styles.testimonialsTitle}>What clients say about working with me</Text>
+          </View>
+          {testimonials.map((t, i) => (
+            <View key={i} style={styles.testimonialCard}>
+              <View style={styles.testimonialQuoteIcon}>
+                <Quote size={16} color="#D4A96A" />
+              </View>
+              <Text style={styles.testimonialText}>{t.quote}</Text>
+              <View style={styles.testimonialStars}>
+                {[1, 2, 3, 4, 5].map(s => (
+                  <Star key={s} size={14} color="#D4A96A" fill="#D4A96A" />
+                ))}
+              </View>
+              <Text style={styles.testimonialAuthor}>{t.author}</Text>
+              <Text style={styles.testimonialRole}>{t.role}</Text>
+            </View>
+          ))}
         </View>
 
         {/* Services */}
@@ -265,6 +338,76 @@ const styles = StyleSheet.create({
     fontSize: 11, fontWeight: '700', color: '#D4A96A',
     letterSpacing: 2, marginBottom: 10,
   },
+
+  // Approach
+  approachSection: {
+    paddingHorizontal: 24, paddingVertical: 40,
+  },
+  approachTitle: {
+    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
+    letterSpacing: -0.5, marginBottom: 16,
+    maxWidth: maxW, alignSelf: 'center',
+  },
+  approachBody: {
+    fontSize: 15, color: '#4B5563', lineHeight: 26, marginBottom: 12,
+    maxWidth: maxW, alignSelf: 'center',
+  },
+  approachGrid: {
+    flexDirection: isWeb ? 'row' : 'column',
+    gap: 16,
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+    marginTop: 12,
+  },
+  approachCard: {
+    flex: 1,
+    backgroundColor: '#F9FAFB',
+    borderRadius: 16,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+  },
+  approachEmoji: { fontSize: 28, marginBottom: 12 },
+  approachCardTitle: { fontSize: 17, fontWeight: '700', color: '#1B4332', marginBottom: 8 },
+  approachCardBody: { fontSize: 14, color: '#6B7280', lineHeight: 22 },
+
+  // Testimonials
+  testimonialsSection: {
+    paddingHorizontal: 24, paddingVertical: 40,
+    backgroundColor: '#F9FAFB',
+    borderTopWidth: 1, borderTopColor: '#E5E7EB',
+    borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
+  },
+  testimonialsTitle: {
+    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
+    letterSpacing: -0.5, marginBottom: 24,
+    maxWidth: maxW, alignSelf: 'center',
+  },
+  testimonialCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 24,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    maxWidth: maxW,
+    alignSelf: 'center',
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  testimonialQuoteIcon: { marginBottom: 12 },
+  testimonialText: {
+    fontSize: 15, color: '#374151', lineHeight: 24,
+    fontStyle: 'italic', marginBottom: 14,
+  },
+  testimonialStars: { flexDirection: 'row', gap: 2, marginBottom: 10 },
+  testimonialAuthor: { fontSize: 14, fontWeight: '700', color: '#1C1917' },
+  testimonialRole: { fontSize: 12, color: '#9CA3AF', marginTop: 2 },
 
   // Services
   servicesSection: {
