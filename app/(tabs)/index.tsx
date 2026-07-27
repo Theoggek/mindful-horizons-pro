@@ -124,6 +124,16 @@ export default function HomeScreen() {
               I help mid-career professionals and small business owners break through what's holding them back.
             </Text>
 
+            {/* Quiz CTA — most visually dominant element */}
+            <TouchableOpacity
+              style={styles.quizCta}
+              onPress={() => router.push('/(tabs)/quiz' as any)}
+              activeOpacity={0.85}
+            >
+              <Text style={styles.quizCtaText}>Find Your AI Type — Take the Free Quiz</Text>
+              <ArrowRight size={22} color="#FFFFFF" />
+            </TouchableOpacity>
+
             {/* AI Partnership Session Block */}
             <View style={styles.aiSessionCard}>
               <Text style={styles.aiSessionHeadline}>
@@ -405,6 +415,30 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 24,
     fontStyle: 'italic',
+  },
+
+  // Quiz CTA — large, teal, visually dominant
+  quizCta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12,
+    backgroundColor: '#0D9488',
+    paddingVertical: 18,
+    paddingHorizontal: 32,
+    borderRadius: 16,
+    marginBottom: 32,
+    shadowColor: '#0D9488',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.4,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  quizCtaText: {
+    fontSize: isWeb ? 20 : 17,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    letterSpacing: -0.3,
   },
 
   // Video (kept for when personal video is recorded)
