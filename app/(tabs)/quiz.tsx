@@ -224,16 +224,16 @@ export default function QuizScreen() {
 
   return (
     <SafeAreaView style={s.safeArea} edges={['top']}>
+      {isDesktop || isTablet ? (
+        <WebNavBar />
+      ) : (
+        <MobileNavBar />
+      )}
       <ScrollView
         style={s.scroll}
         contentContainerStyle={s.scrollContent}
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
-        {isDesktop || isTablet ? (
-          <WebNavBar />
-        ) : (
-          <MobileNavBar />
-        )}
 
         {/* Header */}
         <LinearGradient
