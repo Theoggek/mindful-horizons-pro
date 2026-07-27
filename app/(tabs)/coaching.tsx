@@ -103,16 +103,16 @@ export default function CoachingScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
+      {isDesktop || isTablet ? (
+        <WebNavBar />
+      ) : (
+        <MobileNavBar />
+      )}
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
-        {isDesktop || isTablet ? (
-          <WebNavBar />
-        ) : (
-          <MobileNavBar />
-        )}
 
         {/* Page Header */}
         <LinearGradient
