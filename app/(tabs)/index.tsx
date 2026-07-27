@@ -91,17 +91,17 @@ export default function HomeScreen() {
           }}
         />
       )}
-      <SafeAreaView style={styles.safeArea} edges={['top']}>      
-      <ScrollView style={styles.scroll}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={Platform.OS === 'web'}
-      >
+      <SafeAreaView style={styles.safeArea} edges={['top']}>
         {/* Web NavBar (desktop/tablet) or sticky mobile nav */}
         {isDesktop || isTablet ? (
           <WebNavBar />
         ) : (
           <MobileNavBar />
         )}
+      <ScrollView style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={Platform.OS === 'web'}
+      >
 
         {/* Hero Section */}
         <LinearGradient
