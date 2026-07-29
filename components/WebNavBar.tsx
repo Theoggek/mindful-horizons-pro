@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform, Linking } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 
@@ -54,7 +54,7 @@ export function WebNavBar() {
             {/* CTA */}
             <TouchableOpacity
               style={styles.ctaBtn}
-              onPress={() => router.push('/(tabs)/contact' as any)}
+              onPress={() => Linking.openURL('https://calendly.com/h-mengoli/30min')}
               activeOpacity={0.85}
             >
               <Text style={styles.ctaBtnText}>Book Free Session</Text>
