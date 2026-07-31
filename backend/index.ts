@@ -44,7 +44,7 @@ app.post("/api/contact", async (c) => {
 
   try {
     await blink.notifications.email({
-      to: "h.mengoli@outlook.com",
+      to: "contact@mindful-horizons.com",
       replyTo: email,
       subject: `New Contact Form Message from ${fullName}`,
       html: `

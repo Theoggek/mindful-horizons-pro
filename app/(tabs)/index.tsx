@@ -345,7 +345,7 @@ export default function HomeScreen() {
         <View style={styles.footer}>
           <Text style={styles.footerLogo}>Mindful Horizons</Text>
           <Text style={styles.footerText}>© 2018–2026 All Rights Reserved</Text>
-          <Text style={styles.footerText}>h.mengoli@outlook.com · 262-445-1273</Text>
+          <Text style={styles.footerText}>contact@mindful-horizons.com · 262-445-1273</Text>
         </View>
       </ScrollView>
     </SafeAreaView>

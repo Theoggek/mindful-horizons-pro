@@ -366,7 +366,7 @@ export default function QuizScreen() {
         <View style={s.footer}>
           <Text style={s.footerLogo}>Mindful Horizons</Text>
           <Text style={s.footerText}>© 2018–2026 All Rights Reserved</Text>
-          <Text style={s.footerText}>h.mengoli@outlook.com · 262-445-1273</Text>
+          <Text style={s.footerText}>contact@mindful-horizons.com · 262-445-1273</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
