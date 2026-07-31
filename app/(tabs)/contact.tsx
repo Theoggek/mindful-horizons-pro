@@ -16,7 +16,7 @@ export default function ContactScreen() {
   };
 
   const handleEmail = () => {
-    Linking.openURL('mailto:h.mengoli@mindful-horizons.com');
+    Linking.openURL('mailto:contact@mindful-horizons.com');
   };
 
   const handlePhone = () => {
@@ -63,7 +63,7 @@ export default function ContactScreen() {
             </View>
             <View>
               <Text style={styles.altLabel}>Email</Text>
-              <Text style={styles.altValue}>h.mengoli@mindful-horizons.com</Text>
+              <Text style={styles.altValue}>contact@mindful-horizons.com</Text>
             </View>
           </TouchableOpacity>
 
