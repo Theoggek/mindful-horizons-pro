@@ -34,9 +34,9 @@ const aiUserTypes = [
 ];
 
 const stats = [
-  { value: '24+', label: 'Years Experience' },
+  { value: '30', label: 'Years' },
   { value: '100+', label: 'Lives Changed' },
-  { value: '100%', label: 'Committed to You' },
+  { value: '100%', label: 'Commitment' },
 ];
 
 const testimonials = [
