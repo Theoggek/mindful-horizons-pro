@@ -95,11 +95,11 @@ const faqs = [
   },
   {
     q: 'What is your experience level?',
-    a: "I've been coaching for 24 years. My background is in building successful companies and working at several different companies in senior management and project management positions. I've been helping individuals all my life. I am your champion — no one will believe in you more.",
+    a: "I've been coaching for 30 years. My background is in building successful companies and working at several different companies in senior management and project management positions. I've been helping individuals all my life. I am your champion — no one will believe in you more.",
   },
   {
     q: 'How do I get started?',
-    a: 'Simply book a free 30-minute consultation through Calendly. We\'ll discuss your goals, challenges, and how coaching can help. There\'s no commitment required.',
+    a: 'Simply book a free 30-minute session through Calendly. We\'ll discuss your goals, challenges, and how coaching can help. There\'s no commitment required.',
   },
 ];
 
@@ -152,7 +152,7 @@ export default function CoachingScreen() {
             <Text style={styles.pageEyebrow}>COACHING SERVICES</Text>
             <Text style={styles.pageTitle}>My Approach</Text>
             <Text style={styles.pageSubtitle}>
-              After 24 years of coaching I've learned one thing above everything else — lasting change doesn't come from following someone else's rules. It comes from finding your own!
+              After 30 years of coaching I've learned one thing above everything else — lasting change doesn't come from following someone else's rules. It comes from finding your own!
             </Text>
           </View>
         </LinearGradient>
@@ -173,7 +173,7 @@ export default function CoachingScreen() {
             <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
             <Text style={styles.approachTitle}>I don't follow a script. I follow you.</Text>
             <Text style={styles.approachBody}>
-              After 24 years of coaching, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are — right now, in this moment.
+              After 30 years of coaching, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are — right now, in this moment.
             </Text>
             <Text style={styles.approachBody}>
               Every client I work with gets a unique partnership built on three principles that have never let me down.
@@ -254,12 +254,12 @@ export default function CoachingScreen() {
               <Text style={styles.pricingEmoji}>📦</Text>
               <Text style={[styles.pricingTitle, { color: '#FFFFFF' }]}>Monthly Package</Text>
               <Text style={[styles.pricingDesc, { color: 'rgba(255,255,255,0.8)' }]}>
-                1 or 3 month commitments with discounted rates. Maximum value and consistent progress.
+                3 or 6 month commitments with discounted rates. Maximum value and consistent progress.
               </Text>
             </View>
           </View>
           <Text style={styles.pricingNote}>
-            Pricing discussed during your free 30-minute consultation. No commitment required.
+            Pricing discussed during your free 30-minute session. No commitment required.
           </Text>
         </View>
 
@@ -277,10 +277,10 @@ export default function CoachingScreen() {
         >
           <Text style={styles.ctaTitle}>Ready to take your business{'\n'}to the next level?</Text>
           <Text style={styles.ctaBody}>
-            Get in touch today and receive a complimentary consultation.
+            Get in touch today and receive a complimentary session.
           </Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Request a Consultation</Text>
+            <Text style={styles.ctaBtnText}>Request a Session</Text>
             <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>

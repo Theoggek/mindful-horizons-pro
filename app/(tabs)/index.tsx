@@ -112,7 +112,7 @@ export default function HomeScreen() {
         >
           <View style={styles.heroInner}>
             <View style={styles.heroBadge}>
-              <Text style={styles.heroBadgeText}>Professional Coaching · 24+ Years</Text>
+              <Text style={styles.heroBadgeText}>Professional Coaching · 30 Years</Text>
             </View>
             <Text style={styles.heroTitle}>
               You've built something real. Now let's make AI work for it.
@@ -279,7 +279,7 @@ export default function HomeScreen() {
             <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
             <Text style={styles.sectionTitleLight}>Real change. Real results.</Text>
             <Text style={styles.sectionBodyLight}>
-              Lasting change doesn't come from following someone else's rules. It comes from finding your own. After 24 years, I've developed proven techniques that create genuine transformation.
+              Lasting change doesn't come from following someone else's rules. It comes from finding your own. After 30 years, I've developed proven techniques that create genuine transformation.
             </Text>
           </View>
           <View style={styles.offerGrid}>
@@ -308,7 +308,7 @@ export default function HomeScreen() {
 
         {/* Testimonials */}
         <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
+          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>4
           <Text style={styles.sectionTitle}>Highly rated & recommended</Text>
           {testimonials.map((t, i) => (
             <View key={i} style={styles.testimonialCard}>

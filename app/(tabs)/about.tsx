@@ -10,7 +10,7 @@ const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level,
 const maxW = 800;
 
 const credentials = [
-  { icon: '🎓', title: '24+ Years Coaching', desc: 'Proven experience transforming lives and businesses' },
+  { icon: '🎓', title: '30 Years Coaching', desc: 'Proven experience transforming lives and businesses' },
   { icon: '🏢', title: 'Senior Management', desc: 'Background in building successful companies' },
   { icon: '🛠', title: 'Technical Background', desc: 'Deep understanding of technical professional demands' },
   { icon: '♿', title: 'Lived Experience', desc: 'Personal journey with disability informs empathetic coaching' },
@@ -146,7 +146,7 @@ export default function AboutScreen() {
               Has work become a stress-filled battleground? Is the joy in your life gone? Ready for change but unsure how to begin?
             </Text>
             <Text style={styles.storyText}>
-              I understand because I've been there. Through my own journey and 24 years of coaching others, I've developed proven techniques that create real results. Let me help you overcome your obstacles and rediscover joy in your life and career.
+              I understand because I've been there. Through my own journey and 30 years of coaching others, I've developed proven techniques that create real results. Let me help you overcome your obstacles and rediscover joy in your life and career.
             </Text>
           </View>
 
