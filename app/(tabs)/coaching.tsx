@@ -49,36 +49,60 @@ const testimonials = [
   },
 ];
 
-const services = [
-  {
-    title: 'Individual Coaching',
-    emoji: '👤',
-    color: '#EFF6FF',
-    border: '#BFDBFE',
-    items: [
-      'Career transitions & growth',
-      'Overcoming personal obstacles',
-      'Work-life balance restoration',
-      'Self-advocacy & confidence building',
-      'ADHD & disability navigation',
-      'Finding purpose and joy',
-    ],
-  },
-  {
-    title: 'Business Coaching',
-    emoji: '🏢',
-    color: '#F0FDF4',
-    border: '#A7F3D0',
-    items: [
-      'Business startup guidance',
-      'Growth management strategies',
-      'Business turnarounds',
-      'Leadership development',
-      'Team dynamics & culture',
-      'Strategic planning',
-    ],
-  },
-];
+const aiPartnershipCoaching = {
+  eyebrow: 'THE FLAGSHIP PROGRAM',
+  title: 'AI Partnership Coaching',
+  emoji: '🤖',
+  description:
+    'My newest and most powerful offering — a hybrid model that pairs 30 years of human coaching wisdom with AI-powered tools that keep your momentum alive between sessions. You get the depth of real coaching plus daily reinforcement: reflection prompts, progress tracking, and on-demand support shaped around your actual goals.',
+  items: [
+    'AI-powered progress tracking between sessions',
+    'Personalized reflection & journaling prompts',
+    'On-demand support grounded in your coaching history',
+    'Faster goal-setting and stronger accountability',
+    'Human coaching + AI reinforcement, combined',
+    'Available for individuals and business teams',
+  ],
+  ctaLabel: 'Book Your AI Partnership Session',
+};
+
+const businessCoaching = {
+  eyebrow: 'FOR ORGANIZATIONS',
+  title: 'Business Coaching',
+  emoji: '🏢',
+  color: '#F0FDF4',
+  border: '#A7F3D0',
+  description:
+    'Whether you\'re launching a new venture, scaling a growing team, or steering a turnaround, I bring 24+ years of senior management experience to help you lead with clarity and confidence.',
+  items: [
+    'Business startup guidance',
+    'Growth management strategies',
+    'Business turnarounds',
+    'Leadership development',
+    'Team dynamics & culture',
+    'Strategic planning',
+  ],
+  ctaLabel: 'Book a Business Consultation',
+};
+
+const individualCoaching = {
+  eyebrow: 'FOR INDIVIDUALS',
+  title: 'Individual Coaching',
+  emoji: '👤',
+  color: '#EFF6FF',
+  border: '#BFDBFE',
+  description:
+    'For anyone navigating a career transition, working through a personal obstacle, or simply looking for more balance and purpose — this is coaching built around your story, not a script.',
+  items: [
+    'Career transitions & growth',
+    'Overcoming personal obstacles',
+    'Work-life balance restoration',
+    'Self-advocacy & confidence building',
+    'ADHD & disability navigation',
+    'Finding purpose and joy',
+  ],
+  ctaLabel: 'Book an Individual Session',
+};
 
 const faqs = [
   {
@@ -213,25 +237,86 @@ export default function CoachingScreen() {
           ))}
         </View>
 
-        {/* Services */}
-        <View style={styles.servicesSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
-            <Text style={styles.sectionTitle3}>Services designed for real change.</Text>
+        {/* Services intro */}
+        <View style={styles.servicesIntro}>
+          <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
+          <Text style={styles.sectionTitle3}>Services designed for real change.</Text>
+        </View>
+
+        {/* AI Partnership Coaching — flagship */}
+        <LinearGradient
+          colors={['#1B4332', '#2D6A4F']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.flagshipSection}
+        >
+          <View style={styles.flagshipBadge}>
+            <Text style={styles.flagshipBadgeText}>{aiPartnershipCoaching.eyebrow}</Text>
           </View>
-          <View style={styles.serviceGrid}>
-            {services.map((svc, i) => (
-              <View key={i} style={[styles.serviceCard, { backgroundColor: svc.color, borderColor: svc.border }]}>
-                <Text style={styles.serviceEmoji}>{svc.emoji}</Text>
-                <Text style={styles.serviceTitle}>{svc.title}</Text>
-                {svc.items.map((item, j) => (
-                  <View key={j} style={styles.serviceItem}>
-                    <View style={styles.serviceDot} />
-                    <Text style={styles.serviceItemText}>{item}</Text>
-                  </View>
-                ))}
+          <Text style={styles.flagshipEmoji}>{aiPartnershipCoaching.emoji}</Text>
+          <Text style={styles.flagshipTitle}>{aiPartnershipCoaching.title}</Text>
+          <Text style={styles.flagshipDescription}>{aiPartnershipCoaching.description}</Text>
+          <View style={styles.flagshipItems}>
+            {aiPartnershipCoaching.items.map((item, i) => (
+              <View key={i} style={styles.flagshipItem}>
+                <View style={styles.flagshipDot} />
+                <Text style={styles.flagshipItemText}>{item}</Text>
               </View>
             ))}
+          </View>
+          <TouchableOpacity style={styles.flagshipCtaBtn} onPress={handleBook} activeOpacity={0.85}>
+            <Text style={styles.flagshipCtaBtnText}>{aiPartnershipCoaching.ctaLabel}</Text>
+            <ArrowRight size={18} color="#1B4332" />
+          </TouchableOpacity>
+        </LinearGradient>
+
+        {/* Business Coaching */}
+        <View style={styles.serviceSection}>
+          <View
+            style={[
+              styles.serviceSectionCard,
+              { backgroundColor: businessCoaching.color, borderColor: businessCoaching.border },
+            ]}
+          >
+            <Text style={styles.serviceSectionEyebrow}>{businessCoaching.eyebrow}</Text>
+            <Text style={styles.serviceEmoji}>{businessCoaching.emoji}</Text>
+            <Text style={styles.serviceSectionTitle}>{businessCoaching.title}</Text>
+            <Text style={styles.serviceSectionDescription}>{businessCoaching.description}</Text>
+            {businessCoaching.items.map((item, j) => (
+              <View key={j} style={styles.serviceItem}>
+                <View style={styles.serviceDot} />
+                <Text style={styles.serviceItemText}>{item}</Text>
+              </View>
+            ))}
+            <TouchableOpacity style={styles.serviceSectionCtaBtn} onPress={handleBook} activeOpacity={0.85}>
+              <Text style={styles.serviceSectionCtaBtnText}>{businessCoaching.ctaLabel}</Text>
+              <ArrowRight size={16} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Individual Coaching */}
+        <View style={[styles.serviceSection, styles.serviceSectionAlt]}>
+          <View
+            style={[
+              styles.serviceSectionCard,
+              { backgroundColor: individualCoaching.color, borderColor: individualCoaching.border },
+            ]}
+          >
+            <Text style={styles.serviceSectionEyebrow}>{individualCoaching.eyebrow}</Text>
+            <Text style={styles.serviceEmoji}>{individualCoaching.emoji}</Text>
+            <Text style={styles.serviceSectionTitle}>{individualCoaching.title}</Text>
+            <Text style={styles.serviceSectionDescription}>{individualCoaching.description}</Text>
+            {individualCoaching.items.map((item, j) => (
+              <View key={j} style={styles.serviceItem}>
+                <View style={styles.serviceDot} />
+                <Text style={styles.serviceItemText}>{item}</Text>
+              </View>
+            ))}
+            <TouchableOpacity style={styles.serviceSectionCtaBtn} onPress={handleBook} activeOpacity={0.85}>
+              <Text style={styles.serviceSectionCtaBtnText}>{individualCoaching.ctaLabel}</Text>
+              <ArrowRight size={16} color="#FFFFFF" />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -409,36 +494,90 @@ const styles = StyleSheet.create({
   testimonialAuthor: { fontSize: 14, fontWeight: '700', color: '#1C1917' },
   testimonialRole: { fontSize: 12, color: '#9CA3AF', marginTop: 2 },
 
-  // Services
-  servicesSection: {
-    paddingHorizontal: 24, paddingVertical: 40,
+  // Services intro
+  servicesIntro: {
+    paddingHorizontal: 24, paddingTop: 40, paddingBottom: 8,
+    maxWidth: maxW, alignSelf: 'center', width: '100%',
   },
   sectionTitle3: {
     fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
-    letterSpacing: -0.5, marginBottom: 20,
-    maxWidth: maxW, alignSelf: 'center',
+    letterSpacing: -0.5, marginBottom: 4,
   },
-  serviceGrid: {
+
+  // AI Partnership Coaching — flagship section
+  flagshipSection: {
+    marginHorizontal: 24, marginVertical: 24,
+    borderRadius: 24, padding: isWeb ? 48 : 28,
+    maxWidth: maxW + 48, alignSelf: 'center', width: 'auto',
+  },
+  flagshipBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(212,169,106,0.2)',
+    borderWidth: 1, borderColor: '#D4A96A',
+    borderRadius: 100, paddingHorizontal: 14, paddingVertical: 6,
+    marginBottom: 16,
+  },
+  flagshipBadgeText: { fontSize: 11, fontWeight: '800', color: '#D4A96A', letterSpacing: 1.5 },
+  flagshipEmoji: { fontSize: 44, marginBottom: 12 },
+  flagshipTitle: {
+    fontSize: isWeb ? 40 : 30, fontWeight: '800', color: '#FFFFFF',
+    letterSpacing: -0.5, marginBottom: 16,
+  },
+  flagshipDescription: {
+    fontSize: 16, color: 'rgba(255,255,255,0.85)', lineHeight: 26, marginBottom: 24,
+    maxWidth: 640,
+  },
+  flagshipItems: {
     flexDirection: isWeb ? 'row' : 'column',
-    gap: 16,
-    maxWidth: maxW,
-    alignSelf: 'center',
-    width: '100%',
+    flexWrap: 'wrap',
+    columnGap: 24, rowGap: 10,
+    marginBottom: 32,
   },
-  serviceCard: {
-    flex: 1,
-    borderRadius: 16,
-    padding: 24,
-    borderWidth: 1,
+  flagshipItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 10, width: isWeb ? '46%' : '100%' },
+  flagshipDot: {
+    width: 6, height: 6, borderRadius: 3, backgroundColor: '#D4A96A',
+    marginTop: 8, flexShrink: 0,
+  },
+  flagshipItemText: { fontSize: 14, color: 'rgba(255,255,255,0.9)', lineHeight: 22, flex: 1 },
+  flagshipCtaBtn: {
+    flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 8,
+    backgroundColor: '#D4A96A', paddingHorizontal: 28,
+    paddingVertical: 16, borderRadius: 12,
+  },
+  flagshipCtaBtnText: { color: '#1B4332', fontWeight: '700', fontSize: 16 },
+
+  // Business / Individual Coaching sections
+  serviceSection: {
+    paddingHorizontal: 24, paddingVertical: 24,
+  },
+  serviceSectionAlt: {
+    backgroundColor: '#F9FAFB',
+    borderTopWidth: 1, borderTopColor: '#E5E7EB',
+    borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
+  },
+  serviceSectionCard: {
+    maxWidth: maxW, alignSelf: 'center', width: '100%',
+    borderRadius: 16, padding: 28, borderWidth: 1,
+  },
+  serviceSectionEyebrow: {
+    fontSize: 11, fontWeight: '700', color: '#1B4332',
+    letterSpacing: 2, marginBottom: 10,
   },
   serviceEmoji: { fontSize: 32, marginBottom: 12 },
-  serviceTitle: { fontSize: 18, fontWeight: '700', color: '#1C1917', marginBottom: 16 },
+  serviceSectionTitle: { fontSize: isWeb ? 26 : 22, fontWeight: '800', color: '#1C1917', marginBottom: 12 },
+  serviceSectionDescription: { fontSize: 15, color: '#4B5563', lineHeight: 24, marginBottom: 18 },
   serviceItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 8 },
   serviceDot: {
     width: 6, height: 6, borderRadius: 3, backgroundColor: '#1B4332',
     marginTop: 8, flexShrink: 0,
   },
   serviceItemText: { fontSize: 14, color: '#4B5563', lineHeight: 22, flex: 1 },
+  serviceSectionCtaBtn: {
+    flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 8,
+    backgroundColor: '#1B4332', paddingHorizontal: 24,
+    paddingVertical: 14, borderRadius: 12, marginTop: 20,
+  },
+  serviceSectionCtaBtnText: { color: '#FFFFFF', fontWeight: '700', fontSize: 15 },
 
   // Pricing
   pricingSection: {
