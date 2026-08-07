@@ -1,3 +1,4 @@
+<!-- Mindful Horizons: React Native template repo -->
 # Expo React Native Template
 
 This is a React Native template using Expo Router and configured for web, iOS, and Android development.
