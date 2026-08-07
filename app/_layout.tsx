@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Platform } from 'react-native';
+import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BlinkProvider, createTamagui, tamaguiDefaultConfig, Theme, BlinkToastProvider } from '@blinkdotnew/mobile-ui';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
@@ -36,6 +37,20 @@ function WebStyleReset() {
 
 export default function RootLayout() {
   useFrameworkReady();
+
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    // Microsoft Clarity — Mindful Horizons
+    (function () {
+      const t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://www.clarity.ms/tag/xybbrt4087';
+      document.head.appendChild(t);
+      (window as any).clarity = (window as any).clarity || function (...args: unknown[]) {
+        ((window as any).clarity.q = (window as any).clarity.q || []).push(args);
+      };
+    })();
+  }, []);
 
   return (
     <BlinkProvider config={config} defaultTheme="light">

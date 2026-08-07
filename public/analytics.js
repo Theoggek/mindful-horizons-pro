@@ -9,13 +9,3 @@
   gtag('js', new Date());
   gtag('config', 'G-M3XR8YYGWN');
 })();
-// Microsoft Clarity — Mindful Horizons
-(function(){
-  var t = document.createElement('script');
-  t.async = true;
-  t.src = 'https://www.clarity.ms/tag/xybbrt4087';
-  document.head.appendChild(t);
-  window.clarity = window.clarity || function(){
-    (window.clarity.q = window.clarity.q || []).push(arguments);
-  };
-})();
