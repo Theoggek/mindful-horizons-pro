@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, ChevronDown, ChevronUp, Quote, Star } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
@@ -31,23 +31,26 @@ const approachPillars = [
   },
 ];
 
-const testimonials = [
+const aiPartnershipTestimonials = [
   {
-    quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
-    author: 'Sarah M.',
-    role: 'Marketing Executive',
+    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business — not like everyone else's. This is well beyond what I thought it could do.",
+    author: 'Commercial Racking Consultant, 10 years industry experience',
   },
   {
-    quote: 'I found the confidence to pursue my dream of owning my own business. Henry\'s guidance was transformational.',
-    author: 'James T.',
-    role: 'Entrepreneur',
-  },
-  {
-    quote: 'Henry believed in me from day one. His coaching style is honest, supportive, and results-driven.',
-    author: 'Lisa R.',
-    role: 'Career Transition Client',
+    quote: "I'd tried AI and written it off. Henry showed me something different in about twenty minutes. When I read what came back I said: that actually sounds like us. I haven't looked at AI the same way since.",
+    author: 'Ted, Co-founder, TheoStar Media',
   },
 ];
+
+const businessTestimonial = {
+  quote: "I found the confidence to pursue my dream of owning my own business. Henry's guidance was transformational.",
+  author: 'James T., Business Owner',
+};
+
+const individualTestimonial = {
+  quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
+  author: 'Sarah M., Marketing Executive',
+};
 
 const aiPartnershipCoaching = {
   eyebrow: 'THE FLAGSHIP PROGRAM',
@@ -126,6 +129,15 @@ const faqs = [
     a: 'Simply book a free 30-minute session through Calendly. We\'ll discuss your goals, challenges, and how coaching can help. There\'s no commitment required.',
   },
 ];
+
+function TestimonialQuote({ quote, author }: { quote: string; author: string }) {
+  return (
+    <View style={styles.testimonialQuote}>
+      <Text style={styles.testimonialQuoteText}>&ldquo;{quote}&rdquo;</Text>
+      <Text style={styles.testimonialQuoteAuthor}>— {author}</Text>
+    </View>
+  );
+}
 
 function FaqItem({ item }: { item: { q: string; a: string } }) {
   const [open, setOpen] = useState(false);
@@ -214,29 +226,6 @@ export default function CoachingScreen() {
           </View>
         </View>
 
-        {/* Testimonials */}
-        <View style={styles.testimonialsSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
-            <Text style={styles.testimonialsTitle}>What clients say about working with me</Text>
-          </View>
-          {testimonials.map((t, i) => (
-            <View key={i} style={styles.testimonialCard}>
-              <View style={styles.testimonialQuoteIcon}>
-                <Quote size={16} color="#D4A96A" />
-              </View>
-              <Text style={styles.testimonialText}>{t.quote}</Text>
-              <View style={styles.testimonialStars}>
-                {[1, 2, 3, 4, 5].map(s => (
-                  <Star key={s} size={14} color="#D4A96A" fill="#D4A96A" />
-                ))}
-              </View>
-              <Text style={styles.testimonialAuthor}>{t.author}</Text>
-              <Text style={styles.testimonialRole}>{t.role}</Text>
-            </View>
-          ))}
-        </View>
-
         {/* Services intro */}
         <View style={styles.servicesIntro}>
           <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
@@ -270,6 +259,13 @@ export default function CoachingScreen() {
           </TouchableOpacity>
         </LinearGradient>
 
+        {/* AI Partnership Coaching testimonials */}
+        <View style={styles.flagshipTestimonials}>
+          {aiPartnershipTestimonials.map((t, i) => (
+            <TestimonialQuote key={i} quote={t.quote} author={t.author} />
+          ))}
+        </View>
+
         {/* Business Coaching */}
         <View style={styles.serviceSection}>
           <View
@@ -292,6 +288,7 @@ export default function CoachingScreen() {
               <Text style={styles.serviceSectionCtaBtnText}>{businessCoaching.ctaLabel}</Text>
               <ArrowRight size={16} color="#FFFFFF" />
             </TouchableOpacity>
+            <TestimonialQuote quote={businessTestimonial.quote} author={businessTestimonial.author} />
           </View>
         </View>
 
@@ -317,6 +314,7 @@ export default function CoachingScreen() {
               <Text style={styles.serviceSectionCtaBtnText}>{individualCoaching.ctaLabel}</Text>
               <ArrowRight size={16} color="#FFFFFF" />
             </TouchableOpacity>
+            <TestimonialQuote quote={individualTestimonial.quote} author={individualTestimonial.author} />
           </View>
         </View>
 
@@ -457,42 +455,23 @@ const styles = StyleSheet.create({
   approachCardTitle: { fontSize: 17, fontWeight: '700', color: '#1B4332', marginBottom: 8 },
   approachCardBody: { fontSize: 14, color: '#6B7280', lineHeight: 22 },
 
-  // Testimonials
-  testimonialsSection: {
-    paddingHorizontal: 24, paddingVertical: 40,
-    backgroundColor: '#F9FAFB',
-    borderTopWidth: 1, borderTopColor: '#E5E7EB',
-    borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
+  // Testimonials (inline quote blocks under each service section)
+  flagshipTestimonials: {
+    paddingHorizontal: 24, paddingBottom: 24,
+    maxWidth: maxW + 48, alignSelf: 'center', width: '100%',
+    gap: 4,
   },
-  testimonialsTitle: {
-    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
-    letterSpacing: -0.5, marginBottom: 24,
-    maxWidth: maxW, alignSelf: 'center',
+  testimonialQuote: {
+    borderLeftWidth: 3,
+    borderLeftColor: '#D4A96A',
+    paddingLeft: 16,
+    marginTop: 20,
   },
-  testimonialCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 24,
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    maxWidth: maxW,
-    alignSelf: 'center',
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+  testimonialQuoteText: {
+    fontSize: 15, color: '#4B5563', lineHeight: 24,
+    fontStyle: 'italic', marginBottom: 8,
   },
-  testimonialQuoteIcon: { marginBottom: 12 },
-  testimonialText: {
-    fontSize: 15, color: '#374151', lineHeight: 24,
-    fontStyle: 'italic', marginBottom: 14,
-  },
-  testimonialStars: { flexDirection: 'row', gap: 2, marginBottom: 10 },
-  testimonialAuthor: { fontSize: 14, fontWeight: '700', color: '#1C1917' },
-  testimonialRole: { fontSize: 12, color: '#9CA3AF', marginTop: 2 },
+  testimonialQuoteAuthor: { fontSize: 13, color: '#9CA3AF', fontWeight: '600' },
 
   // Services intro
   servicesIntro: {
