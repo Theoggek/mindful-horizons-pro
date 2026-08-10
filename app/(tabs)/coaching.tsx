@@ -47,11 +47,6 @@ const businessTestimonial = {
   author: 'James T., Business Owner',
 };
 
-const individualTestimonial = {
-  quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
-  author: 'Sarah M., Marketing Executive',
-};
-
 const aiPartnershipCoaching = {
   eyebrow: 'THE FLAGSHIP PROGRAM',
   title: 'AI Partnership Coaching',
@@ -88,25 +83,6 @@ const businessCoaching = {
   ctaLabel: 'Book a Business Consultation',
 };
 
-const individualCoaching = {
-  eyebrow: 'FOR INDIVIDUALS',
-  title: 'Individual Coaching',
-  emoji: '👤',
-  color: '#EFF6FF',
-  border: '#BFDBFE',
-  description:
-    'For anyone navigating a career transition, working through a personal obstacle, or simply looking for more balance and purpose — this is coaching built around your story, not a script.',
-  items: [
-    'Career transitions & growth',
-    'Overcoming personal obstacles',
-    'Work-life balance restoration',
-    'Self-advocacy & confidence building',
-    'ADHD & disability navigation',
-    'Finding purpose and joy',
-  ],
-  ctaLabel: 'Book an Individual Session',
-};
-
 const faqs = [
   {
     q: 'What services do you offer?',
@@ -130,11 +106,15 @@ const faqs = [
   },
 ];
 
-function TestimonialQuote({ quote, author }: { quote: string; author: string }) {
+function TestimonialQuote({ quote, author, variant = 'light' }: { quote: string; author: string; variant?: 'light' | 'dark' }) {
   return (
     <View style={styles.testimonialQuote}>
-      <Text style={styles.testimonialQuoteText}>&ldquo;{quote}&rdquo;</Text>
-      <Text style={styles.testimonialQuoteAuthor}>— {author}</Text>
+      <Text style={variant === 'dark' ? styles.testimonialQuoteTextDark : styles.testimonialQuoteText}>
+        &ldquo;{quote}&rdquo;
+      </Text>
+      <Text style={variant === 'dark' ? styles.testimonialQuoteAuthorDark : styles.testimonialQuoteAuthor}>
+        — {author}
+      </Text>
     </View>
   );
 }
@@ -253,18 +233,16 @@ export default function CoachingScreen() {
               </View>
             ))}
           </View>
+          <View style={styles.flagshipTestimonials}>
+            {aiPartnershipTestimonials.map((t, i) => (
+              <TestimonialQuote key={i} quote={t.quote} author={t.author} variant="dark" />
+            ))}
+          </View>
           <TouchableOpacity style={styles.flagshipCtaBtn} onPress={handleBook} activeOpacity={0.85}>
             <Text style={styles.flagshipCtaBtnText}>{aiPartnershipCoaching.ctaLabel}</Text>
             <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>
-
-        {/* AI Partnership Coaching testimonials */}
-        <View style={styles.flagshipTestimonials}>
-          {aiPartnershipTestimonials.map((t, i) => (
-            <TestimonialQuote key={i} quote={t.quote} author={t.author} />
-          ))}
-        </View>
 
         {/* Business Coaching */}
         <View style={styles.serviceSection}>
@@ -284,37 +262,11 @@ export default function CoachingScreen() {
                 <Text style={styles.serviceItemText}>{item}</Text>
               </View>
             ))}
+            <TestimonialQuote quote={businessTestimonial.quote} author={businessTestimonial.author} />
             <TouchableOpacity style={styles.serviceSectionCtaBtn} onPress={handleBook} activeOpacity={0.85}>
               <Text style={styles.serviceSectionCtaBtnText}>{businessCoaching.ctaLabel}</Text>
               <ArrowRight size={16} color="#FFFFFF" />
             </TouchableOpacity>
-            <TestimonialQuote quote={businessTestimonial.quote} author={businessTestimonial.author} />
-          </View>
-        </View>
-
-        {/* Individual Coaching */}
-        <View style={[styles.serviceSection, styles.serviceSectionAlt]}>
-          <View
-            style={[
-              styles.serviceSectionCard,
-              { backgroundColor: individualCoaching.color, borderColor: individualCoaching.border },
-            ]}
-          >
-            <Text style={styles.serviceSectionEyebrow}>{individualCoaching.eyebrow}</Text>
-            <Text style={styles.serviceEmoji}>{individualCoaching.emoji}</Text>
-            <Text style={styles.serviceSectionTitle}>{individualCoaching.title}</Text>
-            <Text style={styles.serviceSectionDescription}>{individualCoaching.description}</Text>
-            {individualCoaching.items.map((item, j) => (
-              <View key={j} style={styles.serviceItem}>
-                <View style={styles.serviceDot} />
-                <Text style={styles.serviceItemText}>{item}</Text>
-              </View>
-            ))}
-            <TouchableOpacity style={styles.serviceSectionCtaBtn} onPress={handleBook} activeOpacity={0.85}>
-              <Text style={styles.serviceSectionCtaBtnText}>{individualCoaching.ctaLabel}</Text>
-              <ArrowRight size={16} color="#FFFFFF" />
-            </TouchableOpacity>
-            <TestimonialQuote quote={individualTestimonial.quote} author={individualTestimonial.author} />
           </View>
         </View>
 
@@ -457,9 +409,8 @@ const styles = StyleSheet.create({
 
   // Testimonials (inline quote blocks under each service section)
   flagshipTestimonials: {
-    paddingHorizontal: 24, paddingBottom: 24,
-    maxWidth: maxW + 48, alignSelf: 'center', width: '100%',
     gap: 4,
+    marginBottom: 8,
   },
   testimonialQuote: {
     borderLeftWidth: 3,
@@ -472,6 +423,11 @@ const styles = StyleSheet.create({
     fontStyle: 'italic', marginBottom: 8,
   },
   testimonialQuoteAuthor: { fontSize: 13, color: '#9CA3AF', fontWeight: '600' },
+  testimonialQuoteTextDark: {
+    fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 24,
+    fontStyle: 'italic', marginBottom: 8,
+  },
+  testimonialQuoteAuthorDark: { fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: '600' },
 
   // Services intro
   servicesIntro: {
@@ -525,14 +481,9 @@ const styles = StyleSheet.create({
   },
   flagshipCtaBtnText: { color: '#1B4332', fontWeight: '700', fontSize: 16 },
 
-  // Business / Individual Coaching sections
+  // Business Coaching section
   serviceSection: {
     paddingHorizontal: 24, paddingVertical: 24,
-  },
-  serviceSectionAlt: {
-    backgroundColor: '#F9FAFB',
-    borderTopWidth: 1, borderTopColor: '#E5E7EB',
-    borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
   },
   serviceSectionCard: {
     maxWidth: maxW, alignSelf: 'center', width: '100%',
