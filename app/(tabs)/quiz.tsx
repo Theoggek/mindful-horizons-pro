@@ -114,8 +114,7 @@ const QUESTIONS: Question[] = [
     text: 'Which best describes your AI experience?',
     options: [
       { label: 'Never tried it',                       weights: { 1: 2, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 } },
-      { label: 'Tried once or twice, got generic responses', weights: { 1: 0, 2: 2, 3: 1, 4: 0, 5: 0, 6: 0 } },
-      { label: 'Used it for a while but gave up',      weights: { 1: 0, 2: 1, 3: 2, 4: 0, 5: 0, 6: 0 } },
+      { label: 'Tried it, but got frustrated or gave up', weights: { 1: 0, 2: 2, 3: 2, 4: 0, 5: 0, 6: 0 } },
       { label: 'Use it regularly but not getting everything out of it', weights: { 1: 0, 2: 0, 3: 0, 4: 2, 5: 1, 6: 0 } },
       { label: 'I\'ve got it figured out',               weights: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 1, 6: 2 } },
     ],
@@ -155,19 +154,39 @@ const QUESTIONS: Question[] = [
 ];
 
 // ─── Scoring ────────────────────────────────────────────────────────
+// Q3 ("Which best describes your AI experience?") is the primary gate:
+// it hard-constrains the result to a type range, so no combination of
+// answers on the other questions can contradict it.
+const GATE_QUESTION_ID = 3;
+
+const GATE_RANGES: TypeKey[][] = [
+  [1],       // Never tried it
+  [2, 3],    // Tried it, but got frustrated or gave up
+  [4, 5],    // Use it regularly but not getting everything out of it
+  [5, 6],    // I've got it figured out
+];
+
 function scoreQuiz(answers: number[]): TypeKey {
+  const gateOptIdx = answers[GATE_QUESTION_ID - 1];
+  const allowed = GATE_RANGES[gateOptIdx];
+
+  if (allowed.length === 1) return allowed[0];
+
+  // Tiebreak within the allowed range using the other questions' weights.
   const totals: Record<TypeKey, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
   answers.forEach((optIdx, qIdx) => {
+    if (qIdx === GATE_QUESTION_ID - 1) return;
     const weights = QUESTIONS[qIdx].options[optIdx].weights;
     (Object.keys(weights) as unknown as TypeKey[]).forEach((k) => {
-      totals[k] += weights[k as TypeKey];
+      const key = k as TypeKey;
+      if (allowed.includes(key)) totals[key] += weights[key];
     });
   });
-  // Find the type with the highest score; on tie, prefer the lower (more beginner) type
-  let best: TypeKey = 1;
+
+  // Find the highest-scoring allowed type; on tie, prefer the lower (more beginner) type.
+  let best = allowed[0];
   let bestScore = -1;
-  (Object.keys(totals) as unknown as TypeKey[]).forEach((k) => {
-    const key = k as TypeKey;
+  allowed.forEach((key) => {
     if (totals[key] > bestScore) {
       bestScore = totals[key];
       best = key;
@@ -315,6 +334,9 @@ export default function QuizScreen() {
               <Text style={s.resultTypeTitle}>Type {result} — {TYPES[result].title}</Text>
               <View style={s.resultDivider} />
               <Text style={s.resultDesc}>{TYPES[result].description}</Text>
+              <Text style={s.resultNote}>
+                Your result is a starting point — your free 30-minute Mindful AI Relationship Audit will confirm your actual type and map your next steps.
+              </Text>
             </View>
 
             <TouchableOpacity style={s.bookBtn} onPress={handleBook} activeOpacity={0.85}>
@@ -544,6 +566,15 @@ const s = StyleSheet.create({
     lineHeight: 28,
     textAlign: 'center',
     maxWidth: 520,
+  },
+  resultNote: {
+    fontSize: 13,
+    color: '#6B7280',
+    lineHeight: 20,
+    textAlign: 'center',
+    maxWidth: 480,
+    marginTop: 16,
+    fontStyle: 'italic',
   },
   bookBtn: {
     flexDirection: 'row',
