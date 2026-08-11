@@ -137,17 +137,12 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
 }
 
 export default function CoachingScreen() {
-  const { isDesktop, isTablet, isWeb, isMobile } = useResponsive();
+  const { isDesktop, isTablet, isWeb } = useResponsive();
   const router = useRouter();
 
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
-
-  // On mobile, three cards feel cramped — drop "I Challenge" and keep the outer two.
-  const visiblePillars = isMobile
-    ? approachPillars.filter((p) => p.title !== 'I Challenge')
-    : approachPillars;
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -201,7 +196,7 @@ export default function CoachingScreen() {
             </Text>
           </View>
           <View style={styles.approachGrid}>
-            {visiblePillars.map((p, i) => (
+            {approachPillars.map((p, i) => (
               <View key={i} style={styles.approachCard}>
                 <Text style={styles.approachEmoji}>{p.emoji}</Text>
                 <Text style={styles.approachCardTitle}>{p.title}</Text>
