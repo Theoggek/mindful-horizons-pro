@@ -75,5 +75,13 @@
     "eslint": "^9.31.0",
     "eslint-config-expo": "~10.0.0",
     "typescript": "~5.9.2"
+  },
+  "overrides": {
+    "@tamagui/lucide-icons": {
+      "@tamagui/core": "2.7.4"
+    },
+    "@tamagui/helpers-icon": {
+      "@tamagui/core": "2.7.4"
+    }
   }
 }
