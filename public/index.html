@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="%LANG_ISO_CODE%">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,15 +11,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
-    <title>Mindful Horizons</title>
-    <style>
-      html, body, #root { height: 100%; margin: 0; padding: 0; }
-      #root { display: flex; flex-direction: column; min-height: 100vh; }
+    <title>%WEB_TITLE%</title>
+    <style id="expo-reset">
+      html, body { height: 100%; }
+      body { overflow: hidden; }
+      #root { display: flex; height: 100%; flex: 1; }
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="/analytics.js"></script>
   </body>
 </html>
