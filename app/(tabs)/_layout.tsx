@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Platform } from 'react-native';
-import { Home, User, BookOpen, Mail, Hash, HelpCircle } from '@blinkdotnew/mobile-ui';
+import { Home, User, BookOpen, Mail } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 
 export default function TabLayout() {
@@ -48,9 +48,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="coaching"
+        name="ai-partnership"
         options={{
-          title: 'Coaching',
+          title: 'AI Partnership',
           tabBarIcon: ({ color, size }) => <BookOpen size={size - 2} color={color} />,
         }}
       />
@@ -59,13 +59,6 @@ export default function TabLayout() {
         options={{
           title: 'Contact',
           tabBarIcon: ({ color, size }) => <Mail size={size - 2} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="twelve-rules"
-        options={{
-          title: '12 Rules',
-          tabBarIcon: ({ color, size }) => <Hash size={size - 2} color={color} />,
         }}
       />
       <Tabs.Screen

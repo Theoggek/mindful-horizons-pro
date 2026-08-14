@@ -1,7 +1,7 @@
 //import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
 
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
@@ -9,6 +9,7 @@ import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
+import { TwelveRulesModal } from '@/components/TwelveRulesModal';
 
 const { width } = Dimensions.get('window');
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
@@ -41,25 +42,16 @@ const stats = [
 
 const testimonials = [
   {
-    quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
-    author: 'Sarah M.',
-    role: 'Marketing Executive',
-  },
-  {
-    quote: 'I found the confidence to pursue my dream of owning my own business. Henry\'s guidance was transformational.',
-    author: 'James T.',
-    role: 'Entrepreneur',
-  },
-  {
-    quote: 'Henry believed in me from day one. His coaching style is honest, supportive, and results-driven.',
-    author: 'Lisa R.',
-    role: 'Career Transition Client',
+    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business — not like everyone else's. This is well beyond what I thought it could do.",
+    author: 'Commercial Racking Consultant',
+    role: '10 years industry experience',
   },
 ];
 
 export default function HomeScreen() {
   const router = useRouter();
   const { isDesktop, isTablet, isWeb } = useResponsive();
+  const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -102,6 +94,17 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
+
+        {/* 12 Rules Modal Trigger — floats just below the nav bar */}
+        <View style={styles.rulesTriggerSection}>
+          <TouchableOpacity
+            style={styles.rulesTriggerBtn}
+            onPress={() => setRulesModalOpen(true)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.rulesTriggerBtnText}>Henry's 12 Rules for Life</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Hero Section */}
         <LinearGradient
@@ -150,7 +153,7 @@ export default function HomeScreen() {
               </Text>
 
               <View style={styles.aiSessionMeta}>
-                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $230</Text>
+                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $200</Text>
               </View>
 
               <View style={styles.aiSessionBullets}>
@@ -308,7 +311,7 @@ export default function HomeScreen() {
 
         {/* Testimonials */}
         <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>4
+          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
           <Text style={styles.sectionTitle}>Highly rated & recommended</Text>
           {testimonials.map((t, i) => (
             <View key={i} style={styles.testimonialCard}>
@@ -349,6 +352,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    <TwelveRulesModal visible={rulesModalOpen} onClose={() => setRulesModalOpen(false)} />
     </>
   );
 }
@@ -535,6 +539,32 @@ const styles = StyleSheet.create({
     marginTop: 2,
     fontWeight: '500',
     textAlign: 'center',
+  },
+
+  // 12 Rules modal trigger — floats just below the nav bar, overlapping the hero
+  rulesTriggerSection: {
+    alignItems: 'flex-end',
+    paddingHorizontal: 24,
+    paddingTop: 12,
+    marginBottom: -22,
+    zIndex: 10,
+    position: 'relative',
+  },
+  rulesTriggerBtn: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 100,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    elevation: 8,
+  },
+  rulesTriggerBtnText: {
+    color: '#1B4332',
+    fontWeight: '700',
+    fontSize: 13,
   },
 
   // Sections

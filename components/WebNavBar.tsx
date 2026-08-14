@@ -5,8 +5,7 @@ import { useResponsive } from '@/hooks/useResponsive';
 const NAV_LINKS = [
   { label: 'Home', href: '/(tabs)/' },
   { label: 'About', href: '/(tabs)/about' },
-  { label: 'Coaching', href: '/(tabs)/coaching' },
-  { label: '12 Rules', href: '/(tabs)/twelve-rules' },
+  { label: 'AI Partnership', href: '/(tabs)/ai-partnership' },
   { label: 'Find Your Type', href: '/(tabs)/quiz' },
   { label: 'Contact', href: '/(tabs)/contact' },
 ];

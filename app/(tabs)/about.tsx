@@ -1,10 +1,12 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Image } from 'react-native';
+import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Award, Users, Heart, Star, Quote, CheckCircle } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
+import { TwelveRulesModal } from '@/components/TwelveRulesModal';
 
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
@@ -42,6 +44,7 @@ const values = [
 
 export default function AboutScreen() {
   const { isDesktop, isTablet, isWeb } = useResponsive();
+  const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
@@ -75,6 +78,15 @@ export default function AboutScreen() {
             </Text>
           </View>
         </LinearGradient>
+
+        {/* 12 Rules Modal Trigger — highlight bar */}
+        <TouchableOpacity
+          style={styles.rulesBar}
+          onPress={() => setRulesModalOpen(true)}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.rulesBarText}>View Henry's 12 Rules for Life</Text>
+        </TouchableOpacity>
 
         {/* Bio Section */}
         <View style={styles.bioSection}>
@@ -219,6 +231,7 @@ export default function AboutScreen() {
           <Text style={styles.footerText}>© 2018–2026 All Rights Reserved</Text>
         </View>
       </ScrollView>
+      <TwelveRulesModal visible={rulesModalOpen} onClose={() => setRulesModalOpen(false)} />
     </SafeAreaView>
   );
 }
@@ -353,6 +366,20 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '700',
     fontSize: 16,
+  },
+  rulesBar: {
+    backgroundColor: '#F0FDF4',
+    borderBottomWidth: 1,
+    borderBottomColor: '#D1FAE5',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+  },
+  rulesBarText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#1B4332',
+    textDecorationLine: 'underline' as const,
   },
   sectionBody: {
     fontSize: 16,
