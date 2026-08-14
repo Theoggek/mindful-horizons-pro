@@ -1,7 +1,7 @@
 //import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
 
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
@@ -9,6 +9,7 @@ import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
+import { TwelveRulesModal } from '@/components/TwelveRulesModal';
 
 const { width } = Dimensions.get('window');
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
@@ -60,6 +61,7 @@ const testimonials = [
 export default function HomeScreen() {
   const router = useRouter();
   const { isDesktop, isTablet, isWeb } = useResponsive();
+  const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -150,7 +152,7 @@ export default function HomeScreen() {
               </Text>
 
               <View style={styles.aiSessionMeta}>
-                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $230</Text>
+                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $200</Text>
               </View>
 
               <View style={styles.aiSessionBullets}>
@@ -220,6 +222,17 @@ export default function HomeScreen() {
               <Text style={styles.statLabel}>{s.label}</Text>
             </View>
           ))}
+        </View>
+
+        {/* 12 Rules Modal Trigger */}
+        <View style={styles.rulesTriggerSection}>
+          <TouchableOpacity
+            style={styles.rulesTriggerBtn}
+            onPress={() => setRulesModalOpen(true)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.rulesTriggerBtnText}>Henry's 12 Rules for Life</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Pain Points Section */}
@@ -349,6 +362,7 @@ export default function HomeScreen() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    <TwelveRulesModal visible={rulesModalOpen} onClose={() => setRulesModalOpen(false)} />
     </>
   );
 }
@@ -535,6 +549,25 @@ const styles = StyleSheet.create({
     marginTop: 2,
     fontWeight: '500',
     textAlign: 'center',
+  },
+
+  // 12 Rules modal trigger
+  rulesTriggerSection: {
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingTop: 32,
+  },
+  rulesTriggerBtn: {
+    borderWidth: 1.5,
+    borderColor: '#1B4332',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 100,
+  },
+  rulesTriggerBtnText: {
+    color: '#1B4332',
+    fontWeight: '700',
+    fontSize: 14,
   },
 
   // Sections

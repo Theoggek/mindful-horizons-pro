@@ -1,17 +1,14 @@
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
-import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
 
 const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level, static is fine)
 const maxW = 800;
-
-// REMOVED — The Twelve Rules now live on their own dedicated page at /twelve-rules
 
 const approachPillars = [
   {
@@ -27,7 +24,7 @@ const approachPillars = [
   {
     title: 'I Champion',
     emoji: '🏆',
-    body: 'No one will believe in you more than I do. I\'ve spent 24 years being the person in the corner who refuses to give up on someone — even when they\'ve given up on themselves.',
+    body: 'No one will believe in you more than I do. I\'ve spent 30 years being the person in the corner who refuses to give up on someone — even when they\'ve given up on themselves.',
   },
 ];
 
@@ -41,11 +38,6 @@ const aiPartnershipTestimonials = [
     author: 'Ted, Co-founder, TheoStar Media',
   },
 ];
-
-const businessTestimonial = {
-  quote: "I found the confidence to pursue my dream of owning my own business. Henry's guidance was transformational.",
-  author: 'James T., Business Owner',
-};
 
 const aiPartnershipCoaching = {
   eyebrow: 'THE FLAGSHIP PROGRAM',
@@ -64,57 +56,38 @@ const aiPartnershipCoaching = {
   ctaLabel: 'Book Your AI Partnership Session',
 };
 
-const businessCoaching = {
-  eyebrow: 'FOR ORGANIZATIONS',
-  title: 'Business Coaching',
-  emoji: '🏢',
-  color: '#F0FDF4',
-  border: '#A7F3D0',
-  description:
-    'Whether you\'re launching a new venture, scaling a growing team, or steering a turnaround, I bring 24+ years of senior management experience to help you lead with clarity and confidence.',
-  items: [
-    'Business startup guidance',
-    'Growth management strategies',
-    'Business turnarounds',
-    'Leadership development',
-    'Team dynamics & culture',
-    'Strategic planning',
-  ],
-  ctaLabel: 'Book a Business Consultation',
-};
-
 const faqs = [
   {
-    q: 'What services do you offer?',
-    a: 'I coach business owners and individuals. For business owners: coaching in growth management, turnarounds, and business startups. For individuals: working through career transitions, career growth, and those seeking greater peace and happiness in their lives.',
+    q: 'What happens during the two-hour session?',
+    a: "We start where you are — not where I think you should be. You'll bring one real business challenge you're sitting on, and by the end of two hours, you'll have worked through it with AI as your thinking partner. Along the way, you'll see exactly why AI has felt generic or frustrating before, and what changes when you show up as the senior partner instead of a confused student. Most people say something shifts around the twenty-minute mark. That's the moment we're building toward.",
   },
   {
-    q: 'How much do the services cost?',
-    a: 'Coaching is available per session or in monthly packages with a discount for 1 or 3 month commitments. Pricing is discussed during your free 30-minute consultation — no pressure, just a conversation.',
+    q: 'Do I need any technical experience or AI background?',
+    a: "None. If you've been running a business for any length of time, you already have everything you need. The problem was never your intelligence — it was that nobody showed you the right relationship to have with AI before handing you the tool. That's what this session fixes.",
   },
   {
-    q: 'What industries do you serve?',
-    a: 'I work with individuals from all backgrounds and industries. As I have a technical background, I especially understand the demands of technical professions.',
+    q: 'What do I walk away with?',
+    a: 'Three things. A working AI setup built specifically around your business. A real problem worked through — not theoretically, but actually. And a completely different understanding of what AI can do when you govern the relationship instead of chasing it. Most clients say this session alone changes how they think about AI permanently.',
   },
   {
-    q: 'What is your experience level?',
-    a: "I've been coaching for 30 years. My background is in building successful companies and working at several different companies in senior management and project management positions. I've been helping individuals all my life. I am your champion — no one will believe in you more.",
+    q: 'How is this different from just using AI on my own?',
+    a: "When you use AI on your own, you're guessing. You get generic answers because AI doesn't know your business, your industry, or your judgment. In two hours, we fix that foundation — and then you see what's actually possible. It's the difference between handing someone a chainsaw and telling them to go collect wood, versus showing them how to use it safely and watching them build something remarkable.",
   },
   {
-    q: 'How do I get started?',
-    a: 'Simply book a free 30-minute session through Calendly. We\'ll discuss your goals, challenges, and how coaching can help. There\'s no commitment required.',
+    q: 'How many people can attend?',
+    a: "The session is designed for one person — you. Occasionally a business partner or key employee joins, and that works well when both people are genuinely involved in the business problem we're solving. If you're thinking about bringing someone, reach out first and we'll talk through whether it makes sense.",
+  },
+  {
+    q: 'What happens after the session?',
+    a: "That's up to you. Some clients take what they've built and run with it on their own — and that's a win. Others want to keep building, and we set up an ongoing coaching relationship where each session adds another layer. The AI partnership compounds over time. The more context it carries, the more useful it becomes. Either way, you leave the session with something real — not a promise of what's possible someday.",
   },
 ];
 
-function TestimonialQuote({ quote, author, variant = 'light' }: { quote: string; author: string; variant?: 'light' | 'dark' }) {
+function TestimonialQuote({ quote, author }: { quote: string; author: string }) {
   return (
     <View style={styles.testimonialQuote}>
-      <Text style={variant === 'dark' ? styles.testimonialQuoteTextDark : styles.testimonialQuoteText}>
-        &ldquo;{quote}&rdquo;
-      </Text>
-      <Text style={variant === 'dark' ? styles.testimonialQuoteAuthorDark : styles.testimonialQuoteAuthor}>
-        — {author}
-      </Text>
+      <Text style={styles.testimonialQuoteText}>&ldquo;{quote}&rdquo;</Text>
+      <Text style={styles.testimonialQuoteAuthor}>— {author}</Text>
     </View>
   );
 }
@@ -136,9 +109,8 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
   );
 }
 
-export default function CoachingScreen() {
+export default function AiPartnershipScreen() {
   const { isDesktop, isTablet, isWeb, isMobile } = useResponsive();
-  const router = useRouter();
 
   const handleBook = () => {
     Linking.openURL('https://calendly.com/h-mengoli/30min');
@@ -171,23 +143,13 @@ export default function CoachingScreen() {
           style={styles.pageHeader}
         >
           <View style={styles.headerInner}>
-            <Text style={styles.pageEyebrow}>COACHING SERVICES</Text>
-            <Text style={styles.pageTitle}>My Approach</Text>
+            <Text style={styles.pageEyebrow}>AI PARTNERSHIP COACHING</Text>
+            <Text style={styles.pageTitle}>I don't follow a script. I follow you.</Text>
             <Text style={styles.pageSubtitle}>
-              After 30 years of coaching I've learned one thing above everything else — lasting change doesn't come from following someone else's rules. It comes from finding your own!
+              After 30 years of business experience I've learned one thing above everything else — the right relationship changes everything. That's as true with AI as it is with people. I don't teach you prompts. I teach you how to show up as the senior partner in the most powerful business relationship available to you right now.
             </Text>
           </View>
         </LinearGradient>
-
-        {/* Twelve Rules redirect notice */}
-        <View style={styles.rulesNotice}>
-          <Text style={styles.rulesNoticeText}>
-            Looking for Henry's Twelve Rules for Life?{' '}
-          </Text>
-          <TouchableOpacity onPress={() => router.push('/(tabs)/twelve-rules' as any)} activeOpacity={0.7}>
-            <Text style={styles.rulesNoticeLink}>Find them here.</Text>
-          </TouchableOpacity>
-        </View>
 
         {/* My Approach */}
         <View style={styles.approachSection}>
@@ -215,7 +177,7 @@ export default function CoachingScreen() {
         {/* Services intro */}
         <View style={styles.servicesIntro}>
           <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
-          <Text style={styles.sectionTitle3}>Services designed for real change.</Text>
+          <Text style={styles.sectionTitle3}>One session that changes how you work forever.</Text>
         </View>
 
         {/* AI Partnership Coaching — flagship */}
@@ -241,7 +203,7 @@ export default function CoachingScreen() {
           </View>
           <View style={styles.flagshipTestimonials}>
             {aiPartnershipTestimonials.map((t, i) => (
-              <TestimonialQuote key={i} quote={t.quote} author={t.author} variant="dark" />
+              <TestimonialQuote key={i} quote={t.quote} author={t.author} />
             ))}
           </View>
           <TouchableOpacity style={styles.flagshipCtaBtn} onPress={handleBook} activeOpacity={0.85}>
@@ -249,32 +211,6 @@ export default function CoachingScreen() {
             <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>
-
-        {/* Business Coaching */}
-        <View style={styles.serviceSection}>
-          <View
-            style={[
-              styles.serviceSectionCard,
-              { backgroundColor: businessCoaching.color, borderColor: businessCoaching.border },
-            ]}
-          >
-            <Text style={styles.serviceSectionEyebrow}>{businessCoaching.eyebrow}</Text>
-            <Text style={styles.serviceEmoji}>{businessCoaching.emoji}</Text>
-            <Text style={styles.serviceSectionTitle}>{businessCoaching.title}</Text>
-            <Text style={styles.serviceSectionDescription}>{businessCoaching.description}</Text>
-            {businessCoaching.items.map((item, j) => (
-              <View key={j} style={styles.serviceItem}>
-                <View style={styles.serviceDot} />
-                <Text style={styles.serviceItemText}>{item}</Text>
-              </View>
-            ))}
-            <TestimonialQuote quote={businessTestimonial.quote} author={businessTestimonial.author} />
-            <TouchableOpacity style={styles.serviceSectionCtaBtn} onPress={handleBook} activeOpacity={0.85}>
-              <Text style={styles.serviceSectionCtaBtnText}>{businessCoaching.ctaLabel}</Text>
-              <ArrowRight size={16} color="#FFFFFF" />
-            </TouchableOpacity>
-          </View>
-        </View>
 
         {/* Pricing */}
         <View style={styles.pricingSection}>
@@ -311,17 +247,28 @@ export default function CoachingScreen() {
           {faqs.map((f, i) => <FaqItem key={i} item={f} />)}
         </View>
 
+        {/* Photo */}
+        <View style={styles.photoSection}>
+          <View style={styles.photoWrapper}>
+            <Image
+              source={{ uri: 'https://storage.googleapis.com/blink-core-storage/projects/mindful-horizons-app-er6kbt7g/profile/henry-bio-pic-1777433838206_png/9874e260-0c37-4593-83f0-0cd9a5799f4f.png' }}
+              style={styles.photoImage}
+              resizeMode="cover"
+            />
+          </View>
+        </View>
+
         {/* CTA */}
         <LinearGradient
           colors={['#1B4332', '#0D1F18']}
           style={styles.ctaSection}
         >
-          <Text style={styles.ctaTitle}>Ready to take your business{'\n'}to the next level?</Text>
+          <Text style={styles.ctaTitle}>Ready to stop guessing{'\n'}and start leading?</Text>
           <Text style={styles.ctaBody}>
-            Get in touch today and receive a complimentary session.
+            In two hours, you'll have a working AI partnership built around your business — and a real problem solved. Not a demo. Not a promise. The real thing.
           </Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Request a Session</Text>
+            <Text style={styles.ctaBtnText}>Book Your Free 30-Minute Audit</Text>
             <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>
@@ -349,26 +296,6 @@ const styles = StyleSheet.create({
     letterSpacing: -0.5, marginBottom: 12,
   },
   pageSubtitle: { fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 26, fontStyle: 'italic' },
-
-  // Rules redirect notice
-  rulesNotice: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 24,
-    backgroundColor: '#F0FDF4',
-    borderBottomWidth: 1,
-    borderBottomColor: '#D1FAE5',
-    flexWrap: 'wrap',
-  },
-  rulesNoticeText: { fontSize: 14, color: '#374151', textAlign: 'center' },
-  rulesNoticeLink: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#1B4332',
-    textDecorationLine: 'underline' as const,
-  },
 
   sectionHeader: {
     maxWidth: maxW,
@@ -413,7 +340,7 @@ const styles = StyleSheet.create({
   approachCardTitle: { fontSize: 17, fontWeight: '700', color: '#1B4332', marginBottom: 8 },
   approachCardBody: { fontSize: 14, color: '#6B7280', lineHeight: 22 },
 
-  // Testimonials (inline quote blocks under each service section)
+  // Testimonials (inline quote blocks, dark background)
   flagshipTestimonials: {
     gap: 4,
     marginBottom: 8,
@@ -425,15 +352,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   testimonialQuoteText: {
-    fontSize: 15, color: '#4B5563', lineHeight: 24,
-    fontStyle: 'italic', marginBottom: 8,
-  },
-  testimonialQuoteAuthor: { fontSize: 13, color: '#9CA3AF', fontWeight: '600' },
-  testimonialQuoteTextDark: {
     fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 24,
     fontStyle: 'italic', marginBottom: 8,
   },
-  testimonialQuoteAuthorDark: { fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: '600' },
+  testimonialQuoteAuthor: { fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: '600' },
 
   // Services intro
   servicesIntro: {
@@ -486,34 +408,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16, borderRadius: 12,
   },
   flagshipCtaBtnText: { color: '#1B4332', fontWeight: '700', fontSize: 16 },
-
-  // Business Coaching section
-  serviceSection: {
-    paddingHorizontal: 24, paddingVertical: 24,
-  },
-  serviceSectionCard: {
-    maxWidth: maxW, alignSelf: 'center', width: '100%',
-    borderRadius: 16, padding: 28, borderWidth: 1,
-  },
-  serviceSectionEyebrow: {
-    fontSize: 11, fontWeight: '700', color: '#1B4332',
-    letterSpacing: 2, marginBottom: 10,
-  },
-  serviceEmoji: { fontSize: 32, marginBottom: 12 },
-  serviceSectionTitle: { fontSize: isWeb ? 26 : 22, fontWeight: '800', color: '#1C1917', marginBottom: 12 },
-  serviceSectionDescription: { fontSize: 15, color: '#4B5563', lineHeight: 24, marginBottom: 18 },
-  serviceItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 8 },
-  serviceDot: {
-    width: 6, height: 6, borderRadius: 3, backgroundColor: '#1B4332',
-    marginTop: 8, flexShrink: 0,
-  },
-  serviceItemText: { fontSize: 14, color: '#4B5563', lineHeight: 22, flex: 1 },
-  serviceSectionCtaBtn: {
-    flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', gap: 8,
-    backgroundColor: '#1B4332', paddingHorizontal: 24,
-    paddingVertical: 14, borderRadius: 12, marginTop: 20,
-  },
-  serviceSectionCtaBtnText: { color: '#FFFFFF', fontWeight: '700', fontSize: 15 },
 
   // Pricing
   pricingSection: {
@@ -593,6 +487,27 @@ const styles = StyleSheet.create({
   faqQ: { flex: 1, fontSize: 15, fontWeight: '600', color: '#1C1917', lineHeight: 22 },
   faqA: { fontSize: 14, color: '#4B5563', lineHeight: 24, marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: '#D1FAE5' },
 
+  // Photo
+  photoSection: {
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingBottom: 8,
+  },
+  photoWrapper: {
+    borderRadius: 120,
+    overflow: 'hidden',
+    width: 160,
+    height: 160,
+    borderWidth: 4,
+    borderColor: '#D4A96A',
+    shadowColor: '#1B4332',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  photoImage: { width: 160, height: 160 },
+
   // CTA
   ctaSection: { paddingHorizontal: 24, paddingVertical: 52, alignItems: 'center' },
   ctaTitle: {
@@ -602,6 +517,7 @@ const styles = StyleSheet.create({
   ctaBody: {
     fontSize: 16, color: 'rgba(255,255,255,0.7)',
     textAlign: 'center', marginBottom: 28, lineHeight: 26,
+    maxWidth: 560,
   },
   ctaBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
