@@ -95,6 +95,17 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
 
+        {/* 12 Rules Modal Trigger — floats just below the nav bar */}
+        <View style={styles.rulesTriggerSection}>
+          <TouchableOpacity
+            style={styles.rulesTriggerBtn}
+            onPress={() => setRulesModalOpen(true)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.rulesTriggerBtnText}>Henry's 12 Rules for Life</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Hero Section */}
         <LinearGradient
           colors={['#1B4332', '#2D6A4F', '#40916C']}
@@ -203,17 +214,6 @@ export default function HomeScreen() {
             </View>
           </View>
         </LinearGradient>
-
-        {/* 12 Rules Modal Trigger */}
-        <View style={styles.rulesTriggerSection}>
-          <TouchableOpacity
-            style={styles.rulesTriggerBtn}
-            onPress={() => setRulesModalOpen(true)}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.rulesTriggerBtnText}>Henry's 12 Rules for Life</Text>
-          </TouchableOpacity>
-        </View>
 
         {/* Stats Bar */}
         <View style={styles.statsBar}>
@@ -541,20 +541,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  // 12 Rules modal trigger
+  // 12 Rules modal trigger — floats just below the nav bar, overlapping the hero
   rulesTriggerSection: {
     alignItems: 'flex-end',
     paddingHorizontal: 24,
-    paddingVertical: 16,
-    backgroundColor: '#FDFCF9',
+    paddingTop: 12,
+    marginBottom: -22,
+    zIndex: 10,
+    position: 'relative',
   },
   rulesTriggerBtn: {
-    backgroundColor: '#F0FDF4',
-    borderWidth: 1,
-    borderColor: '#A7F3D0',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 100,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    elevation: 8,
   },
   rulesTriggerBtnText: {
     color: '#1B4332',

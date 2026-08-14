@@ -31,7 +31,7 @@ const approachPillars = [
 const aiPartnershipTestimonials = [
   {
     quote: "I'd tried AI and written it off. Henry showed me something different in about twenty minutes. When I read what came back I said: that actually sounds like us. I haven't looked at AI the same way since.",
-    author: 'Commercial Racking Consultant, 10 years industry experience',
+    author: 'Ted, Co-founder, TheoStar Media',
   },
 ];
 
