@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { label: 'Home', href: '/(tabs)/' },
   { label: 'About', href: '/(tabs)/about' },
   { label: 'AI Partnership', href: '/(tabs)/ai-partnership' },
-  { label: 'Business Coaching', href: '/(tabs)/business-coaching' },
   { label: 'Find Your Type', href: '/(tabs)/quiz' },
   { label: 'Contact', href: '/(tabs)/contact' },
 ];

@@ -79,6 +79,15 @@ export default function AboutScreen() {
           </View>
         </LinearGradient>
 
+        {/* 12 Rules Modal Trigger — highlight bar */}
+        <TouchableOpacity
+          style={styles.rulesBar}
+          onPress={() => setRulesModalOpen(true)}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.rulesBarText}>View Henry's 12 Rules for Life</Text>
+        </TouchableOpacity>
+
         {/* Bio Section */}
         <View style={styles.bioSection}>
           {/* Profile Image Placeholder */}
@@ -119,14 +128,6 @@ export default function AboutScreen() {
 
           <TouchableOpacity style={styles.bioBtn} onPress={handleBook} activeOpacity={0.85}>
             <Text style={styles.bioBtnText}>Book Your Mindful AI Partnership Session →</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.rulesLinkWrapper}
-            onPress={() => setRulesModalOpen(true)}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.rulesLinkText}>View Henry's 12 Rules for Life</Text>
           </TouchableOpacity>
         </View>
 
@@ -366,13 +367,18 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
-  rulesLinkWrapper: {
-    alignSelf: 'center',
-    marginTop: 16,
+  rulesBar: {
+    backgroundColor: '#F0FDF4',
+    borderBottomWidth: 1,
+    borderBottomColor: '#D1FAE5',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    alignItems: 'center',
   },
-  rulesLinkText: {
-    fontSize: 13,
-    color: '#6B7280',
+  rulesBarText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#1B4332',
     textDecorationLine: 'underline' as const,
   },
   sectionBody: {

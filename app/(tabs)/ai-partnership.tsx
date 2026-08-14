@@ -30,12 +30,8 @@ const approachPillars = [
 
 const aiPartnershipTestimonials = [
   {
-    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business — not like everyone else's. This is well beyond what I thought it could do.",
-    author: 'Commercial Racking Consultant, 10 years industry experience',
-  },
-  {
     quote: "I'd tried AI and written it off. Henry showed me something different in about twenty minutes. When I read what came back I said: that actually sounds like us. I haven't looked at AI the same way since.",
-    author: 'Ted, Co-founder, TheoStar Media',
+    author: 'Commercial Racking Consultant, 10 years industry experience',
   },
 ];
 
@@ -155,7 +151,7 @@ export default function AiPartnershipScreen() {
         <View style={styles.approachSection}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
-            <Text style={styles.approachTitle}>I don't follow a script. I follow you.</Text>
+            <Text style={styles.approachTitle}>The approach that changes everything.</Text>
             <Text style={styles.approachBody}>
               After 30 years of coaching, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are — right now, in this moment.
             </Text>

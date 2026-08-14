@@ -42,19 +42,9 @@ const stats = [
 
 const testimonials = [
   {
-    quote: 'You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career.',
-    author: 'Sarah M.',
-    role: 'Marketing Executive',
-  },
-  {
-    quote: 'I found the confidence to pursue my dream of owning my own business. Henry\'s guidance was transformational.',
-    author: 'James T.',
-    role: 'Entrepreneur',
-  },
-  {
-    quote: 'Henry believed in me from day one. His coaching style is honest, supportive, and results-driven.',
-    author: 'Lisa R.',
-    role: 'Career Transition Client',
+    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business — not like everyone else's. This is well beyond what I thought it could do.",
+    author: 'Commercial Racking Consultant',
+    role: '10 years industry experience',
   },
 ];
 
@@ -214,16 +204,6 @@ export default function HomeScreen() {
           </View>
         </LinearGradient>
 
-        {/* Stats Bar */}
-        <View style={styles.statsBar}>
-          {stats.map((s, i) => (
-            <View key={i} style={[styles.statItem, i < stats.length - 1 && styles.statBorder]}>
-              <Text style={styles.statValue}>{s.value}</Text>
-              <Text style={styles.statLabel}>{s.label}</Text>
-            </View>
-          ))}
-        </View>
-
         {/* 12 Rules Modal Trigger */}
         <View style={styles.rulesTriggerSection}>
           <TouchableOpacity
@@ -233,6 +213,16 @@ export default function HomeScreen() {
           >
             <Text style={styles.rulesTriggerBtnText}>Henry's 12 Rules for Life</Text>
           </TouchableOpacity>
+        </View>
+
+        {/* Stats Bar */}
+        <View style={styles.statsBar}>
+          {stats.map((s, i) => (
+            <View key={i} style={[styles.statItem, i < stats.length - 1 && styles.statBorder]}>
+              <Text style={styles.statValue}>{s.value}</Text>
+              <Text style={styles.statLabel}>{s.label}</Text>
+            </View>
+          ))}
         </View>
 
         {/* Pain Points Section */}
@@ -321,7 +311,7 @@ export default function HomeScreen() {
 
         {/* Testimonials */}
         <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>4
+          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
           <Text style={styles.sectionTitle}>Highly rated & recommended</Text>
           {testimonials.map((t, i) => (
             <View key={i} style={styles.testimonialCard}>
@@ -553,21 +543,23 @@ const styles = StyleSheet.create({
 
   // 12 Rules modal trigger
   rulesTriggerSection: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     paddingHorizontal: 24,
-    paddingTop: 32,
+    paddingVertical: 16,
+    backgroundColor: '#FDFCF9',
   },
   rulesTriggerBtn: {
-    borderWidth: 1.5,
-    borderColor: '#1B4332',
-    paddingHorizontal: 24,
-    paddingVertical: 12,
+    backgroundColor: '#F0FDF4',
+    borderWidth: 1,
+    borderColor: '#A7F3D0',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderRadius: 100,
   },
   rulesTriggerBtnText: {
     color: '#1B4332',
     fontWeight: '700',
-    fontSize: 14,
+    fontSize: 13,
   },
 
   // Sections
