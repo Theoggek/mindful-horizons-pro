@@ -2,7 +2,7 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, Award, Users, Heart, Star, Quote, CheckCircle } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, Award, Users, Heart, CheckCircle } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
@@ -12,7 +12,7 @@ const isWeb = Platform.OS === 'web'; // used in StyleSheet.create (module-level,
 const maxW = 800;
 
 const credentials = [
-  { icon: '🎓', title: '30 Years Coaching', desc: 'Proven experience transforming lives and businesses' },
+  { icon: '🎓', title: '30 Years Business Experience', desc: '30 years of business experience building and advising companies' },
   { icon: '🏢', title: 'Senior Management', desc: 'Background in building successful companies' },
   { icon: '🛠', title: 'Technical Background', desc: 'Deep understanding of technical professional demands' },
   { icon: '♿', title: 'Lived Experience', desc: 'Personal journey with disability informs empathetic coaching' },
@@ -28,7 +28,7 @@ const values = [
   },
   {
     title: 'Your Personal Champion',
-    desc: "You won't find a stronger, more supportive personal coach. When I get behind you, you can accomplish or work through any situation. \"I believe in you from day one.\"",
+    desc: "No one will believe in you more than I do. When I get behind you, you can work through any AI challenge or business obstacle in your way. \"I believe in you from day one.\"",
     icon: '🏆',
     color: '#FEF3C7',
     borderColor: '#FDE68A',
@@ -111,7 +111,7 @@ export default function AboutScreen() {
             Living with a disability has taught me what it means to navigate change, to advocate for what you need, and to find your way forward when the path isn't obvious. That experience shaped how I coach. I don't come in with the right answer already loaded. I come in to understand where you are, and to help you see what you can't yet see in yourself.
           </Text>
           <Text style={styles.bioText}>
-            When AI came along, I brought that same approach to it. I didn't hand it off to a technical expert and wait for results. I built a working partnership with it myself — including developing Luxalma, a productivity app for ADHD, entirely through AI partnership. No development team. Antiquated coding background. Just thirty years of business judgment and lived experience, applied to a new kind of relationship.
+            When AI came along, I brought that same approach to it. I didn't hand it off to a technical expert and wait for results. I built a working partnership with it myself — including developing Luxalma, a productivity app for ADHD, entirely through AI partnership. No development team. A decades-old coding background. Just thirty years of business judgment and lived experience, applied to a new kind of relationship.
           </Text>
           <Text style={styles.bioText}>
             That's what I teach now.
@@ -148,23 +148,30 @@ export default function AboutScreen() {
           </View>
         </View>
 
-        {/* Story - Experience */}
+        {/* Story - AI Experience */}
         <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>THE EXPERIENCE DIFFERENCE</Text>
+          <Text style={styles.sectionEyebrow}>THE AI EXPERIENCE</Text>
           <Text style={styles.sectionTitle}>I've been there too.</Text>
 
           <View style={styles.storyCard}>
             <Text style={styles.storyText}>
-              Has work become a stress-filled battleground? Is the joy in your life gone? Ready for change but unsure how to begin?
+              Have you tried AI and gotten back answers that sounded like they could have been written for anyone? Generic. Hollow. Nothing like your business? I understand — because I've been there. I spent time figuring out why AI wasn't working the way everyone promised it would. What I discovered changed everything — and it's what I teach now.
             </Text>
             <Text style={styles.storyText}>
-              I understand because I've been there. Through my own journey and 30 years of coaching others, I've developed proven techniques that create real results. Let me help you overcome your obstacles and rediscover joy in your life and career.
+              The problem was never the technology. It was the relationship. AI doesn't know your business, your judgment, or your 30 years of hard-won experience — until you teach it. Once I understood that, everything shifted. The answers got specific. The thinking got sharper. And I stopped feeling like I was fighting a tool that was supposed to be helping me.
             </Text>
           </View>
+        </View>
 
-          <Text style={styles.sectionEyebrow2}>CREATING SAFE SPACES</Text>
+        {/* AI as a Thinking Partner */}
+        <View style={styles.section}>
+          <Text style={styles.sectionEyebrow}>AI AS A THINKING PARTNER</Text>
+          <Text style={styles.sectionTitle}>A judgment-free space to figure this out.</Text>
           <Text style={styles.storyBody}>
-            I have been creating safe spaces for people to dare to believe in themselves for quite some time. Unbiased and non-judgmental, I provide an environment where dreams can flourish and where you can freely share the things that give you hope and joy. Together, we'll transform these dreams into reality.
+            Learning something new is uncomfortable — especially when everyone around you seems to already have it figured out. I've built a space where you can ask the questions you're afraid to ask, try things that might not work, and build at your own pace. No judgment. No jargon. Just you, me, and an AI that's going to surprise you with what it can do when you show up as the senior partner.
+          </Text>
+          <Text style={styles.storyBody}>
+            Most of my clients come in frustrated — not with themselves, but with the gap between what AI promised and what it actually delivered. That frustration is valid. And it usually disappears within the first twenty minutes of our session. Not because AI suddenly got better. Because they did.
           </Text>
         </View>
 
@@ -183,45 +190,15 @@ export default function AboutScreen() {
           ))}
         </View>
 
-        {/* Highly Rated */}
-        <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>CLIENT TESTIMONIALS</Text>
-          <Text style={styles.sectionTitle}>Highly rated & recommended</Text>
-          <Text style={styles.sectionBody}>
-            I have experience helping people overcome life and work challenges. Here's what clients say:
-          </Text>
-
-          <View style={styles.testimonialCard}>
-            <Quote size={20} color="#D4A96A" />
-            <Text style={styles.testimonialText}>
-              "You helped me change my life by giving me the tools to overcome my fear of public speaking and finally pursue my dream career."
-            </Text>
-            <View style={styles.stars}>
-              {[1, 2, 3, 4, 5].map(s => <Star key={s} size={14} color="#D4A96A" fill="#D4A96A" />)}
-            </View>
-          </View>
-
-          <View style={styles.testimonialCard}>
-            <Quote size={20} color="#D4A96A" />
-            <Text style={styles.testimonialText}>
-              "I found the confidence to pursue my dream of owning my own business."
-            </Text>
-            <View style={styles.stars}>
-              {[1, 2, 3, 4, 5].map(s => <Star key={s} size={14} color="#D4A96A" fill="#D4A96A" />)}
-            </View>
-          </View>
-        </View>
-
         {/* CTA */}
         <LinearGradient
           colors={['#1B4332', '#0D1F18']}
           style={styles.ctaSection}
         >
-          <Text style={styles.ctaTitle}>Ready to create a life with{'\n'}more purpose and joy?</Text>
-          <Text style={styles.ctaBody}>Get in touch today and receive a complimentary consultation.</Text>
+          <Text style={styles.ctaTitle}>Ready to stop being left behind?</Text>
+          <Text style={styles.ctaBody}>One conversation is all it takes to change how you see AI — and how it works for your business.</Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Request a Consultation</Text>
-            <ArrowRight size={18} color="#1B4332" />
+            <Text style={styles.ctaBtnText}>Request a Free Session →</Text>
           </TouchableOpacity>
         </LinearGradient>
 
@@ -320,14 +297,6 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     marginBottom: 10,
   },
-  sectionEyebrow2: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#D4A96A',
-    letterSpacing: 2,
-    marginBottom: 10,
-    marginTop: 24,
-  },
   sectionTitle: {
     fontSize: isWeb ? 34 : 26,
     fontWeight: '800',
@@ -380,12 +349,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#1B4332',
     textDecorationLine: 'underline' as const,
-  },
-  sectionBody: {
-    fontSize: 16,
-    color: '#4B5563',
-    lineHeight: 26,
-    marginBottom: 20,
   },
 
   // Credentials
@@ -456,6 +419,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#4B5563',
     lineHeight: 26,
+    marginBottom: 12,
   },
 
   // Values
@@ -491,29 +455,6 @@ const styles = StyleSheet.create({
     color: '#4B5563',
     lineHeight: 22,
   },
-
-  // Testimonials
-  testimonialCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 20,
-    marginBottom: 14,
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  testimonialText: {
-    fontSize: 15,
-    color: '#374151',
-    lineHeight: 24,
-    fontStyle: 'italic',
-    marginVertical: 12,
-  },
-  stars: { flexDirection: 'row', gap: 2 },
 
   // CTA
   ctaSection: {
