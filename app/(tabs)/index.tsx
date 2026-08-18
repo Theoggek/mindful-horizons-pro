@@ -18,11 +18,11 @@ const maxW = 800;
 //const VIDEO_ID = '5VXBjs2hrSg';
 
 const painPoints = [
-  'Feeling stuck or lost despite outward success?',
-  'Struggling with ADHD, a disability or health challenge affecting your work?',
-  'Tried therapy but felt it wasn\'t enough?',
-  'Running a business but losing the personal side of life?',
-  'Ready for real change but unsure where to start?',
+  "You tried AI and got answers that could have been written for anyone",
+  "You're watching competitors use AI and feeling left behind",
+  "You built something with AI and it broke — and you don't know why",
+  "You know AI should be helping your business but you don't know where to start",
+  "You're ready to stop guessing and start building something real",
 ];
 
 const aiUserTypes = [
@@ -35,9 +35,9 @@ const aiUserTypes = [
 ];
 
 const stats = [
-  { value: '30', label: 'Years' },
-  { value: '100+', label: 'Lives Changed' },
-  { value: '100%', label: 'Commitment' },
+  { value: '30 Years', label: 'Business Experience' },
+  { value: '100,000+', label: 'Words in Active AI Partnership' },
+  { value: '7 Countries', label: 'Reached in Month One' },
 ];
 
 const testimonials = [
@@ -124,7 +124,7 @@ export default function HomeScreen() {
               Most experienced business owners who've tried AI and walked away didn't fail because they weren't smart enough. They failed because nobody showed them the right relationship to have with it. That's what I do.
             </Text>
             <Text style={styles.heroTagline}>
-              I help mid-career professionals and small business owners break through what's holding them back.
+              I teach experienced business owners how to be the senior partner in the most powerful business relationship available to them right now.
             </Text>
 
             {/* Quiz CTA — most visually dominant element */}
@@ -230,7 +230,7 @@ export default function HomeScreen() {
           <Text style={styles.sectionEyebrow}>DO ANY OF THESE SOUND FAMILIAR?</Text>
           <Text style={styles.sectionTitle}>You're not alone.</Text>
           <Text style={styles.sectionBody}>
-            Many high-achievers reach a point where outward success no longer feels fulfilling. If you answered yes to any of the following, I can help.
+            Most experienced business owners have tried AI at least once. Many walked away frustrated. If any of these sound like you, I can help.
           </Text>
           <View style={styles.painList}>
             {painPoints.map((p, i) => (
@@ -279,32 +279,27 @@ export default function HomeScreen() {
         {/* What I Offer */}
         <View style={styles.offerSection}>
           <View style={styles.offerSectionHeader}>
-            <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
-            <Text style={styles.sectionTitleLight}>Real change. Real results.</Text>
+            <Text style={styles.sectionEyebrow}>WHAT YOU WALK AWAY WITH</Text>
+            <Text style={styles.sectionTitleLight}>Not a tutorial. A partnership.</Text>
             <Text style={styles.sectionBodyLight}>
-              Lasting change doesn't come from following someone else's rules. It comes from finding your own. After 30 years, I've developed proven techniques that create genuine transformation.
+              Every session is built around your business, your goals, and your biggest challenge right now. Here's what you take with you when we're done.
             </Text>
           </View>
           <View style={styles.offerGrid}>
             <View style={styles.offerCard}>
+              <Text style={styles.offerEmoji}>⚙️</Text>
+              <Text style={styles.offerCardTitle}>A Working AI Setup</Text>
+              <Text style={styles.offerCardText}>Built specifically around your business — not a generic template. Your language, your industry, your judgment baked in from the first session.</Text>
+            </View>
+            <View style={styles.offerCard}>
               <Text style={styles.offerEmoji}>🎯</Text>
-              <Text style={styles.offerCardTitle}>Career Transitions</Text>
-              <Text style={styles.offerCardText}>Navigate pivotal career shifts with clarity and confidence.</Text>
+              <Text style={styles.offerCardTitle}>A Real Problem Solved</Text>
+              <Text style={styles.offerCardText}>Not a demo of what's possible someday. An actual business challenge worked through in the room, with you in the driver's seat.</Text>
             </View>
             <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>💼</Text>
-              <Text style={styles.offerCardTitle}>Business Growth</Text>
-              <Text style={styles.offerCardText}>Scale your business while preserving what matters most.</Text>
-            </View>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>🌱</Text>
-              <Text style={styles.offerCardTitle}>Personal Growth</Text>
-              <Text style={styles.offerCardText}>Rediscover purpose, joy, and your authentic self.</Text>
-            </View>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>♿</Text>
-              <Text style={styles.offerCardTitle}>Self-Advocacy</Text>
-              <Text style={styles.offerCardText}>Navigate ADHD and disability challenges in the workplace.</Text>
+              <Text style={styles.offerEmoji}>🔗</Text>
+              <Text style={styles.offerCardTitle}>A Relationship That Compounds</Text>
+              <Text style={styles.offerCardText}>The more context your AI partnership carries, the more useful it becomes. You leave with a foundation that keeps getting stronger every time you use it.</Text>
             </View>
           </View>
         </View>
@@ -312,7 +307,7 @@ export default function HomeScreen() {
         {/* Testimonials */}
         <View style={styles.section}>
           <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
-          <Text style={styles.sectionTitle}>Highly rated & recommended</Text>
+          <Text style={styles.sectionTitle}>WHAT CLIENTS SAY</Text>
           {testimonials.map((t, i) => (
             <View key={i} style={styles.testimonialCard}>
               <View style={styles.testimonialQuoteIcon}>
@@ -335,11 +330,10 @@ export default function HomeScreen() {
           colors={['#1B4332', '#0D1F18']}
           style={styles.finalCta}
         >
-          <Text style={styles.finalCtaTitle}>Ready to create a life{'\n'}with more purpose and joy?</Text>
-          <Text style={styles.finalCtaBody}>Schedule a free consultation today and take the first step toward the life you deserve.</Text>
+          <Text style={styles.finalCtaTitle}>Ready to stop being left behind?</Text>
+          <Text style={styles.finalCtaBody}>One conversation changes how you see AI — and how it works for your business. Thirty minutes. No commitment. No pressure.</Text>
           <TouchableOpacity style={styles.finalCtaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.finalCtaBtnText}>Book Your Free Session</Text>
-            <ArrowRight size={18} color="#1B4332" />
+            <Text style={styles.finalCtaBtnText}>Book Your Free Session →</Text>
           </TouchableOpacity>
           <Text style={styles.finalCtaNote}>No commitment required · 30 minutes · 100% confidential</Text>
         </LinearGradient>
