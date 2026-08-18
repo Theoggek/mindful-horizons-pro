@@ -301,6 +301,11 @@ export default function HomeScreen() {
               <Text style={styles.offerCardTitle}>A Relationship That Compounds</Text>
               <Text style={styles.offerCardText}>The more context your AI partnership carries, the more useful it becomes. You leave with a foundation that keeps getting stronger every time you use it.</Text>
             </View>
+            <View style={styles.offerCard}>
+              <Text style={styles.offerEmoji}>🚀</Text>
+              <Text style={styles.offerCardTitle}>The Confidence to Keep Going</Text>
+              <Text style={styles.offerCardText}>Most people leave genuinely surprised. Not by the technology — by themselves. You'll walk away knowing you can do this. And with a workflow — using your own voice — that makes it easy to keep building from day one.</Text>
+            </View>
           </View>
         </View>
 
