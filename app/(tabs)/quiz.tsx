@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Platform, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -6,6 +6,7 @@ import { ArrowRight, RotateCcw, Check } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
+import { trackEvent } from '@/utils/analytics';
 
 const isWeb = Platform.OS === 'web';
 const maxW = 720;
@@ -202,6 +203,14 @@ export default function QuizScreen() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [result, setResult] = useState<TypeKey | null>(null);
+  // Ensures quiz_start fires once per attempt, even if someone goes Back to question 1.
+  const startedRef = useRef(false);
+
+  // GA4: fires each time a question is shown (initial load, Next, Back, and after Retake).
+  useEffect(() => {
+    if (result !== null) return;
+    trackEvent('quiz_question_view', { question_number: step + 1 });
+  }, [step, result]);
 
   const handleSelect = useCallback((optIdx: number) => {
     setSelectedOption(optIdx);
@@ -212,10 +221,16 @@ export default function QuizScreen() {
     const newAnswers = [...answers, selectedOption];
     setAnswers(newAnswers);
     setSelectedOption(null);
+    if (step === 0 && !startedRef.current) {
+      startedRef.current = true;
+      trackEvent('quiz_start');
+    }
     if (step < QUESTIONS.length - 1) {
       setStep(step + 1);
     } else {
-      setResult(scoreQuiz(newAnswers));
+      const finalType = scoreQuiz(newAnswers);
+      setResult(finalType);
+      trackEvent('quiz_complete', { result_type: TYPES[finalType].title });
     }
   }, [selectedOption, answers, step]);
 
@@ -232,6 +247,7 @@ export default function QuizScreen() {
     setAnswers([]);
     setSelectedOption(null);
     setResult(null);
+    startedRef.current = false;
   }, []);
 
   const handleBook = useCallback(() => {

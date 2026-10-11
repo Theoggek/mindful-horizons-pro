@@ -1,7 +1,7 @@
 //import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
 
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Dimensions } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
@@ -53,36 +53,11 @@ export default function HomeScreen() {
   const { isDesktop, isTablet, isWeb } = useResponsive();
   const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (Platform.OS === 'web') {
-      const script1 = document.createElement('script');
-      script1.async = true;
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-M3XR8YYGWN';
-      document.head.appendChild(script1);
-      const script2 = document.createElement('script');
-      script2.innerHTML = `window.dataLayer = window.dataLayer || [];function gtag(){window.dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-M3XR8YYGWN');`;
-      document.head.appendChild(script2);
-       
-    }
-  }, []);
-
   const handleBook = () => {
 
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };return (
     <>
-      {Platform.OS === 'web' && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-M3XR8YYGWN');
-            `
-          }}
-        />
-      )}
       <SafeAreaView style={styles.safeArea} edges={['top']}>
         {/* Web NavBar (desktop/tablet) or sticky mobile nav */}
         {isDesktop || isTablet ? (

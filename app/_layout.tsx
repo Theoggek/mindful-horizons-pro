@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BlinkProvider, createTamagui, tamaguiDefaultConfig, Theme, BlinkToastProvider } from '@blinkdotnew/mobile-ui';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
+import { initGA } from '@/utils/analytics';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +51,11 @@ export default function RootLayout() {
         ((window as any).clarity.q = (window as any).clarity.q || []).push(args);
       };
     })();
+  }, []);
+
+  useEffect(() => {
+    // Google Analytics GA4 — loaded once here so it runs on every page
+    initGA();
   }, []);
 
   return (
