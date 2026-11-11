@@ -5,6 +5,13 @@ const GA_MEASUREMENT_ID = 'G-M3XR8YYGWN';
 
 let initialized = false;
 
+// The home route redirects client-side, which drops the query string (including
+// utm_* tags) from the address bar before GA4 reads it. Capture the URL the
+// visitor actually arrived on, while this module loads and before any redirect
+// runs, and hand it to GA4 so campaign tags are attributed correctly.
+const ENTRY_URL =
+  Platform.OS === 'web' && typeof window !== 'undefined' ? window.location.href : undefined;
+
 // Loads gtag.js and configures GA4 once per page load. Safe to call repeatedly.
 export function initGA() {
   if (Platform.OS !== 'web' || typeof window === 'undefined' || initialized) return;
@@ -22,7 +29,11 @@ export function initGA() {
     w.dataLayer.push(arguments);
   };
   w.gtag('js', new Date());
-  w.gtag('config', GA_MEASUREMENT_ID);
+  if (ENTRY_URL) {
+    w.gtag('config', GA_MEASUREMENT_ID, { page_location: ENTRY_URL });
+  } else {
+    w.gtag('config', GA_MEASUREMENT_ID);
+  }
 }
 
 // Sends a GA4 event. Initializes GA4 first so events fired by a screen's
