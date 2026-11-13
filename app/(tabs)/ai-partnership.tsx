@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useResponsive } from '@/hooks/useResponsive';
+import { trackEvent } from '@/utils/analytics';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
 
@@ -109,6 +110,7 @@ export default function AiPartnershipScreen() {
   const { isDesktop, isTablet, isWeb, isMobile } = useResponsive();
 
   const handleBook = () => {
+    trackEvent('book_call_click', { location: 'ai_partnership' });
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
 

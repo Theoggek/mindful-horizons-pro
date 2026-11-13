@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowRight, Award, Users, Heart, CheckCircle } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
+import { trackEvent } from '@/utils/analytics';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
 import { TwelveRulesModal } from '@/components/TwelveRulesModal';
@@ -47,6 +48,7 @@ export default function AboutScreen() {
   const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   const handleBook = () => {
+    trackEvent('book_call_click', { location: 'about' });
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
 
