@@ -2,6 +2,7 @@ import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowRight, Mail, Phone } from '@blinkdotnew/mobile-ui';
 import { useResponsive } from '@/hooks/useResponsive';
+import { trackEvent } from '@/utils/analytics';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
 
@@ -12,14 +13,17 @@ export default function ContactScreen() {
   const { isDesktop, isTablet } = useResponsive();
 
   const handleBook = () => {
+    trackEvent('book_call_click', { location: 'contact' });
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };
 
   const handleEmail = () => {
+    trackEvent('email_click', { location: 'contact' });
     Linking.openURL('mailto:contact@mindful-horizons.com');
   };
 
   const handlePhone = () => {
+    trackEvent('phone_click', { location: 'contact' });
     Linking.openURL('tel:2624451273');
   };
 

@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Check, ArrowRight, ChevronRight, Star, Quote } from '@blinkdotnew/mobile-ui';
 import { useRouter } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
+import { trackEvent } from '@/utils/analytics';
 import { WebNavBar } from '@/components/WebNavBar';
 import { MobileNavBar } from '@/components/MobileNavBar';
 import { TwelveRulesModal } from '@/components/TwelveRulesModal';
@@ -54,7 +55,7 @@ export default function HomeScreen() {
   const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   const handleBook = () => {
-
+    trackEvent('book_call_click', { location: 'home' });
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   };return (
     <>

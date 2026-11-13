@@ -251,6 +251,7 @@ export default function QuizScreen() {
   }, []);
 
   const handleBook = useCallback(() => {
+    trackEvent('book_call_click', { location: 'quiz' });
     Linking.openURL('https://calendly.com/h-mengoli/30min');
   }, []);
 

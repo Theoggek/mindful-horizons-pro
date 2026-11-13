@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Platform, Linking } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { useResponsive } from '@/hooks/useResponsive';
+import { trackEvent } from '@/utils/analytics';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/(tabs)/' },
@@ -53,7 +54,10 @@ export function WebNavBar() {
             {/* CTA */}
             <TouchableOpacity
               style={styles.ctaBtn}
-              onPress={() => Linking.openURL('https://calendly.com/h-mengoli/30min')}
+              onPress={() => {
+                trackEvent('book_call_click', { location: 'nav_bar' });
+                Linking.openURL('https://calendly.com/h-mengoli/30min');
+              }}
               activeOpacity={0.85}
             >
               <Text style={styles.ctaBtnText}>Book Free Session</Text>
