@@ -200,7 +200,8 @@ export default function AboutScreen() {
           <Text style={styles.ctaTitle}>Ready to stop being left behind?</Text>
           <Text style={styles.ctaBody}>One conversation is all it takes to change how you see AI — and how it works for your business.</Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Request a Free Session →</Text>
+            <Text style={styles.ctaBtnText}>Book Your Free 30-Minute Call</Text>
+            <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>
 
