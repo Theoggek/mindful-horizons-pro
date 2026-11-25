@@ -44,7 +44,7 @@ export default function ContactScreen() {
         <View style={styles.header}>
           <Text style={styles.headline}>Let's Talk.</Text>
           <Text style={styles.subheadline}>
-            Book your free 30-minute Mindful AI Relationship Audit. No commitment, no pressure — just a conversation about where you are and where you want to be.
+            Book your free 30-minute call. No commitment, no pressure. Just a conversation about where you are and where you want to be.
           </Text>
 
           {/* Dominant CTA Button */}

@@ -352,7 +352,7 @@ export default function QuizScreen() {
               <View style={s.resultDivider} />
               <Text style={s.resultDesc}>{TYPES[result].description}</Text>
               <Text style={s.resultNote}>
-                Your result is a starting point — your free 30-minute Mindful AI Relationship Audit will confirm your actual type and map your next steps.
+                Your result is a starting point. Your free 30-minute call will confirm your actual type and map your next steps.
               </Text>
             </View>
 
