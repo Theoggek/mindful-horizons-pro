@@ -357,7 +357,7 @@ export default function QuizScreen() {
             </View>
 
             <TouchableOpacity style={s.bookBtn} onPress={handleBook} activeOpacity={0.85}>
-              <Text style={s.bookBtnText}>Book Your Free 30-Minute Session</Text>
+              <Text style={s.bookBtnText}>Book Your Free 30-Minute Call</Text>
               <ArrowRight size={18} color="#FFFFFF" />
             </TouchableOpacity>
 

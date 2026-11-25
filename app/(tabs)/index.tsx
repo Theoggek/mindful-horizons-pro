@@ -18,27 +18,9 @@ const maxW = 800;
 
 //const VIDEO_ID = '5VXBjs2hrSg';
 
-const painPoints = [
-  "You tried AI and got answers that could have been written for anyone",
-  "You're watching competitors use AI and feeling left behind",
-  "You built something with AI and it broke — and you don't know why",
-  "You know AI should be helping your business but you don't know where to start",
-  "You're ready to stop guessing and start building something real",
-];
-
-const aiUserTypes = [
-  { type: 'Type 1', title: 'The Shy One', desc: "Curious about AI but hasn't tried it yet. You've heard the hype but don't know where to start.", emoji: '🌱', color: '#F0FDF4', border: '#BBF7D0' },
-  { type: 'Type 2', title: 'The Frustrated One', desc: "You tried AI and got burned. The results were generic, disappointing, or didn't match what you needed.", emoji: '😤', color: '#FEF2F2', border: '#FECACA' },
-  { type: 'Type 3', title: 'The Gone One', desc: "You walked away — but you're still curious. Something tells you there's more to this than what you experienced.", emoji: '🚶', color: '#F5F3FF', border: '#DDD6FE' },
-  { type: 'Type 4', title: 'The Plateau One', desc: "You're using AI but you know there's more. You've hit a ceiling and can't break through to the next level.", emoji: '📊', color: '#FFFBEB', border: '#FDE68A' },
-  { type: 'Type 5', title: 'The Content Master', desc: "You're comfortable with AI and getting results. But you know you're only scratching the surface of what's possible.", emoji: '🏆', color: '#ECFDF5', border: '#A7F3D0' },
-  { type: 'Type 6', title: 'The True Partner', desc: "This is the destination — equal, mutual, trust-based. You and AI work together like long-time collaborators.", emoji: '🤝', color: '#FDF2F8', border: '#FBCFE8' },
-];
-
 const stats = [
   { value: '30 Years', label: 'Business Experience' },
   { value: '100,000+', label: 'Words in Active AI Partnership' },
-  { value: '7 Countries', label: 'Reached in Month One' },
 ];
 
 const testimonials = [
@@ -91,7 +73,7 @@ export default function HomeScreen() {
         >
           <View style={styles.heroInner}>
             <View style={styles.heroBadge}>
-              <Text style={styles.heroBadgeText}>Professional Coaching · 30 Years</Text>
+              <Text style={styles.heroBadgeText}>30 years of business experience</Text>
             </View>
             <Text style={styles.heroTitle}>
               You've built something real. Now let's make AI work for it.
@@ -103,53 +85,18 @@ export default function HomeScreen() {
               I teach experienced business owners how to be the senior partner in the most powerful business relationship available to them right now.
             </Text>
 
-            {/* Quiz CTA — most visually dominant element */}
+            {/* Main booking CTA */}
             <TouchableOpacity
               style={styles.quizCta}
-              onPress={() => router.push('/(tabs)/quiz' as any)}
+              onPress={handleBook}
               activeOpacity={0.85}
             >
-              <Text style={styles.quizCtaText}>Find Your AI Type — Take the Free Quiz</Text>
+              <Text style={styles.quizCtaText}>Book Your Free 30-Minute Call</Text>
               <ArrowRight size={22} color="#FFFFFF" />
             </TouchableOpacity>
-
-            {/* AI Partnership Session Block */}
-            <View style={styles.aiSessionCard}>
-              <Text style={styles.aiSessionHeadline}>
-                Your first real conversation with AI. Guided by 30 years of business experience.
-              </Text>
-              <Text style={styles.aiSessionBody}>
-                This is a two-hour, one-on-one session designed for experienced business owners who are ready to stop avoiding AI and start using it as the senior partner they already are.
-              </Text>
-              <Text style={styles.aiSessionBody}>
-                We don't start with prompts. We don't start with technology. We start with you — your business, your goals, your biggest pain point right now. By the time AI enters the conversation, you're already feeling capable again.
-              </Text>
-              <Text style={styles.aiSessionBody}>
-                You'll walk away with a working relationship with AI that fits how you think and how you work. Not a tutorial. Not a checklist. A partnership.
-              </Text>
-
-              <View style={styles.aiSessionMeta}>
-                <Text style={styles.aiSessionMetaText}>Work One-on-one with Henry · Two hours · $200</Text>
-              </View>
-
-              <View style={styles.aiSessionBullets}>
-                {[
-                  "You've tried AI and it didn't work the way you expected",
-                  "You're curious but don't know where to start",
-                  "You built something with AI and it broke — and you want to understand why",
-                  "You're a solopreneur who wants a confidential thinking partner available around the clock",
-                ].map((item, i) => (
-                  <View key={i} style={styles.aiSessionBulletRow}>
-                    <Text style={styles.aiSessionBulletDot}>→</Text>
-                    <Text style={styles.aiSessionBulletText}>{item}</Text>
-                  </View>
-                ))}
-              </View>
-
-              <TouchableOpacity style={styles.aiSessionBtn} onPress={handleBook} activeOpacity={0.85}>
-                <Text style={styles.aiSessionBtnText}>Book Your Mindful AI Partnership Session →</Text>
-              </TouchableOpacity>
-            </View>
+            <Text style={styles.heroNote}>
+              We start with your business. AI comes second. No commitment, and 100% confidential.
+            </Text>
 
             {/* Video Player — temporarily hidden until personal video is recorded */}
             {/* <View style={styles.videoWrapper}>
@@ -188,6 +135,16 @@ export default function HomeScreen() {
               <Text style={styles.heroTestimonialAuthor}>{testimonials[0].author}</Text>
               <Text style={styles.heroTestimonialRole}>{testimonials[0].role}</Text>
             </View>
+
+            {/* Two quiet links */}
+            <View style={styles.quietLinks}>
+              <TouchableOpacity onPress={() => router.push('/(tabs)/ai-partnership' as any)} activeOpacity={0.7}>
+                <Text style={styles.quietLinkText}>See how AI partnership works →</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => router.push('/(tabs)/quiz' as any)} activeOpacity={0.7}>
+                <Text style={styles.quietLinkText}>Not sure where you stand? Take the free quiz →</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </LinearGradient>
 
@@ -200,124 +157,6 @@ export default function HomeScreen() {
             </View>
           ))}
         </View>
-
-        {/* Pain Points Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>DO ANY OF THESE SOUND FAMILIAR?</Text>
-          <Text style={styles.sectionTitle}>You're not alone.</Text>
-          <Text style={styles.sectionBody}>
-            Most experienced business owners have tried AI at least once. Many walked away frustrated. If any of these sound like you, I can help.
-          </Text>
-          <View style={styles.painList}>
-            {painPoints.map((p, i) => (
-              <View key={i} style={styles.painItem}>
-                <View style={styles.checkCircle}>
-                  <Check size={14} color="#FFFFFF" />
-                </View>
-                <Text style={styles.painText}>{p}</Text>
-              </View>
-            ))}
-          </View>
-          <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Book your Mindful AI Partnership Session →</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Which Type of AI User Are You? */}
-        <View style={styles.typesSection}>
-          <View style={styles.typesHeader}>
-            <Text style={styles.sectionEyebrow}>WHERE DO YOU STAND?</Text>
-            <Text style={styles.typesTitle}>Which Type of AI User Are You?</Text>
-            <Text style={styles.typesBody}>
-              Most experienced business owners land in one of these six stages. Recognizing where you are is the first step to getting where you want to be.
-            </Text>
-          </View>
-          <View style={styles.typesGrid}>
-            {aiUserTypes.map((t, i) => (
-              <View key={i} style={[styles.typeCard, { backgroundColor: t.color, borderColor: t.border }]}>
-                <View style={styles.typeCardTop}>
-                  <Text style={styles.typeEmoji}>{t.emoji}</Text>
-                  <View style={styles.typeLabel}>
-                    <Text style={styles.typeNumber}>{t.type}</Text>
-                    <Text style={styles.typeTitle}>{t.title}</Text>
-                  </View>
-                </View>
-                <Text style={styles.typeDesc}>{t.desc}</Text>
-              </View>
-            ))}
-          </View>
-          <TouchableOpacity style={styles.typeCtaBtn} onPress={() => router.push('/(tabs)/quiz' as any)} activeOpacity={0.85}>
-            <Text style={styles.typeCtaBtnText}>Take the Quiz — Find Your Type</Text>
-            <ArrowRight size={18} color="#FFFFFF" />
-          </TouchableOpacity>
-        </View>
-
-        {/* What I Offer */}
-        <View style={styles.offerSection}>
-          <View style={styles.offerSectionHeader}>
-            <Text style={styles.sectionEyebrow}>WHAT YOU WALK AWAY WITH</Text>
-            <Text style={styles.sectionTitleLight}>Not a tutorial. A partnership.</Text>
-            <Text style={styles.sectionBodyLight}>
-              Every session is built around your business, your goals, and your biggest challenge right now. Here's what you take with you when we're done.
-            </Text>
-          </View>
-          <View style={styles.offerGrid}>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>⚙️</Text>
-              <Text style={styles.offerCardTitle}>A Working AI Setup</Text>
-              <Text style={styles.offerCardText}>Built specifically around your business — not a generic template. Your language, your industry, your judgment baked in from the first session.</Text>
-            </View>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>🎯</Text>
-              <Text style={styles.offerCardTitle}>A Real Problem Solved</Text>
-              <Text style={styles.offerCardText}>Not a demo of what's possible someday. An actual business challenge worked through in the room, with you in the driver's seat.</Text>
-            </View>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>🔗</Text>
-              <Text style={styles.offerCardTitle}>A Relationship That Compounds</Text>
-              <Text style={styles.offerCardText}>The more context your AI partnership carries, the more useful it becomes. You leave with a foundation that keeps getting stronger every time you use it.</Text>
-            </View>
-            <View style={styles.offerCard}>
-              <Text style={styles.offerEmoji}>🚀</Text>
-              <Text style={styles.offerCardTitle}>The Confidence to Keep Going</Text>
-              <Text style={styles.offerCardText}>Most people leave genuinely surprised. Not by the technology — by themselves. You'll walk away knowing you can do this. And with a workflow — using your own voice — that makes it easy to keep building from day one.</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Testimonials */}
-        <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>CLIENT STORIES</Text>
-          <Text style={styles.sectionTitle}>WHAT CLIENTS SAY</Text>
-          {testimonials.map((t, i) => (
-            <View key={i} style={styles.testimonialCard}>
-              <View style={styles.testimonialQuoteIcon}>
-                <Quote size={16} color="#D4A96A" />
-              </View>
-              <Text style={styles.testimonialText}>{t.quote}</Text>
-              <View style={styles.testimonialStars}>
-                {[1, 2, 3, 4, 5].map(s => (
-                  <Star key={s} size={14} color="#D4A96A" fill="#D4A96A" />
-                ))}
-              </View>
-              <Text style={styles.testimonialAuthor}>{t.author}</Text>
-              <Text style={styles.testimonialRole}>{t.role}</Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Final CTA */}
-        <LinearGradient
-          colors={['#1B4332', '#0D1F18']}
-          style={styles.finalCta}
-        >
-          <Text style={styles.finalCtaTitle}>Ready to stop being left behind?</Text>
-          <Text style={styles.finalCtaBody}>One conversation changes how you see AI — and how it works for your business. Thirty minutes. No commitment. No pressure.</Text>
-          <TouchableOpacity style={styles.finalCtaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.finalCtaBtnText}>Book Your Free Session →</Text>
-          </TouchableOpacity>
-          <Text style={styles.finalCtaNote}>No commitment required · 30 minutes · 100% confidential</Text>
-        </LinearGradient>
 
         {/* Footer */}
         <View style={styles.footer}>
@@ -333,6 +172,9 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  heroNote: { color: 'rgba(255,255,255,0.85)', fontSize: 14, textAlign: 'center', marginTop: 12, marginBottom: 8, lineHeight: 20 },
+  quietLinks: { alignItems: 'center', gap: 14, marginTop: 24 },
+  quietLinkText: { color: '#D4E9DC', fontSize: 15, textDecorationLine: 'underline', textAlign: 'center' },
   safeArea: { flex: 1, backgroundColor: '#FDFCF9' },
   scroll: { flex: 1 },
   scrollContent: { paddingBottom: 20 },

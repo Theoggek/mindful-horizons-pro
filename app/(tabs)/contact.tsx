@@ -49,7 +49,7 @@ export default function ContactScreen() {
 
           {/* Dominant CTA Button */}
           <TouchableOpacity style={styles.ctaButton} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaButtonText}>Book Your Free 30-Minute Session</Text>
+            <Text style={styles.ctaButtonText}>Book Your Free 30-Minute Call</Text>
             <ArrowRight size={26} color="#FFFFFF" />
           </TouchableOpacity>
         </View>

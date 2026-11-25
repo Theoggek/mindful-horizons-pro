@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, Check, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useResponsive } from '@/hooks/useResponsive';
 import { trackEvent } from '@/utils/analytics';
@@ -15,7 +15,7 @@ const approachPillars = [
   {
     title: 'I Listen',
     emoji: '👂',
-    body: 'Every session starts with listening — not to respond, but to understand. Your story, your context, your goals. No two people are the same, so no two coaching plans should be either.',
+    body: 'Every conversation starts with listening. Not to respond, but to understand. Your story, your context, your goals. No two people are the same, so no two coaching plans should be either.',
   },
   {
     title: 'I Challenge',
@@ -25,7 +25,7 @@ const approachPillars = [
   {
     title: 'I Champion',
     emoji: '🏆',
-    body: 'No one will believe in you more than I do. I\'ve spent 30 years being the person in the corner who refuses to give up on someone — even when they\'ve given up on themselves.',
+    body: 'No one will believe in you more than I do. I\'ve spent 30 years being the person in the corner who refuses to give up on someone, even when they\'ve given up on themselves.',
   },
 ];
 
@@ -41,42 +41,59 @@ const aiPartnershipCoaching = {
   title: 'AI Partnership Coaching',
   emoji: '🤖',
   description:
-    'My newest and most powerful offering — a hybrid model that pairs 30 years of human coaching wisdom with AI-powered tools that keep your momentum alive between sessions. You get the depth of real coaching plus daily reinforcement: reflection prompts, progress tracking, and on-demand support shaped around your actual goals.',
+    'My newest and most powerful offering, a hybrid model that pairs 30 years of human coaching wisdom with AI-powered tools that keep your momentum alive between sessions. You get the depth of real coaching plus daily reinforcement: reflection prompts shaped around your actual goals.',
   items: [
-    'AI-powered progress tracking between sessions',
     'Personalized reflection & journaling prompts',
-    'On-demand support grounded in your coaching history',
     'Faster goal-setting and stronger accountability',
     'Human coaching + AI reinforcement, combined',
     'Available for individuals and business teams',
   ],
-  ctaLabel: 'Book Your AI Partnership Session',
+  ctaLabel: 'Book Your Free 30-Minute Call',
 };
+
+const painPoints = [
+  "You tried AI and got answers that could have been written for anyone",
+  "You're watching competitors use AI and feeling left behind",
+  "You built something with AI and it broke, and you don't know why",
+  "You know AI should be helping your business but you don't know where to start",
+  "You're ready to stop guessing and start building something real",
+];
+
+const walkAwayCards = [
+  { emoji: '⚙️', title: 'A Working AI Setup', text: 'Built specifically around your business, not a generic template. Your language, your industry, your judgment baked in from the start.' },
+  { emoji: '🎯', title: 'A Real Problem Solved', text: "Not a demo of what's possible someday. An actual business challenge worked through, with you in the driver's seat." },
+  { emoji: '🔗', title: 'A Relationship That Compounds', text: 'The more context your AI partnership carries, the more useful it becomes. You leave with a foundation that keeps getting stronger every time you use it.' },
+  { emoji: '🚀', title: 'The Confidence to Keep Going', text: "Most people leave genuinely surprised. Not by the technology, but by themselves. You'll walk away knowing you can do this, with a workflow in your own voice that makes it easy to keep building." },
+];
 
 const faqs = [
   {
-    q: 'What happens during the two-hour session?',
-    a: "We start where you are — not where I think you should be. You'll bring one real business challenge you're sitting on, and by the end of two hours, you'll have worked through it with AI as your thinking partner. Along the way, you'll see exactly why AI has felt generic or frustrating before, and what changes when you show up as the senior partner instead of a confused student. Most people say something shifts around the twenty-minute mark. That's the moment we're building toward.",
+    q: 'What happens on the free 30-minute call?',
+    a: "We talk about you first: your business, what's working, and where you're stuck. Then we talk about AI, if it makes sense. If it fits, I'll tell you how we could work together and what it costs. Either way, you'll know where you stand, with no pressure.",
   },
   {
     q: 'Do I need any technical experience or AI background?',
-    a: "None. If you've been running a business for any length of time, you already have everything you need. The problem was never your intelligence — it was that nobody showed you the right relationship to have with AI before handing you the tool. That's what this session fixes.",
+    a: "None. If you've been running a business for any length of time, you already have everything you need. The problem was never your intelligence. It was that nobody showed you the right relationship to have with AI before handing you the tool.",
   },
   {
     q: 'What do I walk away with?',
-    a: 'Three things. A working AI setup built specifically around your business. A real problem worked through — not theoretically, but actually. And a completely different understanding of what AI can do when you govern the relationship instead of chasing it. Most clients say this session alone changes how they think about AI permanently.',
+    a: "Three things. A working AI setup built around your business. A real problem worked through, not theoretically but actually. And a different understanding of what AI can do when you govern the relationship instead of chasing it.",
   },
   {
     q: 'How is this different from just using AI on my own?',
-    a: "When you use AI on your own, you're guessing. You get generic answers because AI doesn't know your business, your industry, or your judgment. In two hours, we fix that foundation — and then you see what's actually possible. It's the difference between handing someone a chainsaw and telling them to go collect wood, versus showing them how to use it safely and watching them build something remarkable.",
+    a: "When you use AI on your own, you're guessing. You get generic answers because AI doesn't know your business, your industry, or your judgment. Working together, we fix that foundation, and then you see what's actually possible. It's like giving a child a chainsaw and telling them to go collect wood, versus showing them how to use it safely and watching them build something remarkable.",
   },
   {
-    q: 'How many people can attend?',
-    a: "The session is designed for one person — you. Occasionally a business partner or key employee joins, and that works well when both people are genuinely involved in the business problem we're solving. If you're thinking about bringing someone, reach out first and we'll talk through whether it makes sense.",
+    q: 'Can a business partner or key employee join?',
+    a: "This is designed for one person: you. Occasionally a partner or key employee joins, and that works well when both people are involved in the problem we're working on. If you're thinking about bringing someone, mention it when you book and we'll talk it through.",
   },
   {
-    q: 'What happens after the session?',
-    a: "That's up to you. Some clients take what they've built and run with it on their own — and that's a win. Others want to keep building, and we set up an ongoing coaching relationship where each session adds another layer. The AI partnership compounds over time. The more context it carries, the more useful it becomes. Either way, you leave the session with something real — not a promise of what's possible someday.",
+    q: 'Do I have to sign up for a package?',
+    a: 'No. You can work together one session at a time. Some people want to keep building, and a monthly package makes that easier, with discounted rates. Either way, the free call comes first.',
+  },
+  {
+    q: 'What happens after the free call?',
+    a: "That's up to you. If it feels right, we set up a time to work together on a real business problem. If it doesn't, you've spent thirty minutes and you'll still walk away with value.",
   },
 ];
 
@@ -133,7 +150,7 @@ export default function AiPartnershipScreen() {
         showsVerticalScrollIndicator={Platform.OS === 'web'}
       >
 
-        {/* Page Header */}
+        {/* 1. Top: photo, headline, button */}
         <LinearGradient
           colors={['#1B4332', '#2D6A4F']}
           start={{ x: 0, y: 0 }}
@@ -141,44 +158,54 @@ export default function AiPartnershipScreen() {
           style={styles.pageHeader}
         >
           <View style={styles.headerInner}>
+            <View style={styles.headerPhotoRow}>
+              <View style={styles.photoWrapper}>
+                <Image
+                  source={{ uri: 'https://storage.googleapis.com/blink-core-storage/projects/mindful-horizons-app-er6kbt7g/profile/henry-bio-pic-1777433838206_png/9874e260-0c37-4593-83f0-0cd9a5799f4f.png' }}
+                  style={styles.photoImage}
+                  resizeMode="cover"
+                />
+              </View>
+            </View>
             <Text style={styles.pageEyebrow}>AI PARTNERSHIP COACHING</Text>
-            <Text style={styles.pageTitle}>I don't follow a script. I follow you.</Text>
+            <Text style={styles.pageTitle}>Be the senior partner, not the confused student.</Text>
             <Text style={styles.pageSubtitle}>
-              After 30 years of business experience I've learned one thing above everything else — the right relationship changes everything. That's as true with AI as it is with people. I don't teach you prompts. I teach you how to show up as the senior partner in the most powerful business relationship available to you right now.
+              After 30 years of business experience, I've learned one thing above everything else: the right relationship changes everything. That's as true with AI as it is with people. I don't teach you prompts. I teach you how to show up as the senior partner in the most powerful business relationship available to you right now.
             </Text>
+            <TouchableOpacity style={styles.headerCtaBtn} onPress={handleBook} activeOpacity={0.85}>
+              <Text style={styles.headerCtaBtnText}>Book Your Free 30-Minute Call</Text>
+              <ArrowRight size={18} color="#1B4332" />
+            </TouchableOpacity>
+            <Text style={styles.headerNote}>We start with your business. AI comes second.</Text>
           </View>
         </LinearGradient>
 
-        {/* My Approach */}
-        <View style={styles.approachSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
-            <Text style={styles.approachTitle}>The approach that changes everything.</Text>
-            <Text style={styles.approachBody}>
-              After 30 years of coaching, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are — right now, in this moment.
-            </Text>
-            <Text style={styles.approachBody}>
-              Every client I work with gets a unique partnership built on three principles that have never let me down.
-            </Text>
-          </View>
-          <View style={styles.approachGrid}>
-            {visiblePillars.map((p, i) => (
-              <View key={i} style={styles.approachCard}>
-                <Text style={styles.approachEmoji}>{p.emoji}</Text>
-                <Text style={styles.approachCardTitle}>{p.title}</Text>
-                <Text style={styles.approachCardBody}>{p.body}</Text>
+        {/* 2. You're not alone */}
+        <View style={styles.notAloneSection}>
+          <Text style={styles.sectionEyebrow}>DO ANY OF THESE SOUND FAMILIAR?</Text>
+          <Text style={styles.notAloneTitle}>You're not alone.</Text>
+          <Text style={styles.approachBody}>
+            Most experienced business owners have tried AI at least once. Many walked away frustrated. If any of these sound like you, I can help.
+          </Text>
+          <View style={styles.painList}>
+            {painPoints.map((p, i) => (
+              <View key={i} style={styles.painItem}>
+                <View style={styles.checkCircle}>
+                  <Check size={14} color="#FFFFFF" />
+                </View>
+                <Text style={styles.painText}>{p}</Text>
               </View>
             ))}
           </View>
         </View>
 
-        {/* Services intro */}
+        {/* 3. What I offer */}
         <View style={styles.servicesIntro}>
           <Text style={styles.sectionEyebrow}>WHAT I OFFER</Text>
-          <Text style={styles.sectionTitle3}>One session that changes how you work forever.</Text>
+          <Text style={styles.sectionTitle3}>Work with me one-on-one.</Text>
         </View>
 
-        {/* AI Partnership Coaching — flagship */}
+        {/* AI Partnership Coaching, flagship */}
         <LinearGradient
           colors={['#1B4332', '#2D6A4F']}
           start={{ x: 0, y: 0 }}
@@ -210,7 +237,27 @@ export default function AiPartnershipScreen() {
           </TouchableOpacity>
         </LinearGradient>
 
-        {/* Pricing */}
+        {/* 4. What you walk away with */}
+        <View style={styles.walkAwaySection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>WHAT YOU WALK AWAY WITH</Text>
+            <Text style={styles.approachTitle}>Not a tutorial. A partnership.</Text>
+            <Text style={styles.approachBody}>
+              Everything we build is shaped around your business, your goals, and your biggest challenge right now. Here's what you take with you.
+            </Text>
+          </View>
+          <View style={styles.walkAwayGrid}>
+            {walkAwayCards.map((c, i) => (
+              <View key={i} style={styles.walkAwayCard}>
+                <Text style={styles.walkAwayEmoji}>{c.emoji}</Text>
+                <Text style={styles.walkAwayCardTitle}>{c.title}</Text>
+                <Text style={styles.walkAwayCardText}>{c.text}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* 5. Pricing */}
         <View style={styles.pricingSection}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionEyebrow}>INVESTMENT</Text>
@@ -223,9 +270,6 @@ export default function AiPartnershipScreen() {
               <Text style={styles.pricingDesc}>Flexible, pay-as-you-go coaching sessions. Perfect for exploring if coaching is right for you.</Text>
             </View>
             <View style={[styles.pricingCard, styles.pricingCardFeatured]}>
-              <View style={styles.popularBadge}>
-                <Text style={styles.popularBadgeText}>MOST POPULAR</Text>
-              </View>
               <Text style={styles.pricingEmoji}>📦</Text>
               <Text style={[styles.pricingTitle, { color: '#FFFFFF' }]}>Monthly Package</Text>
               <Text style={[styles.pricingDesc, { color: 'rgba(255,255,255,0.8)' }]}>
@@ -234,39 +278,51 @@ export default function AiPartnershipScreen() {
             </View>
           </View>
           <Text style={styles.pricingNote}>
-            Pricing discussed during your free 30-minute session. No commitment required.
+            Pricing is discussed on your free 30-minute call. No commitment required.
           </Text>
         </View>
 
-        {/* FAQ */}
+        {/* 6. FAQ */}
         <View style={styles.faqSection}>
           <Text style={styles.sectionEyebrow}>COMMON QUESTIONS</Text>
           <Text style={styles.sectionTitle5}>Frequently asked questions</Text>
           {faqs.map((f, i) => <FaqItem key={i} item={f} />)}
         </View>
 
-        {/* Photo */}
-        <View style={styles.photoSection}>
-          <View style={styles.photoWrapper}>
-            <Image
-              source={{ uri: 'https://storage.googleapis.com/blink-core-storage/projects/mindful-horizons-app-er6kbt7g/profile/henry-bio-pic-1777433838206_png/9874e260-0c37-4593-83f0-0cd9a5799f4f.png' }}
-              style={styles.photoImage}
-              resizeMode="cover"
-            />
+        {/* 7. How I work with you */}
+        <View style={styles.approachSection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>MY APPROACH</Text>
+            <Text style={styles.approachTitle}>The approach that changes everything.</Text>
+            <Text style={styles.approachBody}>
+              After 30 years of business experience, I've learned that the best results come from one thing: meeting people where they are. Not where I think they should be. Not where a textbook says they ought to be. Where they actually are, right now, in this moment.
+            </Text>
+            <Text style={styles.approachBody}>
+              Every client I work with gets a unique partnership built on three principles that have never let me down.
+            </Text>
+          </View>
+          <View style={styles.approachGrid}>
+            {visiblePillars.map((p, i) => (
+              <View key={i} style={styles.approachCard}>
+                <Text style={styles.approachEmoji}>{p.emoji}</Text>
+                <Text style={styles.approachCardTitle}>{p.title}</Text>
+                <Text style={styles.approachCardBody}>{p.body}</Text>
+              </View>
+            ))}
           </View>
         </View>
 
-        {/* CTA */}
+        {/* 8. Closing CTA */}
         <LinearGradient
           colors={['#1B4332', '#0D1F18']}
           style={styles.ctaSection}
         >
           <Text style={styles.ctaTitle}>Ready to stop guessing{'\n'}and start leading?</Text>
           <Text style={styles.ctaBody}>
-            In two hours, you'll have a working AI partnership built around your business — and a real problem solved. Not a demo. Not a promise. The real thing.
+            Start with a free 30-minute conversation about your business. If AI belongs in it, we'll figure out how. Not a demo. Not a pitch. A real conversation.
           </Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.ctaBtnText}>Book Your Free 30-Minute Audit</Text>
+            <Text style={styles.ctaBtnText}>Book Your Free 30-Minute Call</Text>
             <ArrowRight size={18} color="#1B4332" />
           </TouchableOpacity>
         </LinearGradient>
@@ -275,6 +331,7 @@ export default function AiPartnershipScreen() {
         <View style={styles.footer}>
           <Text style={styles.footerLogo}>Mindful Horizons</Text>
           <Text style={styles.footerText}>© 2018–2026 All Rights Reserved</Text>
+          <Text style={styles.footerText}>contact@mindful-horizons.com · 262-445-1273</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -282,6 +339,38 @@ export default function AiPartnershipScreen() {
 }
 
 const styles = StyleSheet.create({
+  headerPhotoRow: { alignItems: 'center', marginBottom: 24 },
+  headerCtaBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+    backgroundColor: '#D4A96A', paddingHorizontal: 32, paddingVertical: 16,
+    borderRadius: 12, marginTop: 24, alignSelf: 'flex-start',
+  },
+  headerCtaBtnText: { color: '#1B4332', fontWeight: '800', fontSize: 16 },
+  headerNote: { color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 10 },
+  notAloneSection: { paddingHorizontal: 24, paddingVertical: 40, maxWidth: maxW, alignSelf: 'center', width: '100%' },
+  notAloneTitle: {
+    fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
+    letterSpacing: -0.5, marginBottom: 16,
+  },
+  painList: { gap: 14, marginTop: 8 },
+  painItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  checkCircle: {
+    width: 24, height: 24, borderRadius: 12, backgroundColor: '#1B4332',
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2,
+  },
+  painText: { fontSize: 15, color: '#374151', lineHeight: 24, flex: 1 },
+  walkAwaySection: { paddingHorizontal: 24, paddingVertical: 40, backgroundColor: '#F0FDF4' },
+  walkAwayGrid: {
+    flexDirection: isWeb ? 'row' : 'column', flexWrap: isWeb ? 'wrap' : undefined,
+    gap: 16, maxWidth: maxW, alignSelf: 'center', width: '100%', marginTop: 12,
+  },
+  walkAwayCard: {
+    backgroundColor: '#FFFFFF', borderRadius: 16, padding: 24,
+    width: isWeb ? '47%' : '100%', borderWidth: 1, borderColor: '#D1FAE5',
+  },
+  walkAwayEmoji: { fontSize: 28, marginBottom: 10 },
+  walkAwayCardTitle: { fontSize: 17, fontWeight: '700', color: '#1B4332', marginBottom: 8 },
+  walkAwayCardText: { fontSize: 14, color: '#6B7280', lineHeight: 22 },
   safeArea: { flex: 1, backgroundColor: '#FDFCF9' },
   scroll: { flex: 1 },
   scrollContent: { paddingBottom: 20 },

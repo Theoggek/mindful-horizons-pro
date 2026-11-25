@@ -129,7 +129,7 @@ export default function AboutScreen() {
           </Text>
 
           <TouchableOpacity style={styles.bioBtn} onPress={handleBook} activeOpacity={0.85}>
-            <Text style={styles.bioBtnText}>Book Your Mindful AI Partnership Session →</Text>
+            <Text style={styles.bioBtnText}>Book Your Free 30-Minute Call →</Text>
           </TouchableOpacity>
         </View>
 

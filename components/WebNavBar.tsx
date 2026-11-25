@@ -60,7 +60,7 @@ export function WebNavBar() {
               }}
               activeOpacity={0.85}
             >
-              <Text style={styles.ctaBtnText}>Book Free Session</Text>
+              <Text style={styles.ctaBtnText}>Book Free Call</Text>
             </TouchableOpacity>
           </View>
         </View>
