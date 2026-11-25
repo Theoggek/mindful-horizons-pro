@@ -18,6 +18,14 @@ const maxW = 800;
 
 //const VIDEO_ID = '5VXBjs2hrSg';
 
+const painPoints = [
+  "You tried AI and got answers that could have been written for anyone",
+  "You're watching competitors use AI and feeling left behind",
+  "You built something with AI and it broke, and you don't know why",
+  "You know AI should be helping your business but you don't know where to start",
+  "You're ready to stop guessing and start building something real",
+];
+
 const stats = [
   { value: '30 Years', label: 'Business Experience' },
   { value: '100,000+', label: 'Words in Active AI Partnership' },
@@ -84,6 +92,25 @@ export default function HomeScreen() {
             <Text style={styles.heroTagline}>
               I teach experienced business owners how to be the senior partner in the most powerful business relationship available to them right now.
             </Text>
+
+            {/* Do any of these sound familiar? */}
+            <View style={styles.familiarBlock}>
+              <Text style={styles.familiarEyebrow}>DO ANY OF THESE SOUND FAMILIAR?</Text>
+              <Text style={styles.familiarTitle}>You're not alone.</Text>
+              <Text style={styles.familiarBody}>
+                Most experienced business owners have tried AI at least once. Many walked away frustrated. If any of these sound like you, I can help.
+              </Text>
+              <View style={styles.familiarList}>
+                {painPoints.map((p, i) => (
+                  <View key={i} style={styles.familiarItem}>
+                    <View style={styles.familiarCheck}>
+                      <Check size={14} color="#1B4332" />
+                    </View>
+                    <Text style={styles.familiarText}>{p}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
 
             {/* Main booking CTA */}
             <TouchableOpacity
@@ -172,6 +199,14 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  familiarBlock: { marginTop: 28, marginBottom: 8 },
+  familiarEyebrow: { fontSize: 11, fontWeight: '700', color: '#D4A96A', letterSpacing: 2, marginBottom: 8 },
+  familiarTitle: { fontSize: isWeb ? 28 : 24, fontWeight: '800', color: '#FFFFFF', letterSpacing: -0.5, marginBottom: 10 },
+  familiarBody: { fontSize: 15, color: 'rgba(255,255,255,0.85)', lineHeight: 24, marginBottom: 16 },
+  familiarList: { gap: 12, marginBottom: 20 },
+  familiarItem: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  familiarCheck: { width: 24, height: 24, borderRadius: 12, backgroundColor: '#D4A96A', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 },
+  familiarText: { fontSize: 15, color: '#FFFFFF', lineHeight: 24, flex: 1 },
   heroNote: { color: 'rgba(255,255,255,0.85)', fontSize: 14, textAlign: 'center', marginTop: 12, marginBottom: 8, lineHeight: 20 },
   quietLinks: { alignItems: 'center', gap: 14, marginTop: 24 },
   quietLinkText: { color: '#D4E9DC', fontSize: 15, textDecorationLine: 'underline', textAlign: 'center' },

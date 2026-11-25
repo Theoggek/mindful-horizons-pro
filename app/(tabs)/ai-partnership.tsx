@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Linking, Platform, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowRight, Check, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
+import { ArrowRight, ChevronDown, ChevronUp } from '@blinkdotnew/mobile-ui';
 import { useState } from 'react';
 import { useResponsive } from '@/hooks/useResponsive';
 import { trackEvent } from '@/utils/analytics';
@@ -50,14 +50,6 @@ const aiPartnershipCoaching = {
   ],
   ctaLabel: 'Book Your Free 30-Minute Call',
 };
-
-const painPoints = [
-  "You tried AI and got answers that could have been written for anyone",
-  "You're watching competitors use AI and feeling left behind",
-  "You built something with AI and it broke, and you don't know why",
-  "You know AI should be helping your business but you don't know where to start",
-  "You're ready to stop guessing and start building something real",
-];
 
 const walkAwayCards = [
   { emoji: '⚙️', title: 'A Working AI Setup', text: 'Built specifically around your business, not a generic template. Your language, your industry, your judgment baked in from the start.' },
@@ -179,25 +171,6 @@ export default function AiPartnershipScreen() {
             <Text style={styles.headerNote}>We start with your business. AI comes second.</Text>
           </View>
         </LinearGradient>
-
-        {/* 2. You're not alone */}
-        <View style={styles.notAloneSection}>
-          <Text style={styles.sectionEyebrow}>DO ANY OF THESE SOUND FAMILIAR?</Text>
-          <Text style={styles.notAloneTitle}>You're not alone.</Text>
-          <Text style={styles.approachBody}>
-            Most experienced business owners have tried AI at least once. Many walked away frustrated. If any of these sound like you, I can help.
-          </Text>
-          <View style={styles.painList}>
-            {painPoints.map((p, i) => (
-              <View key={i} style={styles.painItem}>
-                <View style={styles.checkCircle}>
-                  <Check size={14} color="#FFFFFF" />
-                </View>
-                <Text style={styles.painText}>{p}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
 
         {/* 3. What I offer */}
         <View style={styles.servicesIntro}>
