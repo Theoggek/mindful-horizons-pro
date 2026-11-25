@@ -119,7 +119,7 @@ export default function HomeScreen() {
               activeOpacity={0.85}
             >
               <Text style={styles.quizCtaText}>Book Your Free 30-Minute Call</Text>
-              <ArrowRight size={22} color="#FFFFFF" />
+              <ArrowRight size={22} color="#1B4332" />
             </TouchableOpacity>
             <Text style={styles.heroNote}>
               We start with your business. AI comes second. No commitment, and 100% confidential.
@@ -279,12 +279,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 12,
-    backgroundColor: '#0D9488',
+    backgroundColor: '#D4A96A',
     paddingVertical: 18,
     paddingHorizontal: 32,
     borderRadius: 16,
     marginBottom: 32,
-    shadowColor: '#0D9488',
+    shadowColor: '#D4A96A',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.4,
     shadowRadius: 20,
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
   quizCtaText: {
     fontSize: isWeb ? 20 : 17,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#1B4332',
     letterSpacing: -0.3,
   },
 

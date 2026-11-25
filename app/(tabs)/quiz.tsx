@@ -358,7 +358,7 @@ export default function QuizScreen() {
 
             <TouchableOpacity style={s.bookBtn} onPress={handleBook} activeOpacity={0.85}>
               <Text style={s.bookBtnText}>Book Your Free 30-Minute Call</Text>
-              <ArrowRight size={18} color="#FFFFFF" />
+              <ArrowRight size={18} color="#1B4332" />
             </TouchableOpacity>
 
             <TouchableOpacity style={s.retakeBtn} onPress={handleRetake} activeOpacity={0.7}>
@@ -598,13 +598,13 @@ const s = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    backgroundColor: '#1B4332',
+    backgroundColor: '#D4A96A',
     paddingVertical: 16,
     paddingHorizontal: 28,
     borderRadius: 12,
     marginBottom: 16,
   },
-  bookBtnText: { color: '#FFFFFF', fontWeight: '700', fontSize: 16 },
+  bookBtnText: { color: '#1B4332', fontWeight: '700', fontSize: 16 },
   retakeBtn: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -50,7 +50,7 @@ export default function ContactScreen() {
           {/* Dominant CTA Button */}
           <TouchableOpacity style={styles.ctaButton} onPress={handleBook} activeOpacity={0.85}>
             <Text style={styles.ctaButtonText}>Book Your Free 30-Minute Call</Text>
-            <ArrowRight size={26} color="#FFFFFF" />
+            <ArrowRight size={26} color="#1B4332" />
           </TouchableOpacity>
         </View>
 
@@ -128,13 +128,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 14,
-    backgroundColor: '#0D9488',
+    backgroundColor: '#D4A96A',
     paddingVertical: isWeb ? 22 : 18,
     paddingHorizontal: isWeb ? 40 : 28,
     borderRadius: 16,
     maxWidth: maxW,
     width: '100%',
-    shadowColor: '#0D9488',
+    shadowColor: '#D4A96A',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.4,
     shadowRadius: 24,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   ctaButtonText: {
     fontSize: isWeb ? 21 : 18,
     fontWeight: '800' as const,
-    color: '#FFFFFF',
+    color: '#1B4332',
     letterSpacing: -0.3,
   },
 

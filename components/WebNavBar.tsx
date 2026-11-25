@@ -139,14 +139,14 @@ const styles = StyleSheet.create({
     borderRadius: 1,
   },
   ctaBtn: {
-    backgroundColor: '#1B4332',
+    backgroundColor: '#D4A96A',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,
     marginLeft: 12,
   },
   ctaBtnText: {
-    color: '#FFFFFF',
+    color: '#1B4332',
     fontWeight: '700' as const,
     fontSize: 14,
   },

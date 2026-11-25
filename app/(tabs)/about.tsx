@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   bioBtn: {
-    backgroundColor: '#1B4332',
+    backgroundColor: '#D4A96A',
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 12,
@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   bioBtnText: {
-    color: '#FFFFFF',
+    color: '#1B4332',
     fontWeight: '700',
     fontSize: 16,
   },
