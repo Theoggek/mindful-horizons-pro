@@ -54,27 +54,31 @@ const aiPartnershipCoaching = {
 const howItWorks = [
   {
     step: '1',
-    title: 'Book the free call',
-    text: 'Thirty minutes about you and your business. AI comes second.',
-    tools: ['Calendly'],
+    title: 'Talk it through',
+    text: 'You describe your business and the problem on your desk. You speak it, so it comes out naturally.',
+    tools: ['Wispr Flow', 'Claude'],
+    artifact: 'A clear one-page picture of your business',
   },
   {
     step: '2',
-    title: 'See it work',
-    text: 'I show you a working AI partnership, live, on my own setup.',
-    tools: ['Claude'],
+    title: 'Set up your project',
+    text: 'Your business documents become project files, so your AI knows your business from the first question.',
+    tools: ['Claude or ChatGPT', 'Project files'],
+    artifact: 'A working AI project built around your business',
   },
   {
     step: '3',
-    title: 'Build yours',
-    text: 'Your business documents become project files, so your AI knows your business. You talk to it instead of typing.',
-    tools: ['Claude or ChatGPT', 'Project files', 'Wispr Flow'],
+    title: 'Work the real problem',
+    text: 'We draft the quote reply together. You bring the judgment. The AI does the heavy lifting.',
+    tools: ['Claude'],
+    artifact: 'A finished draft in your own voice',
   },
   {
     step: '4',
-    title: 'Keep going',
-    text: 'Work on a real problem with me beside you. Stay on with monthly coaching if you want to keep building.',
-    tools: [],
+    title: 'Make it repeatable',
+    text: 'We save what worked, so you can do it again next week on your own.',
+    tools: ['Project files'],
+    artifact: 'A saved workflow you can reuse',
   },
 ];
 
@@ -240,8 +244,11 @@ export default function AiPartnershipScreen() {
         {/* How it works, with the tools */}
         <View style={styles.howSection}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionEyebrow}>HOW IT WORKS</Text>
-            <Text style={styles.approachTitle}>Four steps, a few simple tools.</Text>
+            <Text style={styles.sectionEyebrow}>AN EXAMPLE TWO-HOUR SESSION</Text>
+            <Text style={styles.approachTitle}>Here's what one project looks like.</Text>
+            <Text style={styles.approachBody}>
+              Say a business owner wants to answer customer quote requests faster, and in their own voice. Here's how the two hours could go, and what they leave with.
+            </Text>
           </View>
           <View style={[styles.howRow, isMobile && { flexDirection: 'column' }]}>
             {howItWorks.map((h, i) => (
@@ -251,15 +258,17 @@ export default function AiPartnershipScreen() {
                 </View>
                 <Text style={styles.howTitle}>{h.title}</Text>
                 <Text style={styles.howText}>{h.text}</Text>
-                {h.tools.length > 0 && (
-                  <View style={styles.howTools}>
-                    {h.tools.map((t, j) => (
-                      <View key={j} style={styles.howChip}>
-                        <Text style={styles.howChipText}>{t}</Text>
-                      </View>
-                    ))}
-                  </View>
-                )}
+                <View style={styles.howTools}>
+                  {h.tools.map((t, j) => (
+                    <View key={j} style={styles.howChip}>
+                      <Text style={styles.howChipText}>{t}</Text>
+                    </View>
+                  ))}
+                </View>
+                <View style={styles.howArtifact}>
+                  <Text style={styles.howArtifactLabel}>YOU LEAVE WITH</Text>
+                  <Text style={styles.howArtifactText}>{h.artifact}</Text>
+                </View>
               </View>
             ))}
           </View>
@@ -388,6 +397,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0FDF4', borderWidth: 1, borderColor: '#1B4332',
     borderRadius: 100, paddingHorizontal: 12, paddingVertical: 5,
   },
+  howArtifact: {
+    backgroundColor: '#FFF7E6', borderRadius: 10, padding: 12, marginTop: 14,
+    borderWidth: 1, borderColor: '#D4A96A',
+  },
+  howArtifactLabel: { fontSize: 10, fontWeight: '800', color: '#B8893F', letterSpacing: 1.5, marginBottom: 4 },
+  howArtifactText: { fontSize: 13, fontWeight: '700', color: '#1B4332', lineHeight: 19 },
   howChipText: { fontSize: 12, fontWeight: '700', color: '#1B4332' },
   headerPhotoRow: { alignItems: 'center', marginBottom: 24 },
   headerCtaBtn: {
