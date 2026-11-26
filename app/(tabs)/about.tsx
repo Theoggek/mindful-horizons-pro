@@ -157,23 +157,22 @@ export default function AboutScreen() {
 
           <View style={styles.storyCard}>
             <Text style={styles.storyText}>
-              Have you tried AI and gotten back answers that sounded like they could have been written for anyone? Generic. Hollow. Nothing like your business? I understand — because I've been there. I spent time figuring out why AI wasn't working the way everyone promised it would. What I discovered changed everything — and it's what I teach now.
+              Have you tried AI and gotten back answers that sounded like they could have been written for anyone? Generic. Hollow. Nothing like your business? I understand, because I've been there. I spent time figuring out why AI wasn't working the way everyone promised it would. What I discovered changed everything, and it's what I teach now.
             </Text>
             <Text style={styles.storyText}>
-              The problem was never the technology. It was the relationship. AI doesn't know your business, your judgment, or your 30 years of hard-won experience — until you teach it. Once I understood that, everything shifted. The answers got specific. The thinking got sharper. And I stopped feeling like I was fighting a tool that was supposed to be helping me.
+              The problem was never the technology. It was the relationship. AI doesn't know your business, your judgment, or your 30 years of hard-won experience until you teach it. Once I understood that, everything shifted. The answers got specific. The thinking got sharper. And I stopped feeling like I was fighting a tool that was supposed to be helping me.
             </Text>
           </View>
         </View>
 
         {/* AI as a Thinking Partner */}
         <View style={styles.section}>
-          <Text style={styles.sectionEyebrow}>AI AS A THINKING PARTNER</Text>
           <Text style={styles.sectionTitle}>A judgment-free space to figure this out.</Text>
           <Text style={styles.storyBody}>
-            Learning something new is uncomfortable — especially when everyone around you seems to already have it figured out. I've built a space where you can ask the questions you're afraid to ask, try things that might not work, and build at your own pace. No judgment. No jargon. Just you, me, and an AI that's going to surprise you with what it can do when you show up as the senior partner.
+            Learning something new is uncomfortable, especially when everyone around you seems to already have it figured out. I've built a space where you can ask the questions you're afraid to ask, try things that might not work, and build at your own pace. No judgment. No jargon. Just you, me, and an AI that's going to surprise you with what it can do when you show up as the senior partner.
           </Text>
           <Text style={styles.storyBody}>
-            Most of my clients come in frustrated — not with themselves, but with the gap between what AI promised and what it actually delivered. That frustration is valid. And it usually disappears within the first twenty minutes of our session. Not because AI suddenly got better. Because they did.
+            Most of my clients come in frustrated, not with themselves, but with the gap between what AI promised and what it actually delivered. That frustration is valid. And it usually disappears within the first twenty minutes of our session. Not because AI suddenly got better. Because they did.
           </Text>
         </View>
 
@@ -198,7 +197,7 @@ export default function AboutScreen() {
           style={styles.ctaSection}
         >
           <Text style={styles.ctaTitle}>Ready to stop being left behind?</Text>
-          <Text style={styles.ctaBody}>One conversation is all it takes to change how you see AI — and how it works for your business.</Text>
+          <Text style={styles.ctaBody}>One conversation is all it takes to change how you see AI, and how it works for your business.</Text>
           <TouchableOpacity style={styles.ctaBtn} onPress={handleBook} activeOpacity={0.85}>
             <Text style={styles.ctaBtnText}>Book Your Free 30-Minute Call</Text>
             <ArrowRight size={18} color="#1B4332" />
