@@ -195,11 +195,6 @@ export default function AiPartnershipScreen() {
             <Text style={styles.pageSubtitle}>
               After 30 years of business experience, I've learned one thing above everything else: the right relationship changes everything. That's as true with AI as it is with people. I don't teach you prompts. I teach you how to show up as the senior partner in the most powerful business relationship available to you right now.
             </Text>
-            <TouchableOpacity style={styles.headerCtaBtn} onPress={handleBook} activeOpacity={0.85}>
-              <Text style={styles.headerCtaBtnText}>Book Your Free 30-Minute Call</Text>
-              <ArrowRight size={18} color="#1B4332" />
-            </TouchableOpacity>
-            <Text style={styles.headerNote}>We start with your business. AI comes second.</Text>
           </View>
         </LinearGradient>
 
@@ -405,13 +400,6 @@ const styles = StyleSheet.create({
   howArtifactText: { fontSize: 13, fontWeight: '700', color: '#1B4332', lineHeight: 19 },
   howChipText: { fontSize: 12, fontWeight: '700', color: '#1B4332' },
   headerPhotoRow: { alignItems: 'center', marginBottom: 24 },
-  headerCtaBtn: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
-    backgroundColor: '#D4A96A', paddingHorizontal: 32, paddingVertical: 16,
-    borderRadius: 12, marginTop: 24, alignSelf: 'flex-start',
-  },
-  headerCtaBtnText: { color: '#1B4332', fontWeight: '800', fontSize: 16 },
-  headerNote: { color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 10 },
   notAloneSection: { paddingHorizontal: 24, paddingVertical: 40, maxWidth: maxW, alignSelf: 'center', width: '100%' },
   notAloneTitle: {
     fontSize: isWeb ? 34 : 26, fontWeight: '800', color: '#1C1917',
