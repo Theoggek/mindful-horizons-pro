@@ -33,7 +33,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business — not like everyone else's. This is well beyond what I thought it could do.",
+    quote: "I've been using AI for months and kept getting the same generic responses. In one session with Henry, I finally understood what I was missing. The output started sounding like my business, not like everyone else's. This is well beyond what I thought it could do.",
     author: 'Commercial Racking Consultant',
     role: '10 years industry experience',
   },

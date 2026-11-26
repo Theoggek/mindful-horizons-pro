@@ -40,7 +40,7 @@ export function TwelveRulesModal({ visible, onClose }: TwelveRulesModalProps) {
             <Text style={styles.eyebrow}>PERSONAL PHILOSOPHY</Text>
             <Text style={styles.title}>Henry's Twelve Rules for Life</Text>
             <Text style={styles.subtitle}>
-              In 2002, I wrote twelve rules for life. Not to publish — because I needed them.
+              In 2002, I wrote twelve rules for life. Not to publish. Because I needed them.
             </Text>
 
             <View style={styles.rulesList}>
