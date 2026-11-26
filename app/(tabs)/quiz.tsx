@@ -42,7 +42,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '🌱',
     color: '#F0FDF4',
     border: '#BBF7D0',
-    description: "You're curious about AI but haven't taken the first step yet. The good news? Your curiosity is the most important ingredient — everything else is just a conversation away.",
+    description: "You're curious about AI but haven't taken the first step yet. The good news? Your curiosity is the most important ingredient. Everything else is just a conversation away.",
   },
   2: {
     key: 2,
@@ -50,7 +50,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '😤',
     color: '#FEF2F2',
     border: '#FECACA',
-    description: "You've tried AI and it let you down — generic responses, wrong tone, wasted time. The problem wasn't you. It was the relationship you were told to have with it.",
+    description: "You've tried AI and it let you down: generic responses, wrong tone, wasted time. The problem wasn't you. It was the relationship you were told to have with it.",
   },
   3: {
     key: 3,
@@ -58,7 +58,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '🚶',
     color: '#F5F3FF',
     border: '#DDD6FE',
-    description: "You walked away, but something keeps pulling you back. That instinct is right — there is more to this than what you experienced. You just need the right guide.",
+    description: "You walked away, but something keeps pulling you back. That instinct is right. There is more to this than what you experienced. You just need the right guide.",
   },
   4: {
     key: 4,
@@ -66,7 +66,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '📊',
     color: '#FFFBEB',
     border: '#FDE68A',
-    description: "You're using AI and getting some results, but you know there's a ceiling you can't break through. The missing piece isn't another prompt — it's a different kind of partnership.",
+    description: "You're using AI and getting some results, but you know there's a ceiling you can't break through. The missing piece isn't another prompt. It's a different kind of partnership.",
   },
   5: {
     key: 5,
@@ -74,7 +74,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '🏆',
     color: '#ECFDF5',
     border: '#A7F3D0',
-    description: "You're comfortable with AI and getting solid results. But you sense you're only scratching the surface. You're right — and the next level changes everything.",
+    description: "You're comfortable with AI and getting solid results. But you sense you're only scratching the surface. You're right, and the next level changes everything.",
   },
   6: {
     key: 6,
@@ -82,7 +82,7 @@ const TYPES: Record<TypeKey, TypeInfo> = {
     emoji: '🤝',
     color: '#FDF2F8',
     border: '#FBCFE8',
-    description: "This is where it all comes together — you and AI as equal, trust-based partners. You bring the judgment; it brings the speed. Together, you're unstoppable.",
+    description: "This is where it all comes together: you and AI as equal, trust-based partners. You bring the judgment; it brings the speed. Together, you're unstoppable.",
   },
 };
 
@@ -105,9 +105,9 @@ const QUESTIONS: Question[] = [
     options: [
       { label: 'Excited and ready',                    weights: { 1: 1, 2: 0, 3: 0, 4: 0, 5: 1, 6: 2 } },
       { label: 'Curious but unsure where to start',    weights: { 1: 2, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 } },
-      { label: 'Frustrated — I\'ve been burned',         weights: { 1: 0, 2: 2, 3: 1, 4: 0, 5: 0, 6: 0 } },
-      { label: 'Skeptical — too many bad stories',      weights: { 1: 1, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0 } },
-      { label: 'Comfortable — I use it and it works',   weights: { 1: 0, 2: 0, 3: 0, 4: 1, 5: 2, 6: 1 } },
+      { label: 'Frustrated, I\'ve been burned',         weights: { 1: 0, 2: 2, 3: 1, 4: 0, 5: 0, 6: 0 } },
+      { label: 'Skeptical, too many bad stories',      weights: { 1: 1, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0 } },
+      { label: 'Comfortable, I use it and it works',   weights: { 1: 0, 2: 0, 3: 0, 4: 1, 5: 2, 6: 1 } },
     ],
   },
   {
@@ -279,10 +279,9 @@ export default function QuizScreen() {
           style={s.header}
         >
           <View style={s.headerInner}>
-            <Text style={s.eyebrow}>FIND YOUR AI TYPE</Text>
             <Text style={s.title}>Which Type of AI User Are You?</Text>
             <Text style={s.subtitle}>
-              Answer six honest questions. In under two minutes, you'll know exactly where you stand — and what's possible next.
+              Answer six honest questions. In under two minutes, you'll know exactly where you stand, and what's possible next.
             </Text>
           </View>
         </LinearGradient>
@@ -348,7 +347,7 @@ export default function QuizScreen() {
             <View style={[s.resultCard, { backgroundColor: TYPES[result].color, borderColor: TYPES[result].border }]}>
               <Text style={s.resultEmoji}>{TYPES[result].emoji}</Text>
               <Text style={s.resultTypeLabel}>You are</Text>
-              <Text style={s.resultTypeTitle}>Type {result} — {TYPES[result].title}</Text>
+              <Text style={s.resultTypeTitle}>Type {result}: {TYPES[result].title}</Text>
               <View style={s.resultDivider} />
               <Text style={s.resultDesc}>{TYPES[result].description}</Text>
               <Text style={s.resultNote}>
@@ -383,7 +382,7 @@ export default function QuizScreen() {
                   >
                     <View style={s.miniCardTop}>
                       <Text style={s.miniEmoji}>{t.emoji}</Text>
-                      <Text style={s.miniTitle}>Type {k} — {t.title}</Text>
+                      <Text style={s.miniTitle}>Type {k}: {t.title}</Text>
                       {isYou && (
                         <View style={s.youBadge}>
                           <Check size={10} color="#FFFFFF" />
