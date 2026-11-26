@@ -51,6 +51,33 @@ const aiPartnershipCoaching = {
   ctaLabel: 'Book Your Free 30-Minute Call',
 };
 
+const howItWorks = [
+  {
+    step: '1',
+    title: 'Book the free call',
+    text: 'Thirty minutes about you and your business. AI comes second.',
+    tools: ['Calendly'],
+  },
+  {
+    step: '2',
+    title: 'See it work',
+    text: 'I show you a working AI partnership, live, on my own setup.',
+    tools: ['Claude'],
+  },
+  {
+    step: '3',
+    title: 'Build yours',
+    text: 'Your business documents become project files, so your AI knows your business. You talk to it instead of typing.',
+    tools: ['Claude or ChatGPT', 'Project files', 'Wispr Flow'],
+  },
+  {
+    step: '4',
+    title: 'Keep going',
+    text: 'Work on a real problem with me beside you. Stay on with monthly coaching if you want to keep building.',
+    tools: [],
+  },
+];
+
 const walkAwayCards = [
   { emoji: '⚙️', title: 'A Working AI Setup', text: 'Built specifically around your business, not a generic template. Your language, your industry, your judgment baked in from the start.' },
   { emoji: '🎯', title: 'A Real Problem Solved', text: "Not a demo of what's possible someday. An actual business challenge worked through, with you in the driver's seat." },
@@ -210,6 +237,34 @@ export default function AiPartnershipScreen() {
           </TouchableOpacity>
         </LinearGradient>
 
+        {/* How it works, with the tools */}
+        <View style={styles.howSection}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionEyebrow}>HOW IT WORKS</Text>
+            <Text style={styles.approachTitle}>Four steps, a few simple tools.</Text>
+          </View>
+          <View style={[styles.howRow, isMobile && { flexDirection: 'column' }]}>
+            {howItWorks.map((h, i) => (
+              <View key={i} style={[styles.howCard, isMobile && { flex: 0, flexGrow: 0, flexBasis: 'auto' }]}>
+                <View style={styles.howNumber}>
+                  <Text style={styles.howNumberText}>{h.step}</Text>
+                </View>
+                <Text style={styles.howTitle}>{h.title}</Text>
+                <Text style={styles.howText}>{h.text}</Text>
+                {h.tools.length > 0 && (
+                  <View style={styles.howTools}>
+                    {h.tools.map((t, j) => (
+                      <View key={j} style={styles.howChip}>
+                        <Text style={styles.howChipText}>{t}</Text>
+                      </View>
+                    ))}
+                  </View>
+                )}
+              </View>
+            ))}
+          </View>
+        </View>
+
         {/* 4. What you walk away with */}
         <View style={styles.walkAwaySection}>
           <View style={styles.sectionHeader}>
@@ -312,6 +367,28 @@ export default function AiPartnershipScreen() {
 }
 
 const styles = StyleSheet.create({
+  howSection: { paddingHorizontal: 24, paddingVertical: 40 },
+  howRow: {
+    flexDirection: isWeb ? 'row' : 'column', gap: 16,
+    maxWidth: maxW + 200, alignSelf: 'center', width: '100%', marginTop: 12,
+  },
+  howCard: {
+    flex: 1, backgroundColor: '#FFFFFF', borderRadius: 16, padding: 20,
+    borderWidth: 1, borderColor: '#D1FAE5',
+  },
+  howNumber: {
+    width: 32, height: 32, borderRadius: 16, backgroundColor: '#1B4332',
+    alignItems: 'center', justifyContent: 'center', marginBottom: 12,
+  },
+  howNumberText: { color: '#D4A96A', fontWeight: '800', fontSize: 15 },
+  howTitle: { fontSize: 17, fontWeight: '700', color: '#1B4332', marginBottom: 8 },
+  howText: { fontSize: 14, color: '#4B5563', lineHeight: 22, marginBottom: 14 },
+  howTools: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 'auto' },
+  howChip: {
+    backgroundColor: '#F0FDF4', borderWidth: 1, borderColor: '#1B4332',
+    borderRadius: 100, paddingHorizontal: 12, paddingVertical: 5,
+  },
+  howChipText: { fontSize: 12, fontWeight: '700', color: '#1B4332' },
   headerPhotoRow: { alignItems: 'center', marginBottom: 24 },
   headerCtaBtn: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
