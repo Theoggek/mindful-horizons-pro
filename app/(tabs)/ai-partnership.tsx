@@ -41,7 +41,7 @@ const aiPartnershipCoaching = {
   title: 'AI Partnership Coaching',
   emoji: '🤖',
   description:
-    'My newest and most powerful offering, a hybrid model that pairs 30 years of human coaching wisdom with AI-powered tools that keep your momentum alive between sessions. You get the depth of real coaching plus daily reinforcement: reflection prompts shaped around your actual goals.',
+    'My newest and most powerful offering, a hybrid model that pairs my business and coaching wisdom with AI power tools that keep your momentum alive between sessions. You get the depth of real coaching plus daily reinforcement: reflection prompts shaped around your actual goals.',
   items: [
     'Personalized reflection & journaling prompts',
     'Faster goal-setting and stronger accountability',
