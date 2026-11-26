@@ -41,7 +41,7 @@ const testimonials = [
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { isDesktop, isTablet, isWeb } = useResponsive();
+  const { isDesktop, isTablet, isWeb, isMobile, windowWidth } = useResponsive();
   const [rulesModalOpen, setRulesModalOpen] = useState(false);
 
   const handleBook = () => {
@@ -114,12 +114,18 @@ export default function HomeScreen() {
 
             {/* Main booking CTA */}
             <TouchableOpacity
-              style={styles.quizCta}
+              style={[styles.quizCta, isMobile && { paddingHorizontal: 16, gap: 8 }]}
               onPress={handleBook}
               activeOpacity={0.85}
             >
-              <Text style={styles.quizCtaText}>Book Your Free 30-Minute Call</Text>
-              <ArrowRight size={22} color="#1B4332" />
+              <Text
+                style={[styles.quizCtaText, isMobile && { fontSize: windowWidth < 350 ? 13 : 15, letterSpacing: -0.2 }]}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+              >
+                Book Your Free 30-Minute Call
+              </Text>
+              <ArrowRight size={isMobile ? 18 : 22} color="#1B4332" />
             </TouchableOpacity>
             <Text style={styles.heroNote}>
               We start with your business. AI comes second. No commitment, and 100% confidential.
