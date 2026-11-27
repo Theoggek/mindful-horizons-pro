@@ -113,7 +113,18 @@ export default function AboutScreen() {
             Living with a disability has taught me what it means to navigate change, to advocate for what you need, and to find your way forward when the path isn't obvious. That experience shaped how I coach. I don't come in with the right answer already loaded. I come in to understand where you are, and to help you see what you can't yet see in yourself.
           </Text>
           <Text style={styles.bioText}>
-            When AI came along, I brought that same approach to it. I didn't hand it off to a technical expert and wait for results. I built a working partnership with it myself, including developing Luxalma, a productivity app for teenagers and adults with ADHD, entirely through AI partnership. No development team. A decades-old coding background. Just thirty years of business judgment and lived experience, applied to a new kind of relationship.
+            When AI came along, I brought that same approach to it. I didn't hand it off to a technical expert and wait for results. I built a working partnership with it myself, including developing Luxalma, a productivity app for teenagers and adults with ADHD, entirely through AI partnership. You can try it free at{' '}
+            <Text
+              style={styles.bioLink}
+              accessibilityRole="link"
+              onPress={() => {
+                trackEvent('luxalma_link_click', { location: 'about' });
+                Linking.openURL('https://luxalma.app');
+              }}
+            >
+              luxalma.app
+            </Text>
+            . No development team. A decades-old coding background. Just thirty years of business judgment and lived experience, applied to a new kind of relationship.
           </Text>
           <Text style={styles.bioText}>
             That's what I teach now.
@@ -323,6 +334,11 @@ const styles = StyleSheet.create({
     color: '#4B5563',
     lineHeight: 28,
     marginBottom: 14,
+  },
+  bioLink: {
+    color: '#1B4332',
+    fontWeight: '700',
+    textDecorationLine: 'underline',
   },
   bioBtn: {
     backgroundColor: '#D4A96A',
